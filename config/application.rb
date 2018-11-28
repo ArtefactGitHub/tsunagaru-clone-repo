@@ -14,6 +14,8 @@ module RPActioncable
     config.generators do |g|
       g.template_engine = :slim
       g.test_framework false
+      g.assets false
+      g.helper false
     end
   end
 end
