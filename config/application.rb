@@ -11,10 +11,12 @@ module RPActioncable
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
 
+    config.time_zone = 'Asia/Tokyo'
+
     config.generators do |g|
       g.template_engine = :slim
       g.test_framework false
-      g.assets false
+      # g.assets false
       g.helper false
     end
   end
