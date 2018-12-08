@@ -1,16 +1,30 @@
-h1 Rooms#show
+.col-md-12.pt-3
+  / .title.text-center.font-weight-bold 楽々チャット
 
-= label_tag '入力してください'
-p = text_area_tag 'text', '', class: 'form-control', data: { behavior: "room_speaker" }
+  .col-md-10
+    = label_tag '↓　の四角を触ると、文字が入力できるよ！'
+    p = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }
 
-- if Rails.env == 'development'
-  button type="button" id='js-clear-button'
-    | メッセージを全て削除
+  .col-md-12
+    .text-center.mb-3
+      - if Rails.env.development?
+        button type="button" id='js-clear-button'
+          | メッセージを全て削除
 
-.row
-  - Message.messages.each_with_index do |message, index|
-    button type="button" class='js-command' data-msg-command='#{index}'
-      | "#{message}"
+    .card.mb-3
+      .row.pt-3.mb-4
+        .col-md-12
+          - MessageCommand.ask.each do |message|
+            button type="button" class='js-command btn btn-success button-custom mr-3 ml-3 mb-2' data-msg-command='#{message.id}'
+              | #{message.name}
 
-#messages
-  = render @messages
+    .card.mb-3
+      .row.pt-3.mb-4
+        .col-md-12
+          - MessageCommand.answer.each do |message|
+            button type="button" class='js-command btn btn-info button-custom mr-3 ml-3 mb-2' data-msg-command='#{message.id}'
+              | #{message.name}
+
+    .card.mb-4
+      #messages
+        = render @messages
