@@ -1,9 +1,9 @@
-.container.pt-3
-  h1.text-center.font-weight-bold 楽々チャット
+.col-md-12.pt-3
+  .title.text-center.font-weight-bold 楽々チャット
 
   .col-md-10
     = label_tag '↓　の四角を触ると、文字が入力できます'
-    p = text_area_tag 'text', '', class: 'form-control', data: { behavior: "room_speaker" }
+    p = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }
 
   .col-md-12
     .row
@@ -11,10 +11,11 @@
         button type="button" id='js-clear-button'
           | メッセージを全て削除
 
-    .row.pt-3
+    .row.pt-3.mb-4
       - Message.messages.each_with_index do |message, index|
-        button type="button" class='js-command btn btn-success mr-3' data-msg-command='#{index}'
+        button type="button" class='js-command btn btn-success button-custom mr-3' data-msg-command='#{index}'
           | "#{message}"
 
-    #messages
-      = render @messages
+    .card.mb-4
+      #messages
+        = render @messages
