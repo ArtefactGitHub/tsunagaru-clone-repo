@@ -4,10 +4,12 @@ h1 Rooms#show
 p = text_area_tag 'text', '', class: 'form-control', data: { behavior: "room_speaker" }
 
 button type="button" id='js-clear-button'
-  | メッセージを削除
+  | メッセージを全て削除
 
-button type="button" id='js-command' data-msg-command='1'
-  | 今、何してる？
+.row
+  - Message.messages.each_with_index do |message, index|
+    button type="button" class='js-command' data-msg-command='#{index}'
+      | "#{message}"
 
 #messages
   = render @messages

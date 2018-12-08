@@ -24,7 +24,7 @@ $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     event.preventDefault()
 
 $ ->
-  $('#js-command').click (e) ->
+  $('.js-command').click (e) ->
     App.room.msg_command $(this).data('msg-command')
 
   $('#js-clear-button').click ->

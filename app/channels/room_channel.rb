@@ -12,8 +12,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def msg_command(data)
-    messages = ['', '今、何してる？']
-    Message.create! content: messages[data['command_id']]
+    Message.create! content: Message.message_by_command_id(data['command_id'])
   end
 
   def all_clear
