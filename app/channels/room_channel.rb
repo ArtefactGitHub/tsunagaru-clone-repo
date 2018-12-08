@@ -12,7 +12,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def msg_command(data)
-    Message.create! content: Message.message_by_command_id(data['command_id'])
+    Message.create! content: MessageCommand.find(data['command_id']).name
   end
 
   def all_clear
