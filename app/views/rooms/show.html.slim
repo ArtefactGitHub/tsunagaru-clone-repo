@@ -1,9 +1,13 @@
 .col-md-12.pt-3
   / .title.text-center.font-weight-bold 楽々チャット
 
-  .col-md-10
+  .row.mb-3
     = label_tag '↓　の四角を触ると、文字が入力できるよ！'
-    p = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }
+    .col-md-8
+      = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }
+    .col-md-4
+      button type="button" class='btn btn-primary button-custom reset-input-button'
+        | 入力状態を戻す
 
   .col-md-12
     .text-center.mb-3
