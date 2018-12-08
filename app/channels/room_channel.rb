@@ -10,4 +10,8 @@ class RoomChannel < ApplicationCable::Channel
   def speak(data)
     Message.create! content: data['message']
   end
+
+  def all_clear
+    Message.destroy_all
+  end
 end

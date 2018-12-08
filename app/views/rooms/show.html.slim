@@ -1,9 +1,10 @@
 h1 Rooms#show
 
+= label_tag '入力してください'
+p = text_area_tag 'text', '', class: 'form-control', data: { behavior: "room_speaker" }
+
+button type="button" id='js-clear-button'
+  | メッセージを削除
+
 #messages
   = render @messages
-
-<form>
-  <label>Say something:</label><br>
-  <input type="text" data-behavior="room_speaker">
-</form>
