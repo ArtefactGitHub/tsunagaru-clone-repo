@@ -14,6 +14,8 @@ App.room = App.cable.subscriptions.create "RoomChannel",
   all_clear: ->
     @perform 'all_clear'
 
+  msg_command: (command_id) ->
+    @perform 'msg_command', command_id: command_id
 
 $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
   if event.keyCode is 13 # return = send
@@ -22,6 +24,9 @@ $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     event.preventDefault()
 
 $ ->
+  $('#js-command').click (e) ->
+    App.room.msg_command $(this).data('msg-command')
+
   $('#js-clear-button').click ->
     $('#messages').empty()
     App.room.all_clear ''

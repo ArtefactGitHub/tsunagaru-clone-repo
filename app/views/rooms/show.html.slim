@@ -6,5 +6,8 @@ p = text_area_tag 'text', '', class: 'form-control', data: { behavior: "room_spe
 button type="button" id='js-clear-button'
   | メッセージを削除
 
+button type="button" id='js-command' data-msg-command='1'
+  | 今、何してる？
+
 #messages
   = render @messages
