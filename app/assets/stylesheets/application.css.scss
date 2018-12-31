@@ -1,0 +1,25 @@
+@import 'bootstrap';
+@import 'rooms';
+
+body {
+  //background-color: white;
+  color: #333;
+  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+  font-size: 2.5rem;
+}
+
+.title {
+  font-size: 5.5rem;
+}
+
+.text-area-custom {
+  font-size: 2.5rem;
+}
+
+.button-custom {
+  font-size: 2.0rem;
+}
+
+.reset-input-button {
+  height: 15vh;
+}
