@@ -12,6 +12,7 @@ module RPActioncable
     config.load_defaults 5.2
 
     config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
 
     config.generators do |g|
       g.template_engine = :slim
