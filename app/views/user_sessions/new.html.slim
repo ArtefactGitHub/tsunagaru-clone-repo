@@ -1,0 +1,20 @@
+.container
+  .col-md
+    .card.mt-3
+      .card-body
+        h2.text-center
+          | ログイン
+
+        = form_tag login_path do
+          .col-12
+            .form-group
+              = label :email, 'メールアドレス'
+              = email_field '', :email, class: 'form-control'
+            .form-group
+              = label :password, 'パスワード'
+              = password_field '', :password, class: 'form-control'
+            .text-center
+              = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised'
+
+        = link_to '登録はこちら', 'new_user_path', class: 'mr15'
+        = link_to 'パスワードを忘れた方はこちら', '#'
