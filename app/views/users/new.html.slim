@@ -1,0 +1,28 @@
+.container
+  .col-md
+    .card.mt-3
+      .card-body
+        h2.text-center
+          | ユーザ登録
+
+        = form_for @user, url: users_url, method: :post do |f|
+          .row
+            .col-12
+              .form-group
+                = label :name, '名前'
+                = f.text_field :name, class: 'form-control'
+              .form-group
+                = label :email, 'メールアドレス'
+                = f.email_field :email, class: 'form-control'
+              .form-group
+                = label :password, 'パスワード'
+                = f.password_field :password, class: 'form-control'
+              .form-group
+                = label :password_confirmation, 'パスワード確認'
+                = f.password_field :password_confirmation, class: 'form-control'
+
+              .text-center
+                = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised'
+        .row
+          .col-12.mt-3.text-center
+            = link_to 'ログインはこちら', '#', class: 'mb-10'
