@@ -12,11 +12,16 @@ module RPActioncable
     config.load_defaults 5.2
 
     config.time_zone = 'Asia/Tokyo'
+    config.active_record.default_timezone = :local
+
+    # 日本語化の設定
+    config.i18n.default_locale = :ja
+    config.i18n.available_locales = %i[ja en]
 
     config.generators do |g|
       g.template_engine = :slim
       g.test_framework false
-      # g.assets false
+      g.assets false
       g.helper false
     end
   end
