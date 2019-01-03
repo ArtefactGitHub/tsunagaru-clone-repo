@@ -2,21 +2,41 @@
 @import 'rooms';
 
 body {
-  //background-color: white;
-  color: #333;
-  font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
-  font-size: 2.5rem;
+  .main {
+    //background-color: white;
+    color: #333;
+    font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
+    font-size: 2.5rem;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
 }
 
-.common-header {
-  position: relative;
-  box-shadow: 0 3px 6px gray;
-  font-weight: bold;
-  background: white;
+header {
+  .common-header {
+    position: relative;
+    box-shadow: 0 3px 6px gray;
+    font-weight: bold;
+    background: white;
 
-  .logo {
-    width: 30%;
-    height: 30%;
+    .logo {
+      width: 30%;
+      height: 30%;
+    }
+  }
+}
+
+footer {
+  .common-footer {
+    position: relative;
+    font-size: 12px;
+    background: white;
+    padding : 2%;
+    box-shadow: 0 3px 6px gray;
+
+    .copyright {
+      font-size: 9px;
+    }
   }
 }
 
