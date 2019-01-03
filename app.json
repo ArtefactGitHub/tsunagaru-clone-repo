@@ -1,7 +1,7 @@
 {
   "name": "R_P_ActionCable",
   "scripts": {
-    "postdeploy": "bundle exec rails db:migrate db:seed"
+    "postdeploy": "bundle exec rails db:migrate db:seed_fu"
   },
   "env": {
     "LANG": {
