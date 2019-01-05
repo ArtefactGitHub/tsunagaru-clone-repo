@@ -2,7 +2,8 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :messages
-  has_many :chatrooms, through: :messages
+  has_one :my_room, class_name: 'Room'
+  has_many :rooms, through: :messages
 
   validates :name, presence: true
   validates :email, uniqueness: true
