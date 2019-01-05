@@ -2,7 +2,7 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :messages
-  has_one :my_room, class_name: 'Room'
+  has_one :my_room, class_name: 'Room', foreign_key: 'owner_id'
   has_many :rooms, through: :messages
 
   validates :name, presence: true
