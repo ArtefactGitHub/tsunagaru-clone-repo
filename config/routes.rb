@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
 
+  namespace :mypage do
+    root to: 'dashboard#show'
+  end
+
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 end
