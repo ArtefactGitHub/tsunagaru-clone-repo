@@ -18,6 +18,7 @@ gem 'uglifier', '>= 1.3.0'
 # gem 'mini_racer', platforms: :ruby
 
 gem 'bootstrap', '~> 4.1.1'
+gem 'font-awesome-rails'
 
 gem "jquery-rails"
 
