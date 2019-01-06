@@ -2,6 +2,8 @@ class UserSessionsController < ApplicationController
   skip_before_action :require_login, except: %i[destroy]
 
   def new
+    return redirect_to mypage_root_url if current_user.present?
+
     @user = User.new
   end
 
