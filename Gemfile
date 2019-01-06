@@ -42,6 +42,7 @@ gem 'redis'
 
 gem 'seed-fu'
 gem 'rails-i18n'
+gem 'config'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
