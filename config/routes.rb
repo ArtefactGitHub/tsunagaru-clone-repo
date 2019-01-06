@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
   end
 
+  resources :rooms, only: %i[show]
+
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
 end
