@@ -1,5 +1,7 @@
 jQuery(document).on 'turbolinks:load', ->
-  App.room = App.cable.subscriptions.create "RoomChannel",
+  messages = $('#messages')
+
+  App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: messages.data('room_id') },
     connected: ->
       # Called when the subscription is ready for use on the server
 
@@ -7,7 +9,7 @@ jQuery(document).on 'turbolinks:load', ->
       # Called when the subscription has been terminated by the server
 
     received: (data) ->
-      $('#messages').prepend data['message']
+      messages.prepend data['message']
 
     speak: (message) ->
       @perform 'speak', message: message
@@ -29,5 +31,5 @@ jQuery(document).on 'turbolinks:load', ->
       App.room.msg_command $(this).data('msg-command')
 
     $('#js-clear-button').click ->
-      $('#messages').empty()
+      messages.empty()
       App.room.all_clear ''
