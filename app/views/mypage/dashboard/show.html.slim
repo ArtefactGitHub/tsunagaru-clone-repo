@@ -4,3 +4,17 @@
       = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
         | チャットを始める
         end
+    .row
+      p
+        = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
+        | #{current_user.name}
+
+    .row.friend-list
+      | フレンド
+    .row
+      table.table
+        tr
+          th
+            = render 'shared/users/avatar', user: current_user
+          td
+            | #{current_user.name}
