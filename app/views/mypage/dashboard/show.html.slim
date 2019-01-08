@@ -26,13 +26,4 @@
                 | #{current_user.name}
 
     .row.mt-5
-      nav.d-block.d-md-none.xs-sm-sidebar
-        .row
-          .col-4.offset-2
-            = link_to mypage_root_path, class: 'nav-link' do
-              = fa_icon 'home'
-            end
-          .col-4.offset-2
-            = link_to mypage_settings_path, class: 'nav-link' do
-              = fa_icon 'cog'
-            end
+      = render 'shared/mypage/xs-sm-sidebar'
