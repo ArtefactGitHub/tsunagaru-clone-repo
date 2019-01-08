@@ -1,18 +1,8 @@
 .mypage
   .container-fluid
     .row
-      nav.col-md-2.d-none.d-md-block.bg-light.sidebar
-        div class="sidebar-sticky"
-          ul class="nav flex-column"
-            li class="nav-item"
-              = link_to mypage_root_path, class: 'nav-link mybtn-sidebar' do
-                = fa_icon 'home'
-              end
+      = render 'shared/mypage/sidebar'
 
-            li class="nav-item"
-              = link_to mypage_settings_path, class: 'nav-link mybtn-sidebar' do
-                = fa_icon 'cog'
-              end
     .row
       .col-md-10.offset-md-2
         .text-center

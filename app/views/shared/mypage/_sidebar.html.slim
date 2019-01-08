@@ -1,0 +1,12 @@
+nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+  div class="sidebar-sticky"
+    ul class="nav flex-column"
+      li class="nav-item"
+        = link_to mypage_root_path, class: 'nav-link mybtn-sidebar' do
+          = fa_icon 'home'
+        end
+
+      li class="nav-item"
+        = link_to mypage_settings_path, class: 'nav-link mybtn-sidebar' do
+          = fa_icon 'cog'
+        end
