@@ -13,3 +13,8 @@
       span.ml-3 設定の編集を制限する
       .info 　※「定型文の編集」や「フレンドの追加」のボタンが非表示になります。
       .info 　　　チャット以外の操作を必要としない場合はチェックを入れてください。
+
+    p.mt-5
+      = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-' do
+        | ログアウト
+        end
