@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root to: 'user_sessions#new'
+
   if Rails.env.development?
     get '/login_as/:user_id', to: 'development/sessions#login_as'
   end
@@ -10,7 +12,12 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
 
-  root to: 'rooms#show'
+  namespace :mypage do
+    root to: 'dashboard#show'
+    get 'settings', to: 'settings#show'
+  end
+
+  resources :rooms, only: %i[show]
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'

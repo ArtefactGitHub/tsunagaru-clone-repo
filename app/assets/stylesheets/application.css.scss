@@ -1,3 +1,4 @@
+@import "font-awesome";
 @import 'bootstrap';
 @import 'rooms';
 
@@ -7,8 +8,8 @@ body {
     color: #333;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
     font-size: 2.5rem;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-top: 100px;
+    margin-bottom: 40px;
   }
 }
 
@@ -29,10 +30,12 @@ header {
 footer {
   .common-footer {
     position: relative;
+    z-index: 100;
     font-size: 12px;
     background: white;
     padding : 2%;
     box-shadow: 0 3px 6px gray;
+    text-align: right;
 
     .copyright {
       font-size: 9px;
