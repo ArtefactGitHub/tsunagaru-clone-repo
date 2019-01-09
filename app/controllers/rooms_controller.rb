@@ -1,5 +1,8 @@
 class RoomsController < ApplicationController
+  before_action :require_login
+
   def show
-    @messages = Message.all
+    @room = Room.find(params[:id])
+    @messages = @room.messages
   end
 end

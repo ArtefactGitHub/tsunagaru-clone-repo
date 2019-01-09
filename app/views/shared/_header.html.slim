@@ -1,0 +1,8 @@
+header.fixed-top
+  .nav.navbar.navbar-expand.navbar-light.bg-white.common-header
+    = link_to root_url
+      = image_tag 'logo.png', class: 'logo'
+    - unless logged_in?
+      = link_to login_path, class: 'btn btn-default btn-raised ml-auto' do
+        | ログイン
+        end

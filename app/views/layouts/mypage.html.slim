@@ -1,0 +1,23 @@
+doctype html
+html
+  head
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'mypage', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'mypage', 'data-turbolinks-track': 'reload'
+
+  body
+    = render 'shared/header'
+
+    .main
+      .mypage
+        .container-fluid
+          .row
+            = render 'shared/mypage/sidebar'
+          .row
+            = yield
+          .row.mt-5
+            = render 'shared/mypage/xs-sm-sidebar'
+
+    = render 'shared/footer'
