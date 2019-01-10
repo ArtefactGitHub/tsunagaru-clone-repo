@@ -1,12 +1,12 @@
 .col-md-10.offset-md-2
   .text-center
     p.mt-5
-      = link_to '#', class: 'btn btn-primary btn-raised mybtn-default' do
-        | 定型文の編集
+      = link_to mypage_friend_root_path, class: 'btn btn-primary btn-raised mybtn-default' do
+        | トモダチ
         end
     p
       = link_to '#', class: 'btn btn-primary btn-raised mybtn-default' do
-        | フレンドの追加
+        | 定型文の編集
         end
     .my-checkbox
       = check_box_tag :sample
@@ -15,6 +15,6 @@
       .info 　　　チャット以外の操作を必要としない場合はチェックを入れてください。
 
     p.mt-5
-      = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-' do
+      = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised' do
         | ログアウト
         end
