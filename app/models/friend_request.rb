@@ -4,4 +4,5 @@ class FriendRequest < ApplicationRecord
 
   validates :own_id, presence: true
   validates :opponent_id, presence: true
+  validates :own_id, uniqueness: { scope: :opponent_id }
 end
