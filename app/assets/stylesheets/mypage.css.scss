@@ -21,6 +21,14 @@
     margin-bottom: 30px;
   }
 
+  .mybtn-small {
+    width: 200px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
   .my-checkbox {
     input[type=checkbox] {
       -ms-transform: scale(2, 2);
@@ -63,5 +71,9 @@
     background-color: #2b2926;
     font-size: 3.5rem;
     width: 100%;
+  }
+
+  .form-friend_requests {
+    margin-top: 60px;
   }
 }
