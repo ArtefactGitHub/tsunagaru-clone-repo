@@ -1,9 +1,17 @@
-.col-md-10.offset-md-2
-  .text-center
-    p
-      | トモダチ申請
-
-    p.mt-5
-      = link_to mypage_friend_root_path, class: 'btn btn-secondary btn-raised' do
-        | 戻る
-        end
+.container
+  .col-md-10.offset-md-2
+    .form-friend_requests
+      = form_for [:mypage, @request] do |f|
+        .row.text-center
+          .col-12
+            | トモダチのユーザーID
+          .col-6.offset-3
+            .form-group
+              = f.text_field :opponent_id, class: 'form-control', required: true
+        .row.text-center
+          .col-lg-2.offset-lg-2
+            = f.submit '申請', class: 'btn btn-primary btn-raised mybtn-small'
+          .col-lg-8
+            = link_to mypage_friend_root_path, class: 'btn btn-secondary btn-raised mybtn-small' do
+              | 戻る
+              end
