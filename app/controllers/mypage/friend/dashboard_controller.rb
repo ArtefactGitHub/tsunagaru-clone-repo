@@ -1,6 +1,3 @@
-class Mypage::Friend::DashboardController < ApplicationController
-  before_action :require_login, only: %i[show]
-  layout 'mypage'
-
+class Mypage::Friend::DashboardController < MypageController
   def show; end
 end

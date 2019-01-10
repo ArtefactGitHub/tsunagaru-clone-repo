@@ -1,6 +1,3 @@
-class Mypage::Friend::RequestsController < ApplicationController
-  before_action :require_login, only: %i[index]
-  layout 'mypage'
-
+class Mypage::Friend::RequestsController < MypageController
   def new; end
 end
