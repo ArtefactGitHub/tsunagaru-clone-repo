@@ -1,20 +1,19 @@
-.col-md-10.offset-md-2
-  .text-center
-    p.mt-5
-      = link_to mypage_friend_root_path, class: 'btn btn-primary btn-raised mybtn-default' do
-        | トモダチ
-        end
-    p
-      = link_to '#', class: 'btn btn-primary btn-raised mybtn-default' do
-        | 定型文の編集
-        end
-    .my-checkbox
-      = check_box_tag :sample
-      span.ml-3 設定の編集を制限する
-      .info 　※「定型文の編集」や「フレンドの追加」のボタンが非表示になります。
-      .info 　　　チャット以外の操作を必要としない場合はチェックを入れてください。
+.text-center
+  p.mt-5
+    = link_to mypage_friend_root_path, class: 'btn btn-primary btn-raised mybtn-default' do
+      | トモダチ
+      end
+  p
+    = link_to '#', class: 'btn btn-primary btn-raised mybtn-default' do
+      | 定型文の編集
+      end
+  .my-checkbox
+    = check_box_tag :sample
+    span.ml-3 設定の編集を制限する
+    .info 　※「定型文の編集」や「フレンドの追加」のボタンが非表示になります。
+    .info 　　　チャット以外の操作を必要としない場合はチェックを入れてください。
 
-    p.mt-5
-      = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised' do
-        | ログアウト
-        end
+  p.mt-5
+    = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised' do
+      | ログアウト
+      end
