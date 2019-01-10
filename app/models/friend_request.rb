@@ -1,4 +1,4 @@
-class Friendrequest < ApplicationRecord
+class FriendRequest < ApplicationRecord
   belongs_to :own, class_name: 'User'
   belongs_to :opponent, class_name: 'User'
 
