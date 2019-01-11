@@ -29,6 +29,12 @@
     margin-bottom: 30px;
   }
 
+  .mybtn-minimum {
+    width: 120px;
+    height: 50px;
+    font-size: 1.5rem;
+  }
+
   .my-checkbox {
     input[type=checkbox] {
       -ms-transform: scale(2, 2);
@@ -71,6 +77,11 @@
     background-color: #2b2926;
     font-size: 3.5rem;
     width: 100%;
+  }
+
+  // トモダチ申請
+  .friend_request {
+    margin-bottom: 20px;
   }
 
   .form-friend_requests {
