@@ -3,7 +3,7 @@ module FriendRequestStatus
 
   included do
     enum friend_request_status: {
-      none: 0,
+      no_progress: 0,
       request: 1,
       approval: 2
     }
