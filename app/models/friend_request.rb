@@ -1,43 +1,39 @@
 class FriendRequest < ApplicationRecord
   include FriendRequestStatus
 
-  belongs_to :own, class_name: 'User'
-  belongs_to :opponent, class_name: 'User'
+  belongs_to :sender, class_name: 'User'
+  belongs_to :receiver, class_name: 'User'
 
-  validates :own_id, presence: true
-  validates :opponent_id, presence: true
-  validates :own_id, uniqueness: { scope: :opponent_id }
-  validate :can_not_request_to_own
+  validates :sender_id, presence: true
+  validates :receiver_id, presence: true
+  validates :sender_id, uniqueness: { scope: :receiver_id }
+  validate :can_not_request_to_sender
   validate :can_not_request_to_friend
 
-  scope :sending_receiving, ->(own) { sending(own).or(receiving(own)) }
-  scope :sending, ->(own) { where(own_id: own.id).where.not(friend_request_status: :approval) }
-  scope :receiving, ->(own) { where(opponent_id: own.id).where.not(friend_request_status: :approval) }
-  scope :receiving_from, ->(own, opponent) { receiving(own).where(own_id: opponent.id).where.not(friend_request_status: :approval).first }
-  scope :approvals, ->(own) { where(own_id: own.id).where(friend_request_status: :approval) }
-  scope :approval_to_by_id, ->(own_id, opponent_id) { where(own_id: own_id).where(opponent_id: opponent_id).where(friend_request_status: :approval) }
+  scope :sending_receiving, ->(current_user) { sending(current_user).or(receiving(current_user)) }
+  scope :sending, ->(current_user) { where(sender_id: current_user.id).where.not(friend_request_status: :approval) }
+  scope :receiving, ->(current_user) { where(receiver_id: current_user.id).where.not(friend_request_status: :approval) }
+  scope :receiving_from, ->(current_user, sender) { receiving(current_user).where(sender_id: sender.id).where.not(friend_request_status: :approval) }
+  scope :approvals, ->(current_user) { where(sender_id: current_user.id).where(friend_request_status: :approval) }
+  scope :approval_to_by_id, ->(sender_id, receiver_id) { where(sender_id: sender_id).where(receiver_id: receiver_id).where(friend_request_status: :approval) }
 
-  def can_not_request_to_own
-    if opponent_id == own_id
-      errors.add(:opponent_id, '自分自身にトモダチ申請を送ることは出来ません')
-    end
+  def can_not_request_to_sender
+    errors.add(:receiver_id, '自分自身にトモダチ申請を送ることは出来ません') if receiver_id == sender_id
   end
 
   def can_not_request_to_friend
-    if FriendRequest.approval_to_by_id(own_id, opponent_id).present?
-      errors.add(:opponent_id, 'トモダチにトモダチ申請を送ることは出来ません')
-    end
+    errors.add(:receiver_id, 'トモダチにトモダチ申請を送ることは出来ません') if FriendRequest.approval_to_by_id(sender_id, receiver_id).present?
   end
 
   def update_approval!
     update!(friend_request_status: :approval)
   end
 
-  def sending?(own)
-    own_id == own.id
+  def sending?(sender)
+    sender_id == sender.id
   end
 
-  def receiving?(own)
-    opponent_id == own.id
+  def receiving?(sender)
+    receiver_id == sender.id
   end
 end

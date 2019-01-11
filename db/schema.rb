@@ -37,24 +37,14 @@ ActiveRecord::Schema.define(version: 2019_01_10_071505) do
   end
 
   create_table "friend_requests", force: :cascade do |t|
-    t.integer "own_id"
-    t.integer "opponent_id"
+    t.integer "sender_id"
+    t.integer "receiver_id"
     t.integer "friend_request_status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["opponent_id"], name: "index_friend_requests_on_opponent_id"
-    t.index ["own_id", "opponent_id"], name: "index_friend_requests_on_own_id_and_opponent_id", unique: true
-    t.index ["own_id"], name: "index_friend_requests_on_own_id"
-  end
-
-  create_table "friends", force: :cascade do |t|
-    t.integer "own_id"
-    t.integer "opponent_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["opponent_id"], name: "index_friends_on_opponent_id"
-    t.index ["own_id", "opponent_id"], name: "index_friends_on_own_id_and_opponent_id", unique: true
-    t.index ["own_id"], name: "index_friends_on_own_id"
+    t.index ["receiver_id"], name: "index_friend_requests_on_receiver_id"
+    t.index ["sender_id", "receiver_id"], name: "index_friend_requests_on_sender_id_and_receiver_id", unique: true
+    t.index ["sender_id"], name: "index_friend_requests_on_sender_id"
   end
 
   create_table "message_commands", force: :cascade do |t|

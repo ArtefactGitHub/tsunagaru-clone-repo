@@ -1,7 +1,7 @@
 class Friend < ApplicationRecord
-  belongs_to :own, class_name: 'User'
-  belongs_to :opponent, class_name: 'User'
+  belongs_to :sender, class_name: 'User'
+  belongs_to :receiver, class_name: 'User'
 
-  validates :own_id, presence: true
-  validates :opponent_id, presence: true
+  validates :sender_id, presence: true
+  validates :receiver_id, presence: true
 end
