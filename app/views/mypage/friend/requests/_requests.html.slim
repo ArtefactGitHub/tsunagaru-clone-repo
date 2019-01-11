@@ -1,0 +1,7 @@
+- if requests.empty?
+  = render 'request_none'
+- else
+  - requests.each do |request|
+    = render 'request_send', opponent: request.opponent if request.sending? current_user
+    = render 'request_receive', opponent: request.own if request.receiving? current_user
+  end

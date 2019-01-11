@@ -15,6 +15,4 @@
           end
 
   p.mt-5 申請一覧
-  / = render 'request_none'
-  / = render 'request_send'
-  / = render 'request_receive'
+  = render 'requests', requests: @requests
