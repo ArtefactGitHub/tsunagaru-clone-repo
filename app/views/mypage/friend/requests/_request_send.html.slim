@@ -10,7 +10,8 @@
                   = render 'shared/users/avatar', user: current_user
                 .col-md-8
                   .myfont-size-minimum
-                    | #{current_user.name}さんに<br>トモダチ申請中です
+                    | #{opponent.name}さんに
+                    br トモダチ申請中です
             .col-md-4
               = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
                 | やめる

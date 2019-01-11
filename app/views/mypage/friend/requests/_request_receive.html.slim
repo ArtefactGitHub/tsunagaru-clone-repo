@@ -10,12 +10,15 @@
                   = render 'shared/users/avatar', user: current_user
                 .col-md-8
                   p.myfont-size-minimum
-                    | #{current_user.name}さんから<br>トモダチ申請を受けています<br>申請を受けますか？
+                    | #{current_user.name}さんから
+                    br トモダチ申請を受けています
+                    br 申請を受けますか？
             .col-md-4
               p
                 = link_to '#', class: 'btn btn-success btn-raised mybtn-minimum' do
                   | はい
                   end
-              = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
-                | いいえ
-                end
+              p
+                = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
+                  | いいえ
+                  end
