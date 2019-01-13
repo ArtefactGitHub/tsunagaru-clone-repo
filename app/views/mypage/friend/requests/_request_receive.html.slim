@@ -12,14 +12,14 @@
                   p.myfont-size-minimum
                     | #{sender.name}さんから
                     br トモダチ申請を受けています
-                    br 申請を受けますか？
+                    | 申請を受けますか？
             .col-md-4
               p
                 = form_for [:mypage, FriendRequest.new] do |f|
                   = f.hidden_field :receiver_id, value: sender.id
                   = f.submit 'はい', class: 'btn btn-success btn-raised mybtn-minimum'
                 end
-              p
-                = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
-                  | いいえ
-                  end
+              / p
+              /   = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
+              /     | いいえ
+              /     end
