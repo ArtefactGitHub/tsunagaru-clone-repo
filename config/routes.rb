@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     namespace :friend do
       root to: 'dashboard#show'
       resources :friends, only: %i[index]
-      resources :requests, only: %i[new create]
+      resources :requests, only: %i[new create destroy]
     end
   end
 

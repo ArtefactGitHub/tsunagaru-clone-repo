@@ -2,6 +2,6 @@
   = render 'request_none'
 - else
   - requests.each do |request|
-    = render 'request_send', receiver: request.receiver if request.sending? current_user
+    = render 'request_send', request: request if request.sending? current_user
     = render 'request_receive', sender: request.sender if request.receiving? current_user
   end

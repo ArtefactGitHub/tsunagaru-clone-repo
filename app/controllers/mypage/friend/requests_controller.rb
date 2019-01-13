@@ -26,6 +26,13 @@ class Mypage::Friend::RequestsController < MypageController
     end
   end
 
+  def destroy
+    @request = FriendRequest.find(params[:id])
+    opponent_name = @request.receiver.name
+    @request.destroy!
+    redirect_to new_mypage_friend_request_path, success: "#{opponent_name}さんへのトモダチ申請をやめました"
+  end
+
   private
 
   def request_params
