@@ -3,5 +3,5 @@
 - else
   - requests.each do |request|
     = render 'request_send', receiver: request.receiver if request.sending? current_user
-    = render 'request_receive', receiver: request.sender if request.receiving? current_user
+    = render 'request_receive', sender: request.sender if request.receiving? current_user
   end

@@ -10,14 +10,15 @@
                   = render 'shared/users/avatar', user: current_user
                 .col-md-8
                   p.myfont-size-minimum
-                    | #{receiver.name}さんから
+                    | #{sender.name}さんから
                     br トモダチ申請を受けています
                     br 申請を受けますか？
             .col-md-4
               p
-                = link_to '#', class: 'btn btn-success btn-raised mybtn-minimum' do
-                  | はい
-                  end
+                = form_for [:mypage, FriendRequest.new] do |f|
+                  = f.hidden_field :receiver_id, value: sender.id
+                  = f.submit 'はい', class: 'btn btn-success btn-raised mybtn-minimum'
+                end
               p
                 = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
                   | いいえ
