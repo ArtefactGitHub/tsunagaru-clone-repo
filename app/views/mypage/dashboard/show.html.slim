@@ -11,9 +11,5 @@
 .row.friend-list
   | フレンド
 .row
-  table.table
-    tr
-      th
-        = render 'shared/users/avatar', user: current_user
-      td
-        | #{current_user.name}
+  .col-11
+    = render 'mypage/friend/friends', friends: @friends

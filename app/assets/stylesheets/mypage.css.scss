@@ -79,6 +79,19 @@
     width: 100%;
   }
 
+  .friend-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .friend-card-body {
+      padding: 0.5rem;
+    }
+    
+    .friend-text {
+      font-size: 1.5rem;
+    }
+  }
+
   // トモダチ申請
   .friend_request {
     margin-bottom: 20px;
