@@ -3,7 +3,7 @@
     .row
       - if friends.present?
         - friends.each do |friend|
-          = render 'mypage/friend/friend', friend: friend
+          = render 'friend', friend: friend
           end
       - else
         .col-12.text-center
