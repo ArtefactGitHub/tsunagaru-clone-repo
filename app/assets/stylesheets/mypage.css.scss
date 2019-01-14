@@ -9,10 +9,6 @@
     font-size: 2.5rem;
   }
 
-  .friend-list {
-    margin-top: 100px;
-  }
-
   .mybtn-default {
     width: 400px;
     height: 100px;
@@ -79,6 +75,12 @@
     width: 100%;
   }
 
+  .dashboard {
+    .friend-list {
+      margin-top: 100px;
+    }
+  }
+
   .friend-card {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -86,7 +88,7 @@
     .friend-card-body {
       padding: 0.5rem;
     }
-    
+
     .friend-text {
       font-size: 1.5rem;
     }

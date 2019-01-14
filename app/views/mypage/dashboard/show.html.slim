@@ -1,15 +1,16 @@
-.text-center
-  p.mt-5
-    = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
-      | チャットを始める
-      end
-.row
-  p
-    = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
-    | #{current_user.name}
+.dashboard
+  .text-center
+    p.mt-5
+      = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
+        | チャットを始める
+        end
+  .row
+    p
+      = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
+      | #{current_user.name}
 
-.row.friend-list
-  | フレンド
-.row
-  .col-11
-    = render 'friends', friends: @friends
+  .row.friend-list
+    | トモダチ
+  .row
+    .col-11
+      = render 'friends', friends: @friends
