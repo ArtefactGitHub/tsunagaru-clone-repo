@@ -9,6 +9,7 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   validates :name, presence: true
+  validates :introduction, length: { maximum: 999 }
   validates :email, uniqueness: true
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
