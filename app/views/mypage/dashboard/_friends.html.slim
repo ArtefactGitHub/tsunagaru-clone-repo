@@ -1,12 +1,10 @@
-.card
-  .card-body
-    .row
-      - if friends.present?
-        - friends.each do |friend|
-          = render 'friend', friend: friend
-          end
-      - else
-        .col-12.text-center
-          = link_to new_mypage_friend_request_path, class: 'btn btn-success btn-raised mybtn-default' do
-            | トモダチを追加する
-            end
+.row
+  - if friends.present?
+    - friends.each do |friend|
+      = render 'friend', friend: friend
+      end
+  - else
+    .col-11.text-center
+      = link_to new_mypage_friend_request_path, class: 'btn btn-success btn-raised mybtn-default' do
+        | トモダチを追加する
+        end
