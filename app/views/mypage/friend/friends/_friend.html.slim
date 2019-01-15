@@ -9,6 +9,6 @@
         .col-7
           = escape_with_linefeed friend.receiver.introduction
         .col-3.text-center.break-friendship-button
-          = link_to '#', method: :delete, data: { confirm: '本当にトモダチをやめますか？' }, class: 'btn btn-warning btn-raised' do
+          = link_to mypage_friend_friend_path(friend), method: :delete, data: { confirm: '本当にトモダチをやめますか？' }, class: 'btn btn-warning btn-raised' do
             | やめる
             end
