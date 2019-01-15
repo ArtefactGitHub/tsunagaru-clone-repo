@@ -5,8 +5,7 @@ class Mypage::Friend::RequestsController < MypageController
 
   def create
     @request = FriendRequest.new(request_params)
-    @request.sender = current_user
-    @request.friend_request_status = :request
+    @request.setup_for_create(current_user)
 
     if @request.save
       receiving = FriendRequest.receiving_from(current_user, @request.receiver).first
@@ -36,7 +35,7 @@ class Mypage::Friend::RequestsController < MypageController
   private
 
   def request_params
-    params.require(:friend_request).permit(:receiver_id)
+    params.require(:friend_request).permit(:receiver_id, :uuid)
   end
 
   def set_new_request_params

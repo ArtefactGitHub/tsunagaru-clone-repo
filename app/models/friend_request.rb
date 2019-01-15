@@ -4,6 +4,8 @@ class FriendRequest < ApplicationRecord
   belongs_to :sender, class_name: 'User'
   belongs_to :receiver, class_name: 'User'
 
+  attr_accessor :uuid, :text
+
   validates :sender_id, presence: true
   validates :receiver_id, presence: true
   validates :sender_id, uniqueness: { scope: :receiver_id }
@@ -24,6 +26,14 @@ class FriendRequest < ApplicationRecord
 
   def can_not_request_to_friend
     errors.add(:receiver_id, 'トモダチにトモダチ申請を送ることは出来ません') if FriendRequest.approval_pair(sender, receiver).present?
+  end
+
+  def setup_for_create(current_user)
+    if uuid.present?
+      self.receiver = User.find_by(uuid: uuid)
+    end
+    self.sender = current_user
+    self.friend_request_status = :request
   end
 
   def update_approval!
