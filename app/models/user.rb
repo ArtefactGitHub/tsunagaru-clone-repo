@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  require 'securerandom'
+
   authenticates_with_sorcery!
 
   has_many :messages
@@ -14,8 +16,13 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
+  validates :uuid, presence: true
 
   def avatar_or_default
     avatar.attached? ? avatar : Settings.user.avatar.default_file_name
+  end
+
+  def set_uuid
+    self.uuid = SecureRandom.urlsafe_base64(6)
   end
 end
