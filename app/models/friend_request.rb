@@ -19,6 +19,8 @@ class FriendRequest < ApplicationRecord
   scope :approvals, ->(current_user) { where(sender_id: current_user.id).where(friend_request_status: :approval) }
   scope :approval_pair, ->(sender, receiver) { where(sender_id: sender.id).where(receiver_id: receiver.id).where(friend_request_status: :approval) }
   scope :approval_own_pair, ->(current_user, opponent_user) { approval_pair(current_user, opponent_user).or(approval_pair(opponent_user, current_user)) }
+  scope :pair, ->(sender, receiver) { where(sender_id: sender.id).where(receiver_id: receiver.id) }
+  scope :pair_bidirectional, ->(current_user, opponent_user) { pair(current_user, opponent_user).or(pair(opponent_user, current_user)) }
 
   def can_not_request_to_sender
     errors.add(:receiver_id, '自分自身にトモダチ申請を送ることは出来ません') if receiver_id == sender_id

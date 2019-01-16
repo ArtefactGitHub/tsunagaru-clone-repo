@@ -27,8 +27,12 @@ class Mypage::Friend::RequestsController < MypageController
 
   def destroy
     @request = FriendRequest.find(params[:id])
-    opponent_name = @request.receiver.name
-    @request.destroy!
+    opponent_user = User.find(@request.receiver.id)
+    opponent_name = opponent_user.name
+    own_pair = FriendRequest.pair_bidirectional(current_user, opponent_user)
+    own_pair.each do |pair|
+      pair.destroy!
+    end
     redirect_to mypage_friend_requests_path, success: "#{opponent_name}さんへのトモダチ申請をやめました"
   end
 
