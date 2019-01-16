@@ -10,7 +10,7 @@ class FriendRequest < ApplicationRecord
   validates :receiver_id, presence: true
   validates :sender_id, uniqueness: { scope: :receiver_id }
   validate :can_not_request_to_sender
-  validate :can_not_request_to_friend
+  # validate :can_not_request_to_friend
 
   scope :sending_receiving, ->(current_user) { sending(current_user).or(receiving(current_user)) }
   scope :sending, ->(current_user) { where(sender_id: current_user.id).where.not(friend_request_status: :approval) }
@@ -24,9 +24,9 @@ class FriendRequest < ApplicationRecord
     errors.add(:receiver_id, '自分自身にトモダチ申請を送ることは出来ません') if receiver_id == sender_id
   end
 
-  def can_not_request_to_friend
-    errors.add(:receiver_id, 'トモダチにトモダチ申請を送ることは出来ません') if FriendRequest.approval_pair(sender, receiver).present?
-  end
+  # def can_not_request_to_friend
+  #   errors.add(:receiver_id, 'トモダチにトモダチ申請を送ることは出来ません') if FriendRequest.approval_pair(sender, receiver).present?
+  # end
 
   def setup_for_create(current_user)
     if uuid.present?
