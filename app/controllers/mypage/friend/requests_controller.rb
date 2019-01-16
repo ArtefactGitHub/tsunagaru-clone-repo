@@ -1,5 +1,5 @@
 class Mypage::Friend::RequestsController < MypageController
-  def new
+  def index
     set_new_request_params
   end
 
@@ -12,16 +12,16 @@ class Mypage::Friend::RequestsController < MypageController
       if receiving
         @request.update_approval!
         receiving.update_approval!
-        redirect_to new_mypage_friend_request_path, success: 'トモダチ申請が承認されました'
+        redirect_to mypage_friend_requests_path, success: 'トモダチ申請が承認されました'
       else
-        redirect_to new_mypage_friend_request_path, success: 'トモダチ申請を行いました'
+        redirect_to mypage_friend_requests_path, success: 'トモダチ申請を行いました'
       end
     else
       flash.now[:danger] = 'トモダチ申請が出来ませんでした'
       logger.debug @request.errors.full_messages if @request.present?
 
       set_new_request_params
-      render :new
+      render :index
     end
   end
 
@@ -29,7 +29,7 @@ class Mypage::Friend::RequestsController < MypageController
     @request = FriendRequest.find(params[:id])
     opponent_name = @request.receiver.name
     @request.destroy!
-    redirect_to new_mypage_friend_request_path, success: "#{opponent_name}さんへのトモダチ申請をやめました"
+    redirect_to mypage_friend_requests_path, success: "#{opponent_name}さんへのトモダチ申請をやめました"
   end
 
   private
