@@ -14,9 +14,13 @@ html
       .mypage
         .container-fluid
           .row
-            = render 'shared/mypage/sidebar'
+            .col-md-2
+              = render 'shared/mypage/sidebar'
           .row
-            = yield
+            .col-md-10.offset-md-2
+              = render 'shared/flash_message'
+              .container
+                = yield
           .row.mt-5
             = render 'shared/mypage/xs-sm-sidebar'
 

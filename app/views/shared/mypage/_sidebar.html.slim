@@ -1,9 +1,13 @@
-nav.col-md-2.d-none.d-md-block.bg-light.sidebar
+nav.d-none.d-md-block.bg-light.sidebar
   div class="sidebar-sticky"
     ul class="nav flex-column"
       li class="nav-item"
         = link_to mypage_root_path, class: 'nav-link mybtn-sidebar' do
           = fa_icon 'home'
+        end
+      li class="nav-item"
+        = link_to mypage_friend_root_path, class: 'nav-link mybtn-sidebar' do
+          = fa_icon 'user'
         end
 
       li class="nav-item"
