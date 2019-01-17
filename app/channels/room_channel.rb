@@ -1,6 +1,11 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel_#{params['room_id']}"
+    room = Room.find(params['room_id'])
+    if room.meet_the_requirements?(current_user)
+      stream_from "room_channel_#{params['room_id']}"
+    else
+      logger.warn "不正な入室：user=#{current_user.id}, room=#{room.id}"
+    end
   end
 
   def unsubscribed
