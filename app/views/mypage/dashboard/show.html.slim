@@ -1,20 +1,30 @@
-.col-md-10.offset-md-2
-  .text-center
-    p.mt-5
-      = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
-        | チャットを始める
-        end
+.dashboard
   .row
-    p
-      = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
-      | #{current_user.name}
+    .col-12
+      .text-center
+        p.mt-5
+          = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
+            | チャットを始める
+            end
+      .myprofile
+        .row.headline
+          | プロフィール
+        .row.profile-text
+          .col-md-2.text-center
+            = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
+          .col-md-10
+            div
+              | #{current_user.name}
+            div
+              | （ユーザーID：#{current_user.uuid}）
+        .row.text-left
+          .col-12
+            .card.profile-introduction-card
+              .card-body
+                | #{current_user.introduction}
 
-  .row.friend-list
-    | フレンド
-  .row
-    table.table
-      tr
-        th
-          = render 'shared/users/avatar', user: current_user
-        td
-          | #{current_user.name}
+      .row.friend-list.headline
+        | トモダチ
+      .row
+        .col-12
+          = render 'friends', friends: @friends

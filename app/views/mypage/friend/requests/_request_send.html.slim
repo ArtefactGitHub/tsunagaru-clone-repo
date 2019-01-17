@@ -1,0 +1,18 @@
+.friend_request
+  .row
+    .col-12
+      .card
+        .card-body
+          .row.text-center
+            .col-md-8
+              .row
+                .col-md-3
+                  = render 'shared/users/avatar', user: current_user
+                .col-md-8
+                  .myfont-size-minimum
+                    | #{request.receiver.name}さんに
+                    br トモダチ申請中です
+            .col-md-4
+              = form_for [:mypage, request], method: :delete do |f|
+                = f.submit 'やめる', class: 'btn btn-warning btn-raised mybtn-minimum'
+              end

@@ -7,18 +7,29 @@
     width: 400px;
     height: 100px;
     font-size: 2.5rem;
+    margin-bottom: 20px;
   }
 
-  .friend-list {
-    margin-top: 100px;
-  }
-
-  .mybtn-settings {
+  .mybtn-default {
     width: 400px;
     height: 100px;
     font-size: 2.5rem;
     margin-top: 30px;
     margin-bottom: 30px;
+  }
+
+  .mybtn-small {
+    width: 200px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
+  }
+
+  .mybtn-minimum {
+    width: 120px;
+    height: 50px;
+    font-size: 1.5rem;
   }
 
   .my-checkbox {
@@ -41,8 +52,11 @@
     padding: 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 
+    min-width: 16.6666666667%;
+    text-align: center;
+
     .mybtn-sidebar-settings {
-      margin-top: 45vh;
+      margin-top: 100px;
     }
 
     .sidebar-sticky {
@@ -63,5 +77,57 @@
     background-color: #2b2926;
     font-size: 3.5rem;
     width: 100%;
+  }
+
+  .dashboard {
+    .myprofile {
+      margin-bottom: 70px;
+    }
+    .headline {
+      border-bottom-style: solid;
+      border-bottom-width: thin;
+      margin-bottom: 20px;
+    }
+    .profile-text {
+      font-size: 2rem;
+    }
+    .profile-introduction-card {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      min-height: 20vh;
+    }
+    .friend-list {
+    }
+  }
+
+  .friend {
+    .break-friendship-button {
+      width: 80px;
+      height: 40px;
+      font-size: 1.2rem;
+      line-height: 5;
+    }
+  }
+
+  .friend-card {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+    .friend-card-body {
+      padding: 0.5rem;
+    }
+
+    .friend-text {
+      font-size: 1.5rem;
+    }
+  }
+
+  // トモダチ申請
+  .friend_request {
+    margin-bottom: 20px;
+  }
+
+  .form-friend_requests {
+    margin-top: 60px;
   }
 }

@@ -15,6 +15,12 @@ Rails.application.routes.draw do
   namespace :mypage do
     root to: 'dashboard#show'
     get 'settings', to: 'settings#show'
+
+    namespace :friend do
+      root to: 'dashboard#show'
+      resources :friends, only: %i[index destroy]
+      resources :requests, only: %i[index create destroy]
+    end
   end
 
   resources :rooms, only: %i[show]
