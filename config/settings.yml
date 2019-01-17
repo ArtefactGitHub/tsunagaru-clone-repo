@@ -1,3 +1,6 @@
 user:
   avatar:
     default_file_name: 'avatar_sample.png'
+
+room:
+  limit_of_entry: 15
