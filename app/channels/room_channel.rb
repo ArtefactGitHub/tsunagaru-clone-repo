@@ -8,7 +8,12 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    Message.create!(content: data['message'], user: current_user, room: Room.find(params['room_id']))
+    room = Room.find(params['room_id'])
+    if room.meet_the_requirements?(current_user)
+      Message.create!(content: data['message'], user: current_user, room: room)
+    else
+      logger.warn "不正なメッセージ：content=#{data['message']}, user=#{current_user.id}, room=#{room.id}"
+    end
   end
 
   def msg_command(data)
