@@ -1,11 +1,21 @@
 .dashboard
   .row
     .col-12
-      .text-center
-        p.mt-5
-          = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
-            | チャットを始める
-            end
+      .chat-buttons
+        .row
+          .col-lg-6
+            .text-center
+              p.mt-5
+                = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
+                  | 自分のチャット</br>部屋に入る
+                  end
+          .col-lg-6
+            .text-center
+              p.mt-5
+                = link_to room_path(current_user.my_room), class: 'btn btn-success btn-raised mybtn-start-chat' do
+                  | トモダチのチャット</br>部屋に入る
+                  end
+
       .myprofile
         .row.headline
           | プロフィール
@@ -23,8 +33,9 @@
               .card-body
                 | #{current_user.introduction}
 
-      .row.friend-list.headline
-        | トモダチ
-      .row
-        .col-12
-          = render 'friends', friends: @friends
+      .friend-list
+        .row.headline
+          | トモダチ
+        .row
+          .col-12
+            = render 'friends', friends: @friends
