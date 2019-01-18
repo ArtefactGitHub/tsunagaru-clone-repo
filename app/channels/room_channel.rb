@@ -5,6 +5,7 @@ class RoomChannel < ApplicationCable::Channel
       stream_from "room_channel_#{params['room_id']}"
     else
       logger.warn "不正な入室：user=#{current_user.id}, room=#{room.id}"
+      reject
     end
   end
 
