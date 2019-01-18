@@ -1,5 +1,6 @@
 class RoomsController < ApplicationController
   before_action :require_login
+  layout 'room'
 
   def show
     @room = Room.find(params[:id])
