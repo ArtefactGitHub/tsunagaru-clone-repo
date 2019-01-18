@@ -4,10 +4,10 @@ class User < ApplicationRecord
   authenticates_with_sorcery!
 
   has_many :messages, dependent: :destroy
-  has_one :my_room, class_name: 'Room', foreign_key: 'owner_id'
+  has_one :my_room, class_name: 'Room', foreign_key: 'owner_id', dependent: :destroy
   has_many :rooms, through: :messages
-  has_many :send_requests, class_name: 'FriendRequest', foreign_key: 'sender_id'
-  has_many :receive_requests, class_name: 'FriendRequest', foreign_key: 'receiver_id'
+  has_many :send_requests, class_name: 'FriendRequest', foreign_key: 'sender_id', dependent: :destroy
+  has_many :receive_requests, class_name: 'FriendRequest', foreign_key: 'receiver_id', dependent: :destroy
   has_many :receivers, through: :send_requests, source: :receiver
   has_many :senders, through: :receive_requests, source: :sender
 
