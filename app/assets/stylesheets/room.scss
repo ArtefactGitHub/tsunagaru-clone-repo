@@ -1,6 +1,8 @@
 @import 'application';
 
 .room {
+  min-height: 80vh;
+
   .text-area-custom {
     font-size: 2.5rem;
   }
@@ -11,5 +13,13 @@
 
   .reset-input-button {
     height: 15vh;
+  }
+
+  .mybtn-disconnect {
+    width: 200px;
+    height: 60px;
+    font-size: 1.5rem;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 }
