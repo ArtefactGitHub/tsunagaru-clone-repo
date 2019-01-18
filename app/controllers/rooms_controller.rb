@@ -4,7 +4,7 @@ class RoomsController < ApplicationController
 
   def show
     @room = Room.find(params[:id])
-    return @messages = [] unless @room.meet_the_requirements?(current_user)
+    return @messages = [] unless current_user.can_access_room?(@room)
 
     @messages = @room.messages
   end

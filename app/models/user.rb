@@ -28,4 +28,9 @@ class User < ApplicationRecord
   def set_uuid
     self.uuid = SecureRandom.urlsafe_base64(6)
   end
+
+  def can_access_room?(room)
+    room.owner == self ||
+    FriendRequest.approval_own_pair(self, room.owner).present?
+  end
 end

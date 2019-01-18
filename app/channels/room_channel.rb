@@ -1,7 +1,7 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
     room = Room.find(params['room_id'])
-    if room.meet_the_requirements?(current_user)
+    if current_user.can_access_room?(room)
       stream_from "room_channel_#{params['room_id']}"
     else
       logger.warn "不正な入室：user=#{current_user.id}, room=#{room.id}"
@@ -16,7 +16,7 @@ class RoomChannel < ApplicationCable::Channel
 
   def speak(data)
     room = Room.find(params['room_id'])
-    if room.meet_the_requirements?(current_user)
+    if current_user.can_access_room?(room)
       Message.create!(content: data['message'], user: current_user, room: room)
     else
       logger.warn "不正なメッセージ：content=#{data['message']}, user=#{current_user.id}, room=#{room.id}"
