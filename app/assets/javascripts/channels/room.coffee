@@ -8,6 +8,9 @@ jQuery(document).on 'turbolinks:load', ->
     disconnected: ->
       # Called when the subscription has been terminated by the server
 
+    rejected: ->
+      # Called when the subscription has been terminated by the server
+
     received: (data) ->
       messages.prepend data['message']
 
