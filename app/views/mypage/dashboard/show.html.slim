@@ -1,3 +1,4 @@
+
 .dashboard
   .row
     .col-12
@@ -12,9 +13,7 @@
           .col-lg-6
             .text-center
               p.mt-5
-                = link_to room_path(current_user.my_room), class: 'btn btn-success btn-raised mybtn-start-chat' do
-                  | トモダチのチャット</br>部屋に入る
-                  end
+                = render 'modal', friends: @friends
 
       .myprofile
         .row.headline

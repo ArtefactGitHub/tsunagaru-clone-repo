@@ -2,9 +2,11 @@
   .card
     .card-body.friend-card-body
       .row.friend-text
-        .col-2.text-center
-          = render 'shared/users/avatar', size: '80x80', user: friend.receiver
+        .col-sm-6.text-center
+          = render 'shared/users/avatar', size: '80x80', user: friend
           div
-            | #{friend.receiver.name}
-        .col-10
-          = escape_with_linefeed friend.receiver.introduction
+            | #{friend.name}
+        .col-sm-6.vertical-center
+          = link_to room_path(friend.my_room), class: 'btn btn-success btn-raised mybtn-minimum' do
+            | 入る
+            end
