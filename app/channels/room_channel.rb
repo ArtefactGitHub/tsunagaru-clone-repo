@@ -20,6 +20,8 @@ class RoomChannel < ApplicationCable::Channel
       Message.create!(content: data['message'], user: current_user, room: room)
     else
       logger.warn "不正なメッセージ：content=#{data['message']}, user=#{current_user.id}, room=#{room.id}"
+      reject
+      stop_all_streams
     end
   end
 
