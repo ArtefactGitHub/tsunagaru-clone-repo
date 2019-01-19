@@ -25,6 +25,16 @@ class User < ApplicationRecord
 
   scope :friends_of, ->(user){ where(id: user.send_requests.where(friend_request_status: :approval).pluck(:receiver_id)) }
 
+  class << self
+    def system_user
+      User.find_by(email: Rails.application.credentials.dig(:user, :admin, :email_system))
+    end
+
+    def operation_user
+      User.find_by(email: Rails.application.credentials.dig(:user, :admin, :email_operation))
+    end
+  end
+
   def avatar_or_default
     avatar.attached? ? avatar : Settings.user.avatar.default_file_name
   end
