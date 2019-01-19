@@ -21,6 +21,8 @@ class User < ApplicationRecord
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :uuid, presence: true
 
+  scope :friends_of, ->(user){ where(id: user.send_requests.where(friend_request_status: :approval).pluck(:receiver_id)) }
+
   def avatar_or_default
     avatar.attached? ? avatar : Settings.user.avatar.default_file_name
   end
