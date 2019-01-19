@@ -9,4 +9,10 @@ class Message < ApplicationRecord
   validates :content, length: { in: 1..99 }
   validates :user_id, presence: true
   validates :room_id, presence: true
+
+  class << self
+    def system_to_room(content, room)
+      Message.create!(content: content, user: User.system_user, room: room)
+    end
+  end
 end

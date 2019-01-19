@@ -14,6 +14,15 @@ class RoomChannel < ApplicationCable::Channel
     stop_all_streams
   end
 
+  def received
+    room = Room.find(params['room_id'])
+    unless current_user.can_access_room?(room)
+      logger.warn "不正な受信：user=#{current_user.id}, room=#{room.id}"
+      reject
+      stop_all_streams
+    end
+  end
+
   def speak(data)
     room = Room.find(params['room_id'])
     if current_user.can_access_room?(room)

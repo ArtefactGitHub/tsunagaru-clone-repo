@@ -17,6 +17,7 @@ jQuery(document).on 'turbolinks:load', ->
       @uninstall()
 
     received: (data) ->
+      @perform 'received'
       messages.prepend data['message']
 
     speak: (message) ->
