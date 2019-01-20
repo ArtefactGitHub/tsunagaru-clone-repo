@@ -89,7 +89,8 @@
   }
   .icon {
     @extend .vertical-center;
-    margin-right: 20px;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
   }
   .friend-count-text {
     @include myfont-size-minimum;

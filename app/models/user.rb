@@ -47,4 +47,8 @@ class User < ApplicationRecord
     room.owner == self ||
     FriendRequest.approval_own_pair(self, room.owner).present?
   end
+
+  def has_request?
+    self.receive_requests.where.not(friend_request_status: :approval).present?
+  end
 end

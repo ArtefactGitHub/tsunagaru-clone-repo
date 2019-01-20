@@ -41,6 +41,10 @@
           = fa_icon 'users', class: 'icon'
           | トモダチ
           = render 'shared/mypage/friend_count', friends: @friends
+
+        - if current_user.has_request?
+          = render 'shared/mypage/notify_new_request'
+
         .row
           .col-12
             = render 'friends', friend_file_name: 'friend', friends: @friends
