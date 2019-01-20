@@ -2,6 +2,7 @@
   .row.friend-list.headline
     = fa_icon 'users', class: 'icon'
     | トモダチ帳
+    = render 'shared/mypage/friend_count', friends: @friends
 
   .row
     .col-12

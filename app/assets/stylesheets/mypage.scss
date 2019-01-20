@@ -87,10 +87,14 @@
     border-bottom-width: thin;
     margin-bottom: 20px;
   }
-
   .icon {
     @extend .vertical-center;
     margin-right: 20px;
+  }
+  .friend-count-text {
+    @include myfont-size-minimum;
+    margin-left: 20px;
+    padding-top: 20px;
   }
 
   .dashboard {
@@ -104,11 +108,6 @@
       margin-top: 20px;
       font-size: 1.5rem;
       min-height: 20vh;
-    }
-    .friend-count-text {
-      @include myfont-size-minimum;
-      margin-left: 20px;
-      padding-top: 20px;
     }
   }
 

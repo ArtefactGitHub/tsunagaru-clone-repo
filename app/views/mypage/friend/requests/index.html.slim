@@ -2,6 +2,7 @@
   .row.friend-list.headline
     = fa_icon 'exchange', class: 'icon'
     | トモダチ申請
+    = render 'shared/mypage/friend_count', friends: @friends
 
   .form-friend_requests
     = form_for [:mypage, @request] do |f|
