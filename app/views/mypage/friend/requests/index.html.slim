@@ -1,18 +1,23 @@
-.form-friend_requests
-  = form_for [:mypage, @request] do |f|
-    .row.text-center
-      .col-12
-        | トモダチのユーザーID
-      .col-6.offset-3
-        .form-group
-          = f.text_field :uuid, class: 'form-control', required: true
-    .row.text-center
-      .col-lg-2.offset-lg-2
-        = f.submit '申請', class: 'btn btn-primary btn-raised mybtn-small'
-      .col-lg-8
-        = link_to mypage_friend_root_path, class: 'btn btn-secondary btn-raised mybtn-small' do
-          | 戻る
-          end
+.friend-request
+  .row.friend-list.headline
+    = fa_icon 'exchange', class: 'icon'
+    | トモダチ申請
 
-  p.mt-5 申請一覧
-  = render 'requests', requests: @requests
+  .form-friend_requests
+    = form_for [:mypage, @request] do |f|
+      .row.text-center
+        .col-12
+          | トモダチのユーザーID
+        .col-6.offset-3
+          .form-group
+            = f.text_field :uuid, class: 'form-control', required: true
+      .row.text-center
+        .col-lg-2.offset-lg-2
+          = f.submit '申請', class: 'btn btn-primary btn-raised mybtn-small'
+        .col-lg-8
+          = link_to mypage_friend_root_path, class: 'btn btn-secondary btn-raised mybtn-small' do
+            | 戻る
+            end
+
+    p.mt-5 申請一覧
+    = render 'requests', requests: @requests

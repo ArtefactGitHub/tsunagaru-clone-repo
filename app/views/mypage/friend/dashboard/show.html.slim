@@ -1,9 +1,12 @@
-.text-center
-  p.mt-5
-    = link_to mypage_friend_friends_path, class: 'btn btn-primary btn-raised mybtn-default' do
-      | トモダチ帳
-      end
-  p
-    = link_to mypage_friend_requests_path, class: 'btn btn-primary btn-raised mybtn-default' do
-      | トモダチ申請
-      end
+.dashboard
+  .text-center
+    p.mt-5
+      = link_to mypage_friend_friends_path, class: 'btn btn-primary btn-raised mybtn-default' do
+        = fa_icon 'users', class: 'icon'
+        | トモダチ帳
+        end
+    p
+      = link_to mypage_friend_requests_path, class: 'btn btn-primary btn-raised mybtn-default' do
+        = fa_icon 'exchange', class: 'icon'
+        | トモダチ申請
+        end

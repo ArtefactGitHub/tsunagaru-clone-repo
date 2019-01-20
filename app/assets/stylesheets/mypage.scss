@@ -17,6 +17,7 @@
     font-size: 2.5rem;
     margin-top: 30px;
     margin-bottom: 30px;
+    line-height: 2;
   }
 
   .mybtn-small {
@@ -25,7 +26,7 @@
     font-size: 1.5rem;
     margin-top: 30px;
     margin-bottom: 30px;
-    line-height: 1;
+    line-height: 2;
   }
 
   .mybtn-minimum {
@@ -81,19 +82,20 @@
     width: 100%;
   }
 
+  .headline {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    margin-bottom: 20px;
+  }
+
+  .icon {
+    @extend .vertical-center;
+    margin-right: 20px;
+  }
+  
   .dashboard {
     .myprofile {
       margin-bottom: 70px;
-    }
-    .headline {
-      border-bottom-style: solid;
-      border-bottom-width: thin;
-      margin-bottom: 20px;
-
-      .icon {
-        @extend .vertical-center;
-        margin-right: 20px;
-      }
     }
     .profile-text {
       font-size: 2rem;
