@@ -14,7 +14,7 @@ class Mypage::Friend::FriendsController < MypageController
 
     # トモダチ解除を実行したユーザーの部屋へ、メッセージを「システム」から飛ばす
     # 解除されたユーザーが在室していた場合、受信時にストリームの停止が走り、以降のメッセージを受信出来なくするため
-    Message.system_to_room('-----', current_user.my_room)
+    Message.system_to_room(t('rooms.notify_reject_friends'), current_user.my_room)
 
     redirect_to mypage_friend_friends_url
   end
