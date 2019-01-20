@@ -40,6 +40,8 @@
         .row.headline
           = fa_icon 'users', class: 'icon'
           | トモダチ
+          span.friend-count-text
+            | #{@friends.size}/#{Settings.room.limit_of_entry}人
         .row
           .col-12
             = render 'friends', friend_file_name: 'friend', friends: @friends

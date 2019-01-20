@@ -92,20 +92,23 @@
     @extend .vertical-center;
     margin-right: 20px;
   }
-  
+
   .dashboard {
     .myprofile {
       margin-bottom: 70px;
     }
     .profile-text {
-      font-size: 2rem;
+      @include myfont-size-minimum;
     }
     .profile-introduction-card {
       margin-top: 20px;
       font-size: 1.5rem;
       min-height: 20vh;
     }
-    .friend-list {
+    .friend-count-text {
+      @include myfont-size-minimum;
+      margin-left: 20px;
+      padding-top: 20px;
     }
   }
 
