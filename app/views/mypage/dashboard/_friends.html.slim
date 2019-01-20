@@ -1,7 +1,7 @@
 .row
   - if friends.present?
     - friends.each do |friend|
-      = render 'friend', friend: friend
+      = render friend_file_name, friend: friend
       end
   - else
     .col-12.text-center

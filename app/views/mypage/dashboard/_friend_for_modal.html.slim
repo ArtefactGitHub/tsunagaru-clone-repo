@@ -1,0 +1,12 @@
+.col-12.friend-card
+  .card
+    .card-body.friend-card-body
+      .row.friend-text
+        .col-sm-6.text-center
+          = render 'shared/users/avatar', size: '80x80', user: friend
+          div
+            | #{friend.name}
+        .col-sm-6.vertical-center
+          = link_to room_path(friend.my_room), class: 'btn btn-success btn-raised mybtn-minimum' do
+            | 入る
+            end 
