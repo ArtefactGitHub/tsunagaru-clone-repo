@@ -134,13 +134,17 @@
     }
 
     .friend-text {
-      font-size: 1.5rem;
+      @include myfont-size-minimum;
     }
   }
 
   // トモダチ申請
   .friend_request {
     margin-bottom: 20px;
+
+    .friend_request-text {
+      @include myfont-size-minimum;
+    }
   }
 
   .form-friend_requests {
