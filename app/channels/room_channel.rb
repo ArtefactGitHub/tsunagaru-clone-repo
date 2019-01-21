@@ -1,14 +1,37 @@
 class RoomChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel_#{params['room_id']}"
+    room = Room.find(params['room_id'])
+    if current_user.can_access_room?(room)
+      stream_from "room_channel_#{params['room_id']}"
+    else
+      logger.warn "不正な入室：user=#{current_user.id}, room=#{room.id}"
+      reject
+    end
   end
 
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
+    stop_all_streams
+  end
+
+  def received
+    room = Room.find(params['room_id'])
+    unless current_user.can_access_room?(room)
+      logger.warn "不正な受信：user=#{current_user.id}, room=#{room.id}"
+      reject
+      stop_all_streams
+    end
   end
 
   def speak(data)
-    Message.create!(content: data['message'], user: current_user, room: Room.find(params['room_id']))
+    room = Room.find(params['room_id'])
+    if current_user.can_access_room?(room)
+      Message.create!(content: data['message'], user: current_user, room: room)
+    else
+      logger.warn "不正なメッセージ：content=#{data['message']}, user=#{current_user.id}, room=#{room.id}"
+      reject
+      stop_all_streams
+    end
   end
 
   def msg_command(data)

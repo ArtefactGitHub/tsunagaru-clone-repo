@@ -3,6 +3,6 @@ class Mypage::DashboardController < ApplicationController
   layout 'mypage'
 
   def show
-    @friends = FriendRequest.approvals current_user
+    @friends = User.friends_of current_user
   end
 end

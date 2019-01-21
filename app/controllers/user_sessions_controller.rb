@@ -8,11 +8,13 @@ class UserSessionsController < ApplicationController
   end
 
   def create
+    return redirect_to login_url, danger: 'ログイン出来ません' if login_to_admin?
+
     @user = login(params[:email], params[:password])
     if @user
       redirect_back_or_to mypage_root_url, success: t('user_sessions.flash.create.success')
     else
-      flash.now[:danger] = t('user_sessions.flash.create.fail')
+      flash.now[:danger] = 'ログイン出来ません'
       render :new
     end
   end
@@ -20,5 +22,12 @@ class UserSessionsController < ApplicationController
   def destroy
     logout
     redirect_to login_url, success: t('user_sessions.flash.destroy.success')
+  end
+
+  private
+
+  def login_to_admin?
+    user = User.find_by(email: params[:email])
+    user.present? && user.admin?
   end
 end
