@@ -26,8 +26,8 @@ jQuery(document).on 'turbolinks:load', ->
     all_clear: ->
       @perform 'all_clear'
 
-    msg_command: (command_id) ->
-      @perform 'msg_command', command_id: command_id
+    msg_command: (command_id, type) ->
+      @perform 'msg_command', command_id: command_id, type: type
 
     install: ->
       connect_room.show()
@@ -45,7 +45,7 @@ jQuery(document).on 'turbolinks:load', ->
 
   $ ->
     $('.js-command').click (e) ->
-      App.room.msg_command $(this).data('msg-command')
+      App.room.msg_command($(this).data('msg-command'), $(this).data('msg-type'))
 
     $('#js-clear-button').click ->
       messages.empty()
