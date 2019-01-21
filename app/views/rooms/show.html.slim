@@ -18,14 +18,14 @@
         .row.pt-3.mb-2
           .col-md-12
             - @room.ask_message_buttons.each do |message|
-              button type="button" class='js-command btn btn-success button-custom mr-3 ml-3 mb-2' data-msg-command='#{message.message_no}' data-msg-type='#{message.message_type}'
+              button type="button" class='js-command btn btn-success button-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
                 | #{message.content}
 
       .card.mb-2
         .row.pt-3.mb-2
           .col-md-12
             - @room.answer_message_buttons.each do |message|
-              button type="button" class='js-command btn btn-info button-custom mr-3 ml-3 mb-2' data-msg-command='#{message.message_no}' data-msg-type='#{message.message_type}'
+              button type="button" class='js-command btn btn-info button-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
                 | #{message.content}
 
       .card.mb-4
