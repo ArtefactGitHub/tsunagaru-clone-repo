@@ -1,4 +1,4 @@
-class Mypage::Friend::FriendsController < MypageController
+class Mypage::Friend::FriendsController < Mypage::FriendController
   def index
     @friends = FriendRequest.approvals current_user
   end

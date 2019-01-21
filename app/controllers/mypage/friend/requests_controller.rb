@@ -1,4 +1,4 @@
-class Mypage::Friend::RequestsController < MypageController
+class Mypage::Friend::RequestsController < Mypage::FriendController
   def index
     set_new_request_params
   end

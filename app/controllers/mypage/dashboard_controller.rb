@@ -1,7 +1,4 @@
-class Mypage::DashboardController < ApplicationController
-  before_action :require_login, only: %i[show]
-  layout 'mypage'
-
+class Mypage::DashboardController < MypageController
   def show
     @friends = User.friends_of current_user
   end
