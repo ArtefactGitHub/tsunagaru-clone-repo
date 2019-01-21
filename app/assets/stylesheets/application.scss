@@ -1,6 +1,6 @@
 @import "font-awesome";
 @import 'bootstrap';
-@import 'rooms';
+// @import 'rooms';
 
 body {
   .main {
@@ -13,13 +13,18 @@ body {
   }
 }
 
-.myfont-size-default {
+.vertical-center {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
+@mixin myfont-size-default {
   font-size: 2.5rem;
 }
-.myfont-size-small {
+@mixin myfont-size-small {
   font-size: 2.0rem;
 }
-.myfont-size-minimum {
+@mixin myfont-size-minimum {
   font-size: 1.5rem;
 }
 
@@ -59,16 +64,4 @@ footer {
 
 .title {
   font-size: 5.5rem;
-}
-
-.text-area-custom {
-  font-size: 2.5rem;
-}
-
-.button-custom {
-  font-size: 2.0rem;
-}
-
-.reset-input-button {
-  height: 15vh;
 }

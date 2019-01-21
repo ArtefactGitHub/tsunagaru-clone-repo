@@ -1,0 +1,21 @@
+button.btn.btn-success.mybtn-start-chat type="button" data-toggle="modal" data-target="#myModal"
+  | トモダチのチャット</br>部屋に入る
+
+.modal.fade id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  .modal-dialog role="document"
+    .modal-content
+      .modal-header
+        h5 class="modal-title" id="exampleModalLabel"
+          | トモダチのチャット部屋に入る
+        button type="button" class="close" data-dismiss="modal" aria-label="閉じる"
+          span aria-hidden="true"
+            | &times;
+      .modal-body
+        .friend-list
+          .row
+            .col-12
+              = render 'friends', friend_file_name: 'friend_for_modal', friends: friends
+
+      .modal-footer
+        button type="button" class="btn btn-secondary" data-dismiss="modal"
+          | 閉じる

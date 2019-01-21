@@ -1,13 +1,26 @@
 .dashboard
+  .row.headline
+    = fa_icon 'home', class: 'icon'
+    | ホーム画面
+
   .row
     .col-12
-      .text-center
-        p.mt-5
-          = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
-            | チャットを始める
-            end
+      .chat-buttons
+        .row
+          .col-lg-6
+            .text-center
+              p.mt-5
+                = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
+                  | 自分のチャット</br>部屋に入る
+                  end
+          .col-lg-6
+            .text-center
+              p.mt-5
+                = render 'modal', friends: @friends
+
       .myprofile
         .row.headline
+          = fa_icon 'user-circle', class: 'icon'
           | プロフィール
         .row.profile-text
           .col-md-2.text-center
@@ -21,10 +34,17 @@
           .col-12
             .card.profile-introduction-card
               .card-body
-                | #{current_user.introduction}
+                = escape_with_linefeed current_user.introduction
 
-      .row.friend-list.headline
-        | トモダチ
-      .row
-        .col-12
-          = render 'friends', friends: @friends
+      .friend-list
+        .row.headline
+          = fa_icon 'users', class: 'icon'
+          | トモダチ
+          = render 'shared/mypage/friend_count', friends: @friends
+
+        - if current_user.has_request?
+          = render 'shared/mypage/notify_new_request'
+
+        .row
+          .col-12
+            = render 'friends', friend_file_name: 'friend', friends: @friends

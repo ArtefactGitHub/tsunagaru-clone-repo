@@ -10,6 +10,7 @@ class FriendRequest < ApplicationRecord
   validates :receiver_id, presence: true
   validates :sender_id, uniqueness: { scope: :receiver_id }
   validate :can_not_request_to_sender
+  validate :reached_the_request_limit
   # validate :can_not_request_to_friend
 
   scope :sending_receiving, ->(current_user) { sending(current_user).or(receiving(current_user)) }
@@ -29,6 +30,11 @@ class FriendRequest < ApplicationRecord
   # def can_not_request_to_friend
   #   errors.add(:receiver_id, 'トモダチにトモダチ申請を送ることは出来ません') if FriendRequest.approval_pair(sender, receiver).present?
   # end
+
+  def reached_the_request_limit
+    user = User.find(sender_id)
+    errors.add(:sender, 'これ以上トモダチを増やせません') if FriendRequest.approvals(user).size >= Settings.room.limit_of_entry
+  end
 
   def setup_for_create(current_user)
     if uuid.present?

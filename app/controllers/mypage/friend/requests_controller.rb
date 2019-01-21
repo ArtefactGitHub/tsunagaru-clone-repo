@@ -45,5 +45,6 @@ class Mypage::Friend::RequestsController < MypageController
   def set_new_request_params
     @request = FriendRequest.new
     @requests = FriendRequest.sending_receiving current_user
+    @friends = User.friends_of current_user
   end
 end

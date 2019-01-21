@@ -1,10 +1,10 @@
 .row
   - if friends.present?
     - friends.each do |friend|
-      = render 'friend', friend: friend
+      = render friend_file_name, friend: friend
       end
   - else
-    .col-11.text-center
+    .col-12.text-center
       = link_to mypage_friend_requests_path, class: 'btn btn-success btn-raised mybtn-default' do
         | トモダチを追加する
         end
