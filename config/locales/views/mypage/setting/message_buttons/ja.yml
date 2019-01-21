@@ -1,0 +1,16 @@
+ja:
+  mypage:
+    setting:
+      message_buttons:
+        default_ask_1: '今　何してる？'
+        default_ask_2: '今　電話できる？'
+        default_ask_3: '今　どこにいる？'
+        default_ask_4: '明日　来れる？'
+        default_ask_5: 'ご飯　何食べた？'
+        default_ask_6: '元気にしてる？'
+        default_answer_1: 'うん'
+        default_answer_2: 'ううん'
+        default_answer_3: '大丈夫'
+        default_answer_4: 'そうでもないよ'
+        default_answer_5: 'ー'
+        default_answer_6: 'ー'
