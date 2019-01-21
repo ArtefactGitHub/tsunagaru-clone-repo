@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     get 'settings', to: 'settings#show'
 
     namespace :friend do
-      root to: 'dashboard#show'
+      root to: 'top#show'
       resources :friends, only: %i[index destroy]
       resources :requests, only: %i[index create destroy]
     end
