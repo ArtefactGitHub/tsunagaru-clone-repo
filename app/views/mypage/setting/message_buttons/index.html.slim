@@ -1,0 +1,16 @@
+.setting
+  .row.friend-list.headline
+    = fa_icon 'comment', class: 'icon'
+    | メッセージボタン
+
+  .message_buttons
+    .row
+      .col-12
+        = render 'form_message_buttons', message_buttons: @ask_message_buttons
+
+  .row
+    .col-12.text-center
+      .mt-5
+        = link_to mypage_setting_root_path, class: 'btn btn-secondary btn-raised mybtn-small' do
+          | 戻る
+          end

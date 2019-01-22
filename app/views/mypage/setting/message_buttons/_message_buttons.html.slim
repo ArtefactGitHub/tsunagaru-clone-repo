@@ -1,0 +1,6 @@
+.card
+  .card-body
+    .row
+      - message_buttons.each do |message_button|
+        = render 'message_button', message_button: message_button
+        end

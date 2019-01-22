@@ -150,4 +150,12 @@
   .form-friend_requests {
     margin-top: 60px;
   }
+
+  .setting {
+    .form-message_button_value {
+      @include myfont-size-small;
+
+      width: 100%;
+    }
+  }
 }
