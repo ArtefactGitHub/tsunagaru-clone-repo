@@ -1,6 +1,6 @@
-module RoomsModule
+module RoomsControllerModule
   extend ActiveSupport::Concern
-  include MessageButtonsModule
+  include MessageButtonListsControllerModule
 
   def create_owner_room(owner)
     room = Room.new
