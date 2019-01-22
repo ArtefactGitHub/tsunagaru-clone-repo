@@ -1,0 +1,4 @@
+- message_buttons.each_with_index do |message_button, index|
+  .form-group
+    = f.text_field :content, value: message_button.content, name: "message_button[#{index}][content]", class: 'form-message_button_value'
+  end

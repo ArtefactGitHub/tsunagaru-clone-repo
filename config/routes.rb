@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     namespace :setting do
       root to: 'top#show'
-      resources :message_buttons, only: %i[index update]
+      resource :message_button_list, only: %i[show update]
     end
   end
 

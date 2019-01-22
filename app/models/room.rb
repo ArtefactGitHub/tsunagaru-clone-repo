@@ -2,20 +2,19 @@ class Room < ApplicationRecord
   has_many :messages, dependent: :destroy
   belongs_to :owner, class_name: 'User'
   has_many :users, through: :messages
-  has_many :message_buttons, dependent: :destroy
+  has_one :message_button_list, dependent: :destroy
 
   validates :name, presence: true
 
   def ask_message_buttons
-    message_buttons.where(message_type: :ask).take(Settings.setting.message_button.default_count)
+    message_button_list.ask_message_buttons
   end
 
   def answer_message_buttons
-    message_buttons.where(message_type: :answer).take(Settings.setting.message_button.default_count)
+    message_button_list.answer_message_buttons
   end
 
   def message_button_by_params(type, no)
-    mssage_buttons = type == :ask.to_s ? ask_message_buttons : answer_message_buttons
-    mssage_buttons.select { |m| m.message_no == no }.first
+    message_button_list.message_button_by_params(type, no)
   end
 end
