@@ -4,7 +4,7 @@ class CreateMessageButtons < ActiveRecord::Migration[5.2]
       t.string :content
       t.integer :message_no
       t.integer :message_type, default: 0
-      t.references :room, index: true
+      t.references :message_button_list, index: true
 
       t.timestamps
     end
