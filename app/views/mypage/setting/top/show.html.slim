@@ -5,13 +5,15 @@
 
 .text-center
   p.mt-5
-    = link_to mypage_setting_message_button_list_path, class: 'btn btn-primary btn-raised mybtn-default' do
-      | 定型文の編集
+    = link_to mypage_setting_message_button_list_path, class: 'btn btn-primary btn-raised mybtn-default-2line' do
+      | メッセージボタンの
+      br
+      | 編集
       end
   .my-checkbox
     = check_box_tag :sample
     span.ml-3 設定の編集を制限する
-    .info 　※「定型文の編集」や「フレンドの追加」のボタンが非表示になります。
+    .info 　※「メッセージボタンの編集」や「フレンドの追加」のボタンが非表示になります。
     .info 　　　チャット以外の操作を必要としない場合はチェックを入れてください。
 
   p.mt-5
