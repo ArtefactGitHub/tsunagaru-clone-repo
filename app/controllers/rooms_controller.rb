@@ -9,6 +9,11 @@ class RoomsController < ApplicationController
 
   def update_message_button_list
     @message_button_list.update! message_button_list_params
+
+    # メッセージボタンリストの更新を実行したユーザーの部屋へ、メッセージを「システム」から飛ばす
+    # ユーザーが在室していた場合、ボタンが更新されたことを通知するため
+    Message.system_to_room(t('rooms.notify_update_message_button_list'), @room)
+
     redirect_to room_url(@room), success: '更新しました'
   end
 
