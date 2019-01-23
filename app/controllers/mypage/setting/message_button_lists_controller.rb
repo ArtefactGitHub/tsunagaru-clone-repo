@@ -1,10 +1,7 @@
 class Mypage::Setting::MessageButtonListsController < Mypage::SettingController
   before_action :set_message_button_list, only: %i[show update]
 
-  def show
-    @ask_message_buttons = @message_button_list.ask_message_buttons
-    @answer_message_buttons = @message_button_list.answer_message_buttons
-  end
+  def show; end
 
   def update
     @message_button_list.update! message_button_list_params
