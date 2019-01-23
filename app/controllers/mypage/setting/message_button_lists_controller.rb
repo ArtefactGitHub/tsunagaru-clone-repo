@@ -8,43 +8,14 @@ class Mypage::Setting::MessageButtonListsController < Mypage::SettingController
 
   def update
     list_params = message_button_list_params
-    p 'list_params ============='
-    p list_params
-
     items = list_params[:message_button].keys.sort.map { |index| list_params[:message_button][index] }
-    p 'items ============='
-    p items
 
-    p 'asks ============='
-    asks = []
-    items.each do |i|
-      p i[:message_type]
-      asks << i if i[:message_type] == :ask.to_s
-    end
-    p asks
-
-    p 'answers ============='
-    answers = []
-    items.each do |i|
-      p i[:message_type]
-      answers << i if i[:message_type] == :answer.to_s
-    end
-    p answers
-
-    p '============='
-    asks.each do |ask|
+    items.each do |item|
       msg = @message_button_list.message_buttons
-                                .where(message_no: ask[:message_no])
-                                .where(message_type: :ask)
+                                .where(message_no: item[:message_no])
+                                .where(message_type: item[:message_type])
                                 .first
-      msg.update!(content: ask[:content]) if msg.present?
-    end
-    answers.each do |answer|
-      msg = @message_button_list.message_buttons
-                                .where(message_no: answer[:message_no])
-                                .where(message_type: :answer)
-                                .first
-      msg.update!(content: answer[:content]) if msg.present?
+      msg.update!(content: item[:content]) if msg.present?
     end
 
     redirect_to mypage_setting_message_button_list_url, success: '更新しました'
@@ -57,8 +28,6 @@ class Mypage::Setting::MessageButtonListsController < Mypage::SettingController
   end
 
   def message_button_list_params
-    p '============='
-    p params
     params.require(:message_button_list).permit(message_button: [:message_type, :message_no, :content])
   end
 end
