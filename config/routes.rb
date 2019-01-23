@@ -27,7 +27,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :rooms, only: %i[show]
+  resources :rooms, only: %i[show] do
+    patch 'update_message_button_list', to: 'rooms#update_message_button_list'
+  end
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
