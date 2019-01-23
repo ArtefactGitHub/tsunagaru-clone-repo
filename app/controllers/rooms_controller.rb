@@ -8,13 +8,16 @@ class RoomsController < ApplicationController
   def show; end
 
   def update_message_button_list
-    @message_button_list.update! message_button_list_params
+    if @message_button_list.update message_button_list_params
 
-    # メッセージボタンリストの更新を実行したユーザーの部屋へ、メッセージを「システム」から飛ばす
-    # ユーザーが在室していた場合、ボタンが更新されたことを通知するため
-    Message.system_to_room(t('rooms.notify_update_message_button_list'), @room)
+      # メッセージボタンリストの更新を実行したユーザーの部屋へ、メッセージを「システム」から飛ばす
+      # ユーザーが在室していた場合、ボタンが更新されたことを通知するため
+      Message.system_to_room(t('rooms.notify_update_message_button_list'), @room)
 
-    redirect_to room_url(@room), success: '更新しました'
+      redirect_to room_url(@room), success: 'メッセージボタンを更新しました'
+    else
+      redirect_to room_url(@room), danger: 'メッセージボタンが更新出来ませんでした</br>メッセージは20文字以内にしてください'
+    end
   end
 
   private
@@ -24,15 +27,18 @@ class RoomsController < ApplicationController
   end
 
   def set_room
-    @room = Room.find_by(id: params[:id])
-    return redirect_to mypage_root_path, danger: 'ルームが見つかりません' unless can_access_room
-
-    @messages = @room.messages
+    set_room_with_symbol :id
   end
 
   def set_room_by_room_id
-    @room = Room.find_by(id: params[:room_id])
+    set_room_with_symbol :room_id
+  end
+
+  def set_room_with_symbol(id_symbol)
+    @room = Room.find_by(id: params[id_symbol])
     return redirect_to mypage_root_path, danger: 'ルームが見つかりません' unless can_access_room
+
+    @messages = @room.messages
   end
 
   def set_message_button_list

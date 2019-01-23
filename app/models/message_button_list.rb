@@ -2,21 +2,33 @@ class MessageButtonList < ApplicationRecord
   has_many :message_buttons, -> { order(id: :asc) }, dependent: :destroy
 
   # リストの更新
-  # 想定しているパラメータフォーマット
+  # 更新可能か真偽値を戻す
+  # 　想定しているパラメータフォーマット
   #   "message_button"=>{
   #     "0"=>{
   #       "message_type"=>"ask", "message_no"=>"1", "content"=>"今　何してる？"
   #     },
   #     以下、配列の形で"1", "2"と続く
-  def update!(params)
+  def update(params)
     array = params[:message_button].keys.sort.map { |index| params[:message_button][index] }
+    return false unless update_params_valid?(array)
 
     array.each do |element|
       msg = message_buttons.where(message_no: element[:message_no])
                            .where(message_type: element[:message_type])
                            .first
-      msg.update!(content: element[:content]) if msg.present?
+      msg.update(content: element[:content]) if msg.present?
     end
+  end
+
+  def update_params_valid?(array)
+    array.each do |element|
+      test = MessageButton.new(content: element[:content],
+                               message_button_list_id: Rails.application.credentials.dig(:user, :admin, :id_system))
+      return false unless test.valid?
+    end
+
+    true
   end
 
   def ask_message_buttons

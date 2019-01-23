@@ -4,19 +4,22 @@ class Mypage::Setting::MessageButtonListsController < Mypage::SettingController
   def show; end
 
   def update
-    @message_button_list.update! message_button_list_params
+    if @message_button_list.update message_button_list_params
+      # メッセージボタンリストの更新を実行したユーザーの部屋へ、メッセージを「システム」から飛ばす
+      # ユーザーが在室していた場合、ボタンが更新されたことを通知するため
+      Message.system_to_room(t('rooms.notify_update_message_button_list'), current_user.my_room)
 
-    # メッセージボタンリストの更新を実行したユーザーの部屋へ、メッセージを「システム」から飛ばす
-    # ユーザーが在室していた場合、ボタンが更新されたことを通知するため
-    Message.system_to_room(t('rooms.notify_update_message_button_list'), current_user.my_room)
-
-    redirect_to mypage_setting_message_button_list_url, success: '更新しました'
+      redirect_to mypage_setting_message_button_list_url, success: '更新しました'
+    else
+      flash.now[:danger] = '更新出来ませんでした'
+      render :show
+    end
   end
 
   private
 
   def set_message_button_list
-    @message_button_list = current_user.my_room.message_button_list
+    @message_button_list ||= current_user.my_room.message_button_list
   end
 
   def message_button_list_params
