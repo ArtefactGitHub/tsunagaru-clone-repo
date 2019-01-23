@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2019_01_22_031815) do
   end
 
   create_table "message_buttons", force: :cascade do |t|
-    t.string "content"
+    t.string "content", limit: 20
     t.integer "message_no"
     t.integer "message_type", default: 0
     t.bigint "message_button_list_id"
