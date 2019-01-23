@@ -7,17 +7,7 @@ class Mypage::Setting::MessageButtonListsController < Mypage::SettingController
   end
 
   def update
-    list_params = message_button_list_params
-    items = list_params[:message_button].keys.sort.map { |index| list_params[:message_button][index] }
-
-    items.each do |item|
-      msg = @message_button_list.message_buttons
-                                .where(message_no: item[:message_no])
-                                .where(message_type: item[:message_type])
-                                .first
-      msg.update!(content: item[:content]) if msg.present?
-    end
-
+    @message_button_list.update! message_button_list_params
     redirect_to mypage_setting_message_button_list_url, success: '更新しました'
   end
 
