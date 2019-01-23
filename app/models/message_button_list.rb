@@ -20,11 +20,15 @@ class MessageButtonList < ApplicationRecord
   end
 
   def ask_message_buttons
-    message_buttons.where(message_type: :ask).take(Settings.setting.message_button.default_count)
+    message_buttons.where(message_type: :ask)
+                   .where.not(content: '')
+                   .take(Settings.setting.message_button.default_count)
   end
 
   def answer_message_buttons
-    message_buttons.where(message_type: :answer).take(Settings.setting.message_button.default_count)
+    message_buttons.where(message_type: :answer)
+                   .where.not(content: '')
+                   .take(Settings.setting.message_button.default_count)
   end
 
   def message_button_by_params(type, no)
