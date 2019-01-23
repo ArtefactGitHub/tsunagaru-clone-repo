@@ -152,10 +152,16 @@
     .friend_request-text {
       @include myfont-size-minimum;
     }
-  }
 
-  .form-friend_requests {
-    margin-top: 60px;
+    .form-friend_requests {
+      margin-top: 60px;
+    }
+    .form-input {
+      margin-top: 20px;
+    }
+    .form-input-info {
+      @include myfont-size-minimum;
+    }
   }
 
   .setting {
