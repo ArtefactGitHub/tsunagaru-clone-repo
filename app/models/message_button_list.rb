@@ -1,5 +1,5 @@
 class MessageButtonList < ApplicationRecord
-  has_many :message_buttons, dependent: :destroy
+  has_many :message_buttons, -> { order(id: :asc) }, dependent: :destroy
 
   # リストの更新
   # 想定しているパラメータフォーマット
