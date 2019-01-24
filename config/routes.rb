@@ -15,6 +15,8 @@ Rails.application.routes.draw do
   namespace :mypage do
     root to: 'dashboard#show'
 
+    resources :users, only: %i[edit update]
+
     namespace :friend do
       root to: 'top#show'
       resources :friends, only: %i[index destroy]
