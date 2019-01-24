@@ -12,7 +12,7 @@ class UserSessionsController < ApplicationController
 
     @user = login(params[:email], params[:password])
     if @user
-      redirect_back_or_to mypage_root_url, success: t('user_sessions.flash.create.success')
+      redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
       flash.now[:danger] = 'ログイン出来ません'
       render :new
@@ -21,7 +21,7 @@ class UserSessionsController < ApplicationController
 
   def destroy
     logout
-    redirect_to login_url, success: t('user_sessions.flash.destroy.success')
+    redirect_to login_url, success: 'ログアウトしました'
   end
 
   private
