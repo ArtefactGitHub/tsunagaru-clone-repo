@@ -119,6 +119,16 @@
     }
   }
 
+  .users {
+    .filelabel:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    #user_avatar {
+      display: none;
+    }
+  }
+
   .chat-buttons {
     margin-bottom: 40px;
   }

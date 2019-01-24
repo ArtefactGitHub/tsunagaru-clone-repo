@@ -6,11 +6,12 @@
     .row.profile-text
       .col-md-2.text-center
         = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
-        .file
-          = f.file_field :avatar, accept: 'image/jpg,image/jpeg,image/png,image/gif'
-        <span class="filelabel" title="ファイルを選択">
-          = fa_icon 'edit', class: 'icon'
-        </span>
+        label
+          span.filelabel title="ファイルを選択"
+            = fa_icon 'edit', class: 'icon'
+          .file
+            = f.file_field :avatar, accept: 'image/jpg,image/jpeg,image/png,image/gif'
+
       .col-md-10
         div
           | #{current_user.name}
