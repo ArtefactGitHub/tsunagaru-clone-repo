@@ -34,10 +34,16 @@ class RoomChannel < ApplicationCable::Channel
     end
   end
 
-  def msg_command(data)
-    Message.create!(content: MessageCommand.find(data['command_id']).name,
-                    user: current_user,
-                    room: Room.find(params['room_id']))
+  def speak_by_message_button(data)
+    room = Room.find(params['room_id'])
+    if current_user.can_access_room?(room)
+      mssage_button = room.message_button_by_params(data['message_type'], data['message_no'])
+      Message.create!(content: mssage_button.content, user: current_user, room: room) if mssage_button.present?
+    else
+      logger.warn "不正なメッセージボタン：user=#{current_user.id}, room=#{room.id}"
+      reject
+      stop_all_streams
+    end
   end
 
   def all_clear

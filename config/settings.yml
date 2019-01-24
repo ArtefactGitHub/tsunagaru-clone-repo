@@ -4,3 +4,7 @@ user:
 
 room:
   limit_of_entry: 15
+
+setting:
+  message_button:
+    default_count: 6

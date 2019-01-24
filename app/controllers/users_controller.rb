@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  include RoomsModule
+  include RoomsControllerModule
 
   skip_before_action :require_login, only: %i[new create]
 
@@ -13,11 +13,11 @@ class UsersController < ApplicationController
     if @user.save
       create_owner_room @user
 
-      redirect_to login_url, success: t('users.flash.create.success')
+      redirect_to login_url, success: 'ユーザー登録しました'
     else
       logger.debug @user.errors.full_messages if @user&.errors.present?
 
-      flash.now[:danger] = t('users.flash.create.fail')
+      flash.now[:danger] = 'ユーザー登録出来ませんでした'
       render :new
     end
   end

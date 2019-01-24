@@ -1,0 +1,22 @@
+.settings
+  .row.headline
+    = fa_icon 'cog', class: 'icon'
+    | 設定画面
+
+.text-center
+  p.mt-5
+    = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-default-2line' do
+      | メッセージボタンの
+      br
+      | 編集
+      end
+  .my-checkbox
+    = check_box_tag :sample
+    span.ml-3 設定の編集を制限する
+    .info 　※「メッセージボタンの編集」や「トモダチの追加」のボタンなどが非表示になります。
+    .info 　　　チャット以外の操作を必要としない場合はチェックを入れてください。　　　　　　
+
+  p.mt-5
+    = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised' do
+      | ログアウト
+      end

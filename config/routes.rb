@@ -14,16 +14,22 @@ Rails.application.routes.draw do
 
   namespace :mypage do
     root to: 'dashboard#show'
-    get 'settings', to: 'settings#show'
 
     namespace :friend do
-      root to: 'dashboard#show'
+      root to: 'top#show'
       resources :friends, only: %i[index destroy]
       resources :requests, only: %i[index create destroy]
     end
+
+    namespace :setting do
+      root to: 'top#show'
+      resources :message_button_lists, only: %i[edit update]
+    end
   end
 
-  resources :rooms, only: %i[show]
+  resources :rooms, only: %i[show] do
+    patch 'update_message_button_list', to: 'rooms#update_message_button_list'
+  end
 
   # Serve websocket cable requests in-process
   mount ActionCable.server => '/cable'
