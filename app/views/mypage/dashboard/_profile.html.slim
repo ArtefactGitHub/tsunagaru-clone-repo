@@ -13,4 +13,5 @@
   .row.text-left
     .col-12
       .card.profile-introduction-card
-        = escape_with_linefeed current_user.introduction
+        .card-body
+          = escape_with_linefeed current_user.introduction

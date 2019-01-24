@@ -6,5 +6,5 @@
           = render 'shared/users/avatar', size: '80x80', user: friend
           div
             | #{friend.name}
-        .col-10
+        .col-10.text-introduction
           = escape_with_linefeed friend.introduction
