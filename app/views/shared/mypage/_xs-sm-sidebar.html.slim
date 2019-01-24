@@ -1,15 +1,19 @@
 nav.d-block.d-md-none.xs-sm-sidebar
   .row.text-center
-    .col-4
+    .col-3
       = link_to mypage_root_path, class: 'nav-link' do
         = fa_icon 'home'
       end
-    .col-4
-      = link_to mypage_friend_root_path, class: 'nav-link mybtn-sidebar' do
+    .col-3
+      = link_to edit_mypage_user_user_path(current_user), class: 'nav-link mybtn-sidebar' do
         = fa_icon 'user'
       end
+    .col-3
+      = link_to mypage_friend_root_path, class: 'nav-link mybtn-sidebar' do
+        = fa_icon 'users'
+      end
 
-    .col-4
+    .col-3
       = link_to mypage_setting_root_path, class: 'nav-link' do
         = fa_icon 'cog'
       end
