@@ -117,6 +117,8 @@
       padding: 10px;
       font-size: 1.5rem;
       min-height: 20vh;
+      max-height: 20vh;
+      overflow: auto;
     }
   }
 
@@ -161,7 +163,8 @@
     margin-bottom: 10px;
 
     .friend-card-body {
-      padding: 0.5rem;
+      max-height: 20vh;
+      overflow: auto;
     }
 
     .friend-text {
