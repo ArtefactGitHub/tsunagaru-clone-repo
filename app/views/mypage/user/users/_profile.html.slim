@@ -2,7 +2,7 @@
   = form_for [:mypage, :user, current_user] do |f|
     .row.headline
       = fa_icon 'user-circle', class: 'icon'
-      | プロフィール
+      | プロフィール画面
     .row.profile-text
       .col-md-2.text-center
         = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
@@ -20,7 +20,7 @@
     .row.text-left
       .col-12
         .card.profile-introduction-card
-          = f.text_area :introduction, value: current_user.introduction, class: 'form-control', rows: '10'
+          = f.text_area :introduction, value: current_user.introduction, class: 'form-introduction', rows: '10'
 
     .text-right
       = f.submit '更新', class: 'btn btn-primary btn-raised mybtn-minimum'

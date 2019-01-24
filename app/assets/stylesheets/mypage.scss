@@ -114,6 +114,7 @@
     }
     .profile-introduction-card {
       margin-top: 20px;
+      padding: 10px;
       font-size: 1.5rem;
       min-height: 20vh;
     }
@@ -126,6 +127,19 @@
     }
     #user_avatar {
       display: none;
+    }
+    .profile-introduction-card {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      min-height: 20vh;
+    }
+    .form-introduction {
+      padding: 10px;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
     }
   }
 
