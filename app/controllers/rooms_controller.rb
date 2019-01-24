@@ -16,7 +16,7 @@ class RoomsController < ApplicationController
 
       redirect_to room_url(@room), success: 'メッセージボタンを更新しました'
     else
-      redirect_to room_url(@room), danger: 'メッセージボタンが更新出来ませんでした</br>メッセージは20文字以内にしてください'
+      redirect_to room_url(@room), danger: 'メッセージボタンが更新出来ませんでした'
     end
   end
 
