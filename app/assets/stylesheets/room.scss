@@ -26,4 +26,10 @@
   #js-disconnect-room {
     display: none;
   }
+
+  .form-message_button_value {
+    @include myfont-size-minimum;
+
+    width: 100%;
+  }
 }

@@ -1,4 +1,4 @@
-.friend-request
+.friend_request
   .row.friend-list.headline
     = fa_icon 'exchange', class: 'icon'
     | トモダチ申請
@@ -9,9 +9,13 @@
       .row.text-center
         .col-12
           | トモダチのユーザーID
-        .col-6.offset-3
-          .form-group
-            = f.text_field :uuid, class: 'form-control', required: true
+        .col-10.offset-1
+          .form-group.form-input
+            = f.text_field :uuid, class: 'form-control text-center friend_request-text', required: true
+            .form-input-info
+              | ※
+              = fa_icon 'home', class: 'icon'
+              | のプロフィールに記載されています
       .row.text-center
         .col-lg-3.offset-lg-2
           = f.submit '申請', class: 'btn btn-primary btn-raised mybtn-small'
