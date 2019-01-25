@@ -6,6 +6,10 @@ nav.d-none.d-md-block.bg-light.sidebar
           = fa_icon 'home'
         end
       li class="nav-item"
+        = link_to edit_mypage_user_user_path(current_user), class: 'nav-link mybtn-sidebar' do
+          = fa_icon 'user'
+        end
+      li class="nav-item"
         = link_to mypage_friend_root_path, class: 'nav-link mybtn-sidebar' do
           = fa_icon 'users'
         end

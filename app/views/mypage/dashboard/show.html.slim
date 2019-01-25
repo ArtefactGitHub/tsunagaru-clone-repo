@@ -18,23 +18,7 @@
               p.mt-5
                 = render 'modal', friends: @friends
 
-      .myprofile
-        .row.headline
-          = fa_icon 'user-circle', class: 'icon'
-          | プロフィール
-        .row.profile-text
-          .col-md-2.text-center
-            = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
-          .col-md-10
-            div
-              | #{current_user.name}
-            div
-              | （ユーザーID：#{current_user.uuid}）
-        .row.text-left
-          .col-12
-            .card.profile-introduction-card
-              .card-body
-                = escape_with_linefeed current_user.introduction
+      = render 'profile'
 
       .friend-list
         .row.headline
