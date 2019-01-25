@@ -17,9 +17,9 @@
               p
                 = form_for [:mypage, FriendRequest.new] do |f|
                   = f.hidden_field :receiver_id, value: sender.id
-                  = f.submit 'はい', class: 'btn btn-success btn-raised mybtn-minimum'
+                  = f.submit 'はい', class: 'btn btn-success btn-raised mybtn-s'
                 end
               / p
-              /   = link_to '#', class: 'btn btn-warning btn-raised mybtn-minimum' do
+              /   = link_to '#', class: 'btn btn-warning btn-raised mybtn-s' do
               /     | いいえ
               /     end

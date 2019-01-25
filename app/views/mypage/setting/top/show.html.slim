@@ -7,7 +7,7 @@
     .col-12
       .text-center
         p.mt-5
-          = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-default-2line' do
+          = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-l-2line' do
             | メッセージボタンの
             br
             | 編集
@@ -26,6 +26,6 @@
     .col-12
       .text-center
         p.mt-5
-          = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised' do
+          = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-s' do
             | ログアウト
             end
