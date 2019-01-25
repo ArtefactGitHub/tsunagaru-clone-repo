@@ -211,6 +211,7 @@
       }
       .info {
         @include myfont-size-xs;
+        margin-left: 20px;
       }
     }
     .form-message_button_value {
