@@ -45,7 +45,7 @@
 
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 8vh;
     bottom: 0;
     left: 0;
     z-index: 200; /* Behind the navbar */
@@ -78,11 +78,11 @@
     bottom: 0;
     left: 0;
     z-index: 200;
-    min-height: 15vh;
-    max-height: 15vh;
+    min-height: 10vh;
+    max-height: 10vh;
 
     background-color: #2b2926;
-    font-size: 5rem;
+    font-size: 4.5rem;
     width: 100%;
   }
 
