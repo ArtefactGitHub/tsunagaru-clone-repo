@@ -15,6 +15,11 @@ Rails.application.routes.draw do
   namespace :mypage do
     root to: 'dashboard#show'
 
+    namespace :user do
+      root to: 'users#edit'
+      resources :users, only: %i[edit update]
+    end
+
     namespace :friend do
       root to: 'top#show'
       resources :friends, only: %i[index destroy]

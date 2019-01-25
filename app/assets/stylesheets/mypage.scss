@@ -79,7 +79,7 @@
       overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 
       background-color: #2b2926;
-      font-size: 7rem;
+      font-size: 6rem;
     }
   }
 
@@ -99,6 +99,19 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
+  .avatar {
+    border-style: solid;
+    border-width: 0.1rem;
+    color: lightgray;
+    background: #f1f1f1;
+  }
+  .mycard-default {
+    max-height: 20vh;
+  }
+  .text-introduction {
+    max-height: 15vh;
+    overflow: auto;
+  }
   .friend-count-text {
     @include myfont-size-minimum;
     margin-left: 20px;
@@ -106,6 +119,9 @@
   }
 
   .dashboard {
+    .chat-buttons {
+      margin-bottom: 40px;
+    }
     .myprofile {
       margin-bottom: 70px;
     }
@@ -113,31 +129,51 @@
       @include myfont-size-minimum;
     }
     .profile-introduction-card {
+      @extend .mycard-default;
       margin-top: 20px;
       font-size: 1.5rem;
-      min-height: 20vh;
+      overflow: auto;
     }
   }
 
-  .chat-buttons {
-    margin-bottom: 40px;
+  .users {
+    .filelabel:hover {
+      opacity: 0.5;
+      cursor: pointer;
+    }
+    #user_avatar {
+      display: none;
+    }
+    .profile-introduction-card {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      max-height: 25vh;
+    }
+    .form-introduction {
+      padding: 10px;
+      word-wrap: break-word;
+      background-color: #fff;
+      background-clip: border-box;
+      border: 1px solid rgba(0, 0, 0, 0.125);
+      border-radius: 0.25rem;
+    }
   }
 
   .friend {
     .break-friendship-button {
-      width: 80px;
-      height: 40px;
-      font-size: 1.2rem;
-      line-height: 5;
+      margin-top: 5vh;
+    }
+    .mybtn-break-friendship {
+      @include myfont-size-small;
     }
   }
 
   .friend-card {
+    @extend .mycard-default;
     margin-top: 10px;
     margin-bottom: 10px;
 
     .friend-card-body {
-      padding: 0.5rem;
     }
 
     .friend-text {
