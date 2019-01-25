@@ -6,7 +6,7 @@
     .row.profile-text
       .col-md-2.text-center
         = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
-        label
+        label.mylabel-avatar
           span.filelabel title="ファイルを選択"
             = fa_icon 'edit', class: 'icon'
           .file
