@@ -84,6 +84,11 @@
   }
 
   .xs-sm-sidebar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 200;
+
     background-color: #2b2926;
     font-size: 3.5rem;
     width: 100%;

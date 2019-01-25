@@ -45,16 +45,21 @@ header {
 footer {
   .common-footer {
     position: relative;
+    height: 10vh;
+    padding-top: 2vh;
     z-index: 100;
     font-size: 12px;
     background: white;
-    padding : 2%;
     box-shadow: 0 3px 6px gray;
     text-align: right;
 
     .copyright {
       font-size: 9px;
     }
+  }
+
+  .common-footer-margin {
+    margin-bottom: 10vh;
   }
 }
 
