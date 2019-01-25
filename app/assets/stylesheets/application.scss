@@ -31,6 +31,7 @@ body {
 header {
   .common-header {
     position: relative;
+    height: 8vh;
     box-shadow: 0 3px 6px gray;
     font-weight: bold;
     background: white;
@@ -45,21 +46,21 @@ header {
 footer {
   .common-footer {
     position: relative;
-    height: 10vh;
+    height: 8vh;
     padding-top: 2vh;
     z-index: 100;
-    font-size: 12px;
+    font-size: 1rem;
     background: white;
     box-shadow: 0 3px 6px gray;
     text-align: right;
 
     .copyright {
-      font-size: 9px;
+      font-size: 1rem;
     }
   }
 
   .common-footer-margin {
-    margin-bottom: 10vh;
+    margin-bottom: 15vh;
   }
 }
 
