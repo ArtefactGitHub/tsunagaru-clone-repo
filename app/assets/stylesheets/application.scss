@@ -2,12 +2,24 @@
 @import 'bootstrap';
 // @import 'rooms';
 
+@mixin myfont-size-l {
+  font-size: 2.8rem;
+}
+@mixin myfont-size-m {
+  font-size: 2.3rem;
+}
+@mixin myfont-size-s {
+  font-size: 2.0rem;
+}
+@mixin myfont-size-xs {
+  font-size: 1.5rem;
+}
+
 body {
   .main {
-    //background-color: white;
+    @include myfont-size-l;
     color: #333;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
-    font-size: 2.5rem;
     margin-top: 100px;
     margin-bottom: 40px;
   }
@@ -16,16 +28,6 @@ body {
 .vertical-center {
   margin-top: auto;
   margin-bottom: auto;
-}
-
-@mixin myfont-size-default {
-  font-size: 2.5rem;
-}
-@mixin myfont-size-small {
-  font-size: 2.0rem;
-}
-@mixin myfont-size-minimum {
-  font-size: 1.5rem;
 }
 
 header {

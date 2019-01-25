@@ -16,9 +16,9 @@
   }
 
   .mybtn-disconnect {
+    @include myfont-size-xs;
     width: 200px;
     height: 60px;
-    font-size: 1.5rem;
     margin-top: 30px;
     margin-bottom: 30px;
   }
@@ -28,8 +28,7 @@
   }
 
   .form-message_button_value {
-    @include myfont-size-minimum;
-
+    @include myfont-size-s;
     width: 100%;
   }
 }

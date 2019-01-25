@@ -28,18 +28,18 @@
     line-height: 1.3;
   }
   .mybtn-small {
+    @include myfont-size-xs;
     width: 200px;
     height: 60px;
-    font-size: 1.5rem;
     margin-top: 30px;
     margin-bottom: 30px;
     line-height: 2;
   }
 
   .mybtn-minimum {
+    @include myfont-size-xs;
     width: 120px;
     height: 50px;
-    font-size: 1.5rem;
   }
 
   .my-checkbox {
@@ -116,7 +116,7 @@
     overflow: auto;
   }
   .friend-count-text {
-    @include myfont-size-minimum;
+    @include myfont-size-s;
     margin-left: 20px;
     padding-top: 20px;
   }
@@ -129,12 +129,12 @@
       margin-bottom: 70px;
     }
     .profile-text {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
     }
     .profile-introduction-card {
+      @include myfont-size-xs;
       @extend .mycard-default;
       margin-top: 20px;
-      font-size: 1.5rem;
       overflow: auto;
     }
   }
@@ -151,8 +151,8 @@
       display: none;
     }
     .profile-introduction-card {
+      @include myfont-size-xs;
       margin-top: 20px;
-      font-size: 1.5rem;
       max-height: 25vh;
     }
     .form-introduction {
@@ -170,7 +170,7 @@
       margin-top: 5vh;
     }
     .mybtn-break-friendship {
-      @include myfont-size-small;
+      @include myfont-size-m;
     }
   }
 
@@ -183,7 +183,7 @@
     }
 
     .friend-text {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
     }
   }
 
@@ -192,7 +192,7 @@
     margin-bottom: 20px;
 
     .friend_request-text {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
     }
 
     .form-friend_requests {
@@ -202,7 +202,7 @@
       margin-top: 20px;
     }
     .form-input-info {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
     }
   }
 
@@ -216,12 +216,10 @@
       border-color: red;
     }
     .info {
-      font-size: 1.5rem;
-      // @include myfont-size-minimum;
+      @include myfont-size-xs;
     }
     .form-message_button_value {
-      @include myfont-size-minimum;
-
+      @include myfont-size-s;
       width: 100%;
     }
   }
