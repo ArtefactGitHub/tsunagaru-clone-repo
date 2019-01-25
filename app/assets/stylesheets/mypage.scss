@@ -207,16 +207,18 @@
   }
 
   .setting {
-    .mycheckbox-restrict_setting_editing {
-      @extend .my-checkbox;
-      margin: 10px;
-    }
-    .mycard-restrict_setting_editing {
-      margin-top: 5vh;
-      border-color: red;
-    }
-    .info {
-      @include myfont-size-xs;
+    .restrict_setting_editing {
+      .mycheckbox-restrict_setting_editing {
+        @extend .my-checkbox;
+        margin: 10px;
+      }
+      .card {
+        margin-top: 5vh;
+        border-color: red;
+      }
+      .info {
+        @include myfont-size-xs;
+      }
     }
     .form-message_button_value {
       @include myfont-size-s;
