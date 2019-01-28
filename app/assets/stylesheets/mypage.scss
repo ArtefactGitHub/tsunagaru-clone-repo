@@ -103,6 +103,7 @@
   @mixin under-bar {
     border-bottom-style: solid;
     border-bottom-width: thin;
+    border-color: #d4d4d4;
   }
   .icon {
     @extend .vertical-center;
@@ -166,7 +167,18 @@
     }
   }
 
-  .users {
+  .myprofile {
+    @include myfont-size-m;
+
+    .name {
+      margin-top: 1rem;
+    }
+    .user-id {
+      @include myfont-size-s;
+      @include under-bar;
+      margin-bottom: 1rem;
+    }
+
     .mylabel-avatar {
       margin-top: 20px;
     }
@@ -174,15 +186,17 @@
       opacity: 0.5;
       cursor: pointer;
     }
+    // デフォルトのファイル選択ボタンを非表示にする
     #user_avatar {
       display: none;
     }
     .profile-introduction-card {
-      @include myfont-size-xs;
-      margin-top: 20px;
-      max-height: 25vh;
+      margin-top: 1rem;
+      max-height: 15rem;
+      margin-bottom: 1rem;
     }
     .form-introduction {
+      @include myfont-size-s;
       padding: 10px;
       word-wrap: break-word;
       background-color: #fff;
@@ -224,6 +238,7 @@
         .introduction {
           @include myfont-size-s;
           @include under-bar;
+          // line-height含めた3行分の高さ
           max-height: 1.2*3rem;
           overflow: hidden;
         }
