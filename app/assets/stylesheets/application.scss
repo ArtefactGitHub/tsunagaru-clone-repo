@@ -2,26 +2,49 @@
 @import 'bootstrap';
 // @import 'rooms';
 
+@mixin myfont-size-xl {
+  font-size: 3.0rem;
+}
 @mixin myfont-size-l {
-  font-size: 2.8rem;
-}
-@mixin myfont-size-m {
-  font-size: 2.3rem;
-}
-@mixin myfont-size-s {
   font-size: 2.0rem;
 }
-@mixin myfont-size-xs {
+@mixin myfont-size-m {
   font-size: 1.5rem;
+}
+@mixin myfont-size-s {
+  font-size: 1.0rem;
+}
+@mixin myfont-size-xs {
+  font-size: 0.7rem;
 }
 
 html {
-  font-size: 16px;
+  font-size: 20px;
+}
+
+/*
+ * レスポンシブフォントサイズ
+ * ウィンドウ幅 860px から 1280px まで、
+ * フォントサイズが 16px から 24px に流動的に変化する
+ */
+// @media (min-width: 860px) {
+@media (min-width: 576px) {
+  html {
+    // see http://neos21.hatenablog.com/entry/2017/12/29/080000
+    font-size: calc(20px + ((1vw - 5.76px) * 0.5681));
+  }
+}
+
+/* 最大フォントサイズ : 幅 1280px 以上は 24px */
+@media (min-width: 1280px) {
+  html {
+    font-size: 24px;
+  }
 }
 
 body {
   .main {
-    @include myfont-size-l;
+    @include myfont-size-m;
     color: #333;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
     margin-top: 8vh;
@@ -51,17 +74,17 @@ header {
 
 footer {
   .common-footer {
+    // font-size: 1rem;
+    @include myfont-size-xs;
     position: relative;
     height: 80px;
     padding: 10px;
     z-index: 100;
-    font-size: 1rem;
     background: white;
     box-shadow: 0 3px 6px gray;
     text-align: right;
 
     .copyright {
-      font-size: 1rem;
     }
   }
 
@@ -71,9 +94,9 @@ footer {
 }
 
 .flash_message {
-  font-size: 2.0rem;
+  // font-size: 2.0rem;
 }
 
 .title {
-  font-size: 5.5rem;
+  // font-size: 5.5rem;
 }

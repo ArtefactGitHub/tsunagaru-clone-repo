@@ -4,33 +4,40 @@
   margin-top: 8+2vh;
   min-height: 80vh;
 
+  .mybtn {
+    width: 80%;
+  }
   .mybtn-l {
-    width: 420px;
+    @extend .mybtn;
+    @include myfont-size-m;
+    // font-size: 2.5rem;
+    // width: 420px;
+    min-width: 310px;
     height: 120px;
-    font-size: 2.5rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    line-height: 2.5;
+    line-height: 100px;
   }
   .mybtn-l-2line {
-    width: 420px;
+    @extend .mybtn;
+    @include myfont-size-m;
+    // font-size: 2.0rem;
+    // width: 420px;
+    min-width: 310px;
     height: 120px;
-    font-size: 2.0rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    line-height: 1.7;
+    line-height: 1.6;
   }
   .mybtn-m {
-    @include myfont-size-xs;
-    width: 250px;
+    @extend .mybtn;
+    @include myfont-size-s;
+    // width: 250px;
     height: 70px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+    // margin-top: 30px;
+    // margin-bottom: 30px;
     line-height: 2;
   }
   .mybtn-s {
+    @extend .mybtn;
     @include myfont-size-xs;
-    width: 200px;
+    // width: 200px;
     height: 60px;
     line-height: 2;
   }
@@ -60,6 +67,8 @@
     }
 
     .sidebar-sticky {
+      // font-size: 6rem;
+      @include myfont-size-xl;
       position: -webkit-sticky;
       position: sticky;
       top: 48px; /* Height of navbar */
@@ -69,11 +78,12 @@
       overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 
       background-color: #2b2926;
-      font-size: 6rem;
     }
   }
 
   .xs-sm-sidebar {
+    // font-size: 4.5rem;
+    @include myfont-size-l;
     position: fixed;
     bottom: 0;
     left: 0;
@@ -82,7 +92,6 @@
     max-height: 10vh;
 
     background-color: #2b2926;
-    font-size: 4.5rem;
     width: 100%;
   }
 
@@ -106,6 +115,7 @@
     max-height: 20vh;
   }
   .text-introduction {
+    @include myfont-size-s;
     max-height: 15vh;
     overflow: auto;
   }
@@ -126,7 +136,7 @@
       @include myfont-size-s;
     }
     .profile-introduction-card {
-      @include myfont-size-xs;
+      @include myfont-size-s;
       @extend .mycard-default;
       margin-top: 20px;
       overflow: auto;
@@ -160,6 +170,9 @@
   }
 
   .friend {
+    .friend-button {
+      margin-bottom: 40px;
+    }
     .break-friendship-button {
       margin-top: 5vh;
     }
