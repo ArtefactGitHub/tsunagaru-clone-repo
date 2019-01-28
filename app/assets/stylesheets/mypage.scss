@@ -116,12 +116,17 @@
     color: lightgray;
     background: #f1f1f1;
   }
-  .own-avatar {
+  .myavatar-xl {
     @include avatar;
     width: 8rem;
     height: 8rem;
   }
-  .friend-avatar {
+  .myavatar-l {
+    @include avatar;
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+  .myavatar-m {
     @include avatar;
     width: 5rem;
     height: 5rem;
@@ -208,20 +213,18 @@
 
   .friend {
     .friend-button {
-      margin-bottom: 40px;
+      margin-bottom: 2rem;
     }
     .break-friendship-button {
-      margin-top: 5vh;
-    }
-    .mybtn-break-friendship {
-      @include myfont-size-m;
+      @include myfont-size-xs;
+      margin: 0.5rem 0 0.5rem 0.5rem;
+      text-align: right;
     }
   }
 
   .friend-card {
-    // @extend .mycard-default;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     min-height: 7rem;
 
     .friend-card-body {
@@ -241,6 +244,13 @@
           // line-height含めた3行分の高さ
           max-height: 1.2*3rem;
           overflow: hidden;
+        }
+        .introduction-overflow {
+          @include myfont-size-s;
+          @include under-bar;
+          // line-height含めた3行分の高さ
+          max-height: 1.2*3rem;
+          overflow: auto;
         }
       }
     }
