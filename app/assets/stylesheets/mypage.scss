@@ -100,16 +100,30 @@
     border-bottom-width: thin;
     margin-bottom: 20px;
   }
+  @mixin under-bar {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+  }
   .icon {
     @extend .vertical-center;
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
-  .avatar {
+  @mixin avatar {
     border-style: solid;
     border-width: 0.1rem;
     color: lightgray;
     background: #f1f1f1;
+  }
+  .own-avatar {
+    @include avatar;
+    width: 8rem;
+    height: 8rem;
+  }
+  .friend-avatar {
+    @include avatar;
+    width: 5rem;
+    height: 5rem;
   }
   .mycard-default {
     max-height: 20vh;
@@ -127,7 +141,11 @@
 
   .dashboard {
     .chat-buttons {
-      margin-bottom: 40px;
+      margin: 1.5rem 0;
+    }
+    .chat-button {
+      @extend .mybtn-l-2line;
+      margin-bottom: 2rem;
     }
     .myprofile {
       margin-bottom: 70px;
@@ -140,6 +158,11 @@
       @extend .mycard-default;
       margin-top: 20px;
       overflow: auto;
+
+      .card-body {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
     }
   }
 
@@ -182,15 +205,29 @@
   }
 
   .friend-card {
-    @extend .mycard-default;
+    // @extend .mycard-default;
     margin-top: 10px;
     margin-bottom: 10px;
+    min-height: 7rem;
 
     .friend-card-body {
-    }
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
 
-    .friend-text {
-      @include myfont-size-s;
+      .friend-text {
+        @include myfont-size-s;
+
+        .name {
+          @include under-bar;
+          margin-bottom: 20px;
+        }
+        .introduction {
+          @include myfont-size-s;
+          @include under-bar;
+          max-height: 1.2*3rem;
+          overflow: hidden;
+        }
+      }
     }
   }
 

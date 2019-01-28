@@ -1,10 +1,13 @@
 .col-12
   .card.friend-card
     .card-body.friend-card-body
-      .row.friend-text
-        .col-2.text-center
-          = render 'shared/users/avatar', size: '80x80', user: friend
-          div
+      .row
+        .col-sm-3
+          .text-center
+            / = render 'shared/users/avatar', size: '80x80', user: friend, assign_class: 'friend-avatar'
+            = render 'shared/users/avatar', user: friend, assign_class: 'friend-avatar'
+        .col-sm-9.offset-sm-0.col-10.offset-1.friend-text
+          .row.name
             | #{friend.name}
-        .col-10.text-introduction
-          = escape_with_linefeed friend.introduction
+          .row.introduction
+            = escape_with_linefeed friend.introduction
