@@ -4,17 +4,16 @@
     | 設定画面
 
   .row
-    .col-12
+    .col-sm-8.offset-sm-2
       .text-center
-        p.mt-5
-          = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-l-2line' do
-            | メッセージボタンの
-            br
-            | 編集
-            end
+        = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-l-2line' do
+          | メッセージボタンの
+          br
+          | 編集
+          end
 
   .row
-    .col-12.restrict_setting_editing
+    .col-sm-8.offset-sm-2.restrict_setting_editing
       .card
         .mycheckbox-restrict_setting_editing
           = check_box_tag :sample
@@ -23,9 +22,8 @@
           .info チャット以外の操作を必要としない場合はチェックを入れてください。　　　　　　
 
   .row
-    .col-12
+    .col-sm-4.offset-sm-4
       .text-center
-        p.mt-5
-          = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-m' do
-            | ログアウト
-            end
+        = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-m btn-logout' do
+          | ログアウト
+          end

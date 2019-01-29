@@ -4,13 +4,10 @@
     | メッセージボタン
 
   .message_buttons
-    .row
-      .col-12
-        = render 'message_button_list', message_button_list: @message_button_list
+    = render 'message_button_list', message_button_list: @message_button_list
 
   .row
-    .col-12.text-center
-      .mt-5
-        = link_to mypage_setting_root_path, class: 'btn btn-secondary btn-raised mybtn-m' do
-          | 戻る
-          end
+    .col-sm-4.offset-sm-4.text-center
+      = link_to mypage_setting_root_path, class: 'btn btn-secondary btn-raised mybtn-m' do
+        | 戻る
+        end
