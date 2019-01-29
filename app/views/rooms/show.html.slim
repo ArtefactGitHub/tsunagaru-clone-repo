@@ -1,46 +1,46 @@
-#js-connect-room
+.container
   .row
-    .col-md-12.pt-3.text-center
-      = render 'edit_message_button_list_modal', message_button_list: @message_button_list
+    .col-12
+      #js-connect-room
+        .text-message-section
+          | 文字を入力して気持ちを伝えよう！
+          = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }
+          /   button type="button" class='btn btn-primary button-custom reset-input-button'
+          /     | 入力状態を戻す
 
-  .col-md-12.pt-3
-    .row.mb-3
-      = label_tag '↓　の四角を触ると、文字が入力できるよ！'
-      .col-md-8
-        = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }
-      .col-md-4
-        button type="button" class='btn btn-primary button-custom reset-input-button'
-          | 入力状態を戻す
+        .button-message-section
+          | ボタンを押して気持ちを伝えよう！
+          .ask-buttons
+            .card
+              .col-12.text-center
+                - @room.ask_message_buttons.each do |message|
+                  button type="button" class='js-command btn btn-success button-custom' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
+                    | #{message.content}
 
-    .col-md-12
-      .text-center.mb-2
-        - if Rails.env.development?
-          button type="button" id='js-clear-button'
-            | メッセージを全て削除
+          .answer-buttons
+            .card
+              .col-12.text-center
+                - @room.answer_message_buttons.each do |message|
+                  button type="button" class='js-command btn btn-info button-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
+                    | #{message.content}
 
-      .card.mb-2
-        .row.pt-3.mb-2
-          .col-md-12
-            - @room.ask_message_buttons.each do |message|
-              button type="button" class='js-command btn btn-success button-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
-                | #{message.content}
+        .delete-message-section
+          .text-center
+            - if Rails.env.development?
+              button type="button" id='js-clear-button'
+                | メッセージを全て削除
 
-      .card.mb-2
-        .row.pt-3.mb-2
-          .col-md-12
-            - @room.answer_message_buttons.each do |message|
-              button type="button" class='js-command btn btn-info button-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
-                | #{message.content}
+        .message-section
+          .card
+            #messages data-room_id=@room.id
+              = render @messages
 
-      .card.mb-4
-        #messages data-room_id=@room.id
-          = render @messages
+        = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
-#js-disconnect-room
-  .col-md-12
-    .text-center
-      p
-        | ルームに入室出来ませんでした
-      = link_to mypage_root_path, class: 'btn btn-secondary btn-raised mybtn-disconnect' do
-        | 戻る
-        end
+      #js-disconnect-room
+        .text-center
+          p
+            | ルームに入室出来ませんでした
+          = link_to mypage_root_path, class: 'btn btn-secondary btn-raised mybtn-disconnect' do
+            | 戻る
+            end

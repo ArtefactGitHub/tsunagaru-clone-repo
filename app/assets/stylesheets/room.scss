@@ -3,12 +3,38 @@
 .room {
   min-height: 80vh;
 
-  .text-area-custom {
-    font-size: 2.5rem;
+  .text-message-section {
+    margin: 1rem 0 1rem
+  }
+  .button-message-section {
+    margin: 1rem 0 1rem
+  }
+  .ask-buttons {
+    margin-bottom: 1rem;
+  }
+  .delete-message-section {
+    margin-bottom: 1rem;
+  }
+  .message-section {
+    .card {
+      padding: 1rem 0.5rem 1rem;
+    }
+  }
+  .edit-message-button-list-section{
+    margin: 1rem 0 1rem;
+  }
+  .message {
+    @include under-bar;
   }
 
+  .text-area-custom {
+    @include myfont-size-s;
+  }
   .button-custom {
-    font-size: 2.0rem;
+    @include myfont-size-s;
+    height: 70px;
+    line-height: 2;
+    margin: 1rem;
   }
 
   .reset-input-button {

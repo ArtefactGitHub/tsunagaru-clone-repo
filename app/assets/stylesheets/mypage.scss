@@ -4,6 +4,10 @@
   margin-top: 8+2vh;
   min-height: 80vh;
 
+  p {
+    line-height: 1.2rem;
+  }
+
   .mybtn {
     width: 80%;
   }
@@ -99,11 +103,6 @@
     border-bottom-style: solid;
     border-bottom-width: thin;
     margin-bottom: 20px;
-  }
-  @mixin under-bar {
-    border-bottom-style: solid;
-    border-bottom-width: thin;
-    border-color: #d4d4d4;
   }
   .icon {
     @extend .vertical-center;
