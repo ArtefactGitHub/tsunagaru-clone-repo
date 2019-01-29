@@ -3,6 +3,12 @@
 .room {
   min-height: 80vh;
 
+  .myavatar-m {
+    @include avatar;
+    width: 5rem;
+    height: 5rem;
+  }
+  
   .text-message-section {
     margin: 1rem 0 1rem
   }
