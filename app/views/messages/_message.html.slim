@@ -1,2 +1,17 @@
+/ .message
+/   p = "[#{message.user.name}]：#{message.content}　　　#{simple_time message.created_at}"
+
 .message
-  p = "[#{message.user.name}]：#{message.content}　　　#{simple_time message.created_at}"
+  .col-12
+    .card.friend-card
+      .card-body.friend-card-body
+        .row
+          .col-sm-3
+            .text-center
+              = render 'shared/users/avatar', user: message.user, assign_class: 'myavatar-m'
+          .col-sm-9.offset-sm-0.col-10.offset-1.friend-text
+            .row.name
+              | #{message.user.name}
+              | #{simple_time message.created_at}
+            .row.introduction
+              = escape_with_linefeed message.content
