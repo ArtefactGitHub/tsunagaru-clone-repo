@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def avatar_or_default
-    avatar.attached? ? rails_blob_url(avatar) : Settings.user.avatar.default_file_name
+    avatar.attached? ? rails_blob_url(avatar, only_path: true) : Settings.user.avatar.default_file_name
   end
 
   def set_uuid
