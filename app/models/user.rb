@@ -2,6 +2,7 @@ class User < ApplicationRecord
   require 'securerandom'
 
   include Role
+  include Rails.application.routes.url_helpers
 
   authenticates_with_sorcery!
 
@@ -36,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def avatar_or_default
-    avatar.attached? ? avatar : Settings.user.avatar.default_file_name
+    avatar.attached? ? rails_blob_url(avatar) : Settings.user.avatar.default_file_name
   end
 
   def set_uuid
