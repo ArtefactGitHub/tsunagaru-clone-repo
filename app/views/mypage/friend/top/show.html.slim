@@ -4,16 +4,12 @@
     | トモダチ画面
 
   .row
-    .col-12.text-center
-      .row
-        .col-lg-8.offset-lg-2
-            p.mt-5
-              = link_to mypage_friend_friends_path, class: 'btn btn-primary btn-raised mybtn-l friend-button' do
-                = fa_icon 'sticky-note', class: 'icon'
-                | トモダチ帳
-                end
-            p
-              = link_to mypage_friend_requests_path, class: 'btn btn-primary btn-raised mybtn-l friend-button' do
-                = fa_icon 'exchange', class: 'icon'
-                | トモダチ申請
-                end
+    .col-sm-8.offset-sm-2.text-center
+      = link_to mypage_friend_friends_path, class: 'btn btn-primary btn-raised mybtn-l friend-button' do
+        = fa_icon 'sticky-note', class: 'icon'
+        | トモダチ帳
+        end
+      = link_to mypage_friend_requests_path, class: 'btn btn-primary btn-raised mybtn-l friend-button' do
+        = fa_icon 'exchange', class: 'icon'
+        | トモダチ申請
+        end

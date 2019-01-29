@@ -10,36 +10,36 @@
   .mybtn-l {
     @extend .mybtn;
     @include myfont-size-m;
-    // font-size: 2.5rem;
-    // width: 420px;
     min-width: 310px;
     height: 120px;
     line-height: 100px;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
   .mybtn-l-2line {
     @extend .mybtn;
     @include myfont-size-m;
-    // font-size: 2.0rem;
-    // width: 420px;
     min-width: 310px;
     height: 120px;
     line-height: 1.6;
+    margin-top: 1.5rem;
+    margin-bottom: 1.5rem;
   }
   .mybtn-m {
     @extend .mybtn;
     @include myfont-size-s;
-    // width: 250px;
     height: 70px;
-    // margin-top: 30px;
-    // margin-bottom: 30px;
     line-height: 2;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
   .mybtn-s {
     @extend .mybtn;
     @include myfont-size-xs;
-    // width: 200px;
     height: 60px;
     line-height: 2;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 
   .my-checkbox {
@@ -63,7 +63,7 @@
     text-align: center;
 
     .mybtn-sidebar-settings {
-      margin-top: 100px;
+      margin-top: 5rem;
     }
 
     .sidebar-sticky {
@@ -162,7 +162,7 @@
     .profile-introduction-card {
       @include myfont-size-s;
       @extend .mycard-default;
-      margin-top: 20px;
+      margin-top: 1rem;
       overflow: auto;
 
       .card-body {
@@ -185,7 +185,7 @@
     }
 
     .mylabel-avatar {
-      margin-top: 20px;
+      margin-top: 1rem;
     }
     .filelabel:hover {
       opacity: 0.5;
@@ -272,6 +272,9 @@
     }
     .form-input-info {
       @include myfont-size-s;
+    }
+    .friend_request_list {
+      margin-top: 1rem;
     }
   }
 
