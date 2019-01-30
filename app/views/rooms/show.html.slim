@@ -32,12 +32,6 @@
             button type="button" id='js-clear-button'
               | メッセージを全て削除
 
-      .message-section-frame
-      .message-section
-        .card
-          #messages data-room_id=@room.id
-            = render @messages
-
       = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
     #js-disconnect-room
@@ -48,5 +42,12 @@
           = link_to mypage_root_path, class: 'btn btn-secondary btn-raised button-back' do
             | 戻る
             end
+
+.row
+  .message-section-frame
+  .message-section
+    .card
+      #messages data-room_id=@room.id
+        = render @messages
 
 .message-margin
