@@ -70,25 +70,25 @@ html {
   margin-bottom: 1rem;
 }
 
-/*
- * レスポンシブフォントサイズ
- * ウィンドウ幅 860px から 1280px まで、
- * フォントサイズが 16px から 24px に流動的に変化する
- */
-// @media (min-width: 860px) {
-@media (min-width: 576px) {
-  html {
-    // see http://neos21.hatenablog.com/entry/2017/12/29/080000
-    font-size: calc(20px + ((1vw - 5.76px) * 0.5681));
-  }
-}
-
-/* 最大フォントサイズ : 幅 1280px 以上は 24px */
-@media (min-width: 1280px) {
-  html {
-    font-size: 24px;
-  }
-}
+// /*
+//  * レスポンシブフォントサイズ
+//  * ウィンドウ幅 576px から 1280px まで、
+//  * フォントサイズが 20px から 24px に流動的に変化する
+//  */
+// // @media (min-width: 860px) {
+// @media (min-width: 576px) {
+//   html {
+//     // see http://neos21.hatenablog.com/entry/2017/12/29/080000
+//     font-size: calc(20px + ((1vw - 5.76px) * 0.5681));
+//   }
+// }
+//
+// /* 最大フォントサイズ : 幅 1280px 以上は 24px */
+// @media (min-width: 1280px) {
+//   html {
+//     font-size: 24px;
+//   }
+// }
 
 body {
   .main {
