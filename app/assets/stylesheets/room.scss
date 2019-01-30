@@ -8,7 +8,7 @@
     width: 5rem;
     height: 5rem;
   }
-  
+
   .text-message-section {
     margin: 1rem 0 1rem
   }
@@ -31,6 +31,19 @@
   }
   .message {
     @include under-bar;
+    min-height: 6rem;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+
+    p {
+      margin-bottom: 0;
+      word-break: break-all;
+    }
+    .name {}
+    .introduction {}
+    .created_at {
+      @include myfont-size-s;
+    }
   }
 
   .text-area-custom {
