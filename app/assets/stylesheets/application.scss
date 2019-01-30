@@ -29,7 +29,7 @@
 }
 
 html {
-  font-size: 20px;
+  font-size: 16px;
 }
 
 .mybtn {
@@ -39,8 +39,7 @@ html {
   @extend .mybtn;
   @include myfont-size-m;
   min-width: 310px;
-  height: 120px;
-  line-height: 100px;
+  line-height: 4.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
 }
@@ -48,47 +47,46 @@ html {
   @extend .mybtn;
   @include myfont-size-m;
   min-width: 310px;
-  height: 120px;
-  line-height: 1.6;
+  line-height: 2.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 .mybtn-m {
   @extend .mybtn;
   @include myfont-size-s;
-  height: 70px;
-  line-height: 2;
+  line-height: 3rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 .mybtn-s {
   @extend .mybtn;
   @include myfont-size-xs;
-  height: 60px;
-  line-height: 2;
+  line-height: 3rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
 
-// /*
-//  * レスポンシブフォントサイズ
-//  * ウィンドウ幅 576px から 1280px まで、
-//  * フォントサイズが 20px から 24px に流動的に変化する
-//  */
-// // @media (min-width: 860px) {
-// @media (min-width: 576px) {
-//   html {
-//     // see http://neos21.hatenablog.com/entry/2017/12/29/080000
-//     font-size: calc(20px + ((1vw - 5.76px) * 0.5681));
-//   }
-// }
-//
-// /* 最大フォントサイズ : 幅 1280px 以上は 24px */
-// @media (min-width: 1280px) {
-//   html {
-//     font-size: 24px;
-//   }
-// }
+/*
+ * レスポンシブフォントサイズ
+ * ウィンドウ幅 576px から 1280px まで、
+ * フォントサイズが 16px から 24px に流動的に変化する
+ */
+// @media (min-width: 860px) {
+@media (min-width: 576px) {
+  html {
+    // see http://neos21.hatenablog.com/entry/2017/12/29/080000
+    // 576 / 100 = 5.76
+    // 100 * (24px - 16px)(px) / (1280px - 576px)(px) = 1.1363
+    font-size: calc(16px + ((1vw - 5.76px) * 1.1363));
+  }
+}
+
+/* 最大フォントサイズ : 幅 1280px 以上は 24px */
+@media (min-width: 1280px) {
+  html {
+    font-size: 24px;
+  }
+}
 
 body {
   .main {

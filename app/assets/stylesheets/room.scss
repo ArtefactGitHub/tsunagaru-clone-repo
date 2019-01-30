@@ -10,9 +10,8 @@
   }
   .btn-custom {
     @include myfont-size-s;
-    height: 3rem;
-    line-height: 2;
-    margin: 1rem;
+    line-height: 2rem;
+    margin: 0.5rem;
   }
 
   .text-message-section {
