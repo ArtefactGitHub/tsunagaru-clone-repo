@@ -1,6 +1,12 @@
 @import 'application';
 
 .room {
+  --message-min-height: 5rem;
+  // 5*2+1rem
+  --message-section-frame-min-height: 11rem;
+  // 5*2rem
+  --message-section-min-height: 10rem;
+
   min-height: 80vh;
 
   @mixin myfont-size-ms {
@@ -59,7 +65,7 @@
     left: 0;
     right: 0;
     z-index: 10;
-    min-height: 5*2+1rem;
+    min-height: var(--message-section-frame-min-height);
     // // max-height: 5*2rem;
     // padding: 1rem 0.5rem 1rem;
     // // background-color: #2b2926;
@@ -75,8 +81,8 @@
     left: 0;
     right: 0;
     z-index: 100;
-    min-height: 5*2rem;
-    max-height: 5*2rem;
+    min-height: var(--message-section-min-height);
+    max-height: var(--message-section-min-height);
     // padding: 0rem 0.5rem 0rem;
     // background-color: #2b2926;
     // opacity: 0.4;
@@ -90,7 +96,7 @@
     }
     .message {
       @include under-bar;
-      min-height: 5rem;
+      min-height: --message-min-height;
       line-height: 1.4;
 
       p {
@@ -110,7 +116,7 @@
   }
 
   .edit-message-button-list-section{
-    margin: 3rem 0 3rem;
+    margin: 3rem 0 2rem;
 
     .mymodal-title {
       @include myfont-size-m;
@@ -139,6 +145,6 @@
   }
 
   .message-margin {
-    margin-top: 5*2+1rem;
+    margin-top: var(--message-section-frame-min-height);
   }
 }

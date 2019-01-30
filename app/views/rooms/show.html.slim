@@ -34,20 +34,26 @@
 
       = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
+      .row
+        .message-section-frame
+        .message-section
+          .card
+            #messages data-room_id=@room.id
+              = render @messages
+
+      .message-margin
+
     #js-disconnect-room
       .disconnect-room-section
         .text-center
           p
             | ルームに入室出来ませんでした
-          = link_to mypage_root_path, class: 'btn btn-secondary btn-raised button-back' do
-            | 戻る
-            end
-
-.row
-  .message-section-frame
-  .message-section
-    .card
-      #messages data-room_id=@room.id
-        = render @messages
-
-.message-margin
+          .row
+            .col-6
+              = link_to room_path(@room), class: 'btn btn-primary btn-raised button-back' do
+                | 更新
+                end
+            .col-6
+              = link_to mypage_root_path, class: 'btn btn-secondary btn-raised button-back' do
+                | 戻る
+                end
