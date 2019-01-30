@@ -50,11 +50,44 @@
     margin-bottom: 1rem;
   }
 
+  .message-section-frame {
+    position: fixed;
+    border-style: solid;
+    border-width: 0.5rem;
+    border-color: #2b2926;//rgba(45,45,45, 0.5);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    min-height: 5*2+1rem;
+    // // max-height: 5*2rem;
+    // padding: 1rem 0.5rem 1rem;
+    // // background-color: #2b2926;
+    // // opacity: 0.4;
+    // background: rgba(45,45,45, 0.5);
+    // // width: 100%;
+    // // overflow-x: hidden;
+    // // overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
   .message-section {
+    position: fixed;
+    bottom: 0.5rem;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    min-height: 5*2rem;
+    max-height: 5*2rem;
+    // padding: 0rem 0.5rem 0rem;
+    // background-color: #2b2926;
+    // opacity: 0.4;
+    // background: rgba(45,45,45, 0.5);
+    // width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+
     .card {
       padding: 0rem 0.5rem 0rem;
     }
-
     .message {
       @include under-bar;
       min-height: 5rem;
@@ -77,14 +110,13 @@
   }
 
   .edit-message-button-list-section{
-    margin: 1rem 0 1rem;
+    margin: 3rem 0 3rem;
 
     .mymodal-title {
       @include myfont-size-m;
     }
     .btn-edit-message_button_list {
       @include myfont-size-s;
-      margin: 3rem 0 0;
       line-height: 3rem;
     }
     .form-message_button_value {
@@ -104,5 +136,9 @@
         width: 10rem;
       }
     }
+  }
+
+  .message-margin {
+    margin-top: 5*2+1rem;
   }
 }
