@@ -140,9 +140,8 @@ footer {
 }
 
 .flash_message {
-  // font-size: 2.0rem;
+  @include myfont-size-m;
 }
 
 .title {
-  // font-size: 5.5rem;
 }
