@@ -3,6 +3,10 @@
 .room {
   min-height: 80vh;
 
+  @mixin myfont-size-ml {
+    font-size: 1.2rem;
+  }
+
   .myavatar-m {
     @include avatar;
     width: 5rem;
@@ -11,12 +15,15 @@
   .btn-custom {
     @include myfont-size-s;
     line-height: 2rem;
-    margin: 0.5rem;
+    margin: 0 0.5rem 1rem 0;
   }
 
   .text-message-section {
     margin: 1rem 0 1rem;
 
+    .title {
+      @include myfont-size-ml;
+    }
     .text-area-custom {
       @include myfont-size-s;
     }
@@ -28,8 +35,14 @@
   .button-message-section {
     margin: 1rem 0 1rem;
 
+    .title {
+      @include myfont-size-ml;
+    }
     .ask-buttons {
       margin-bottom: 1rem;
+    }
+    .card {
+      padding: 1rem 0 0;
     }
   }
 

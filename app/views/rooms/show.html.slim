@@ -2,23 +2,25 @@
   .col-10.offset-1
     #js-connect-room
       .text-message-section
-        | 文字を入力して気持ちを伝えよう！
+        .title
+          | 文字を入力して気持ちを伝えよう！
         = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }, placeholder: '（最大100文字）'
         /   button type="button" class='btn btn-primary btn-custom reset-input-button'
         /     | 入力状態を戻す
 
       .button-message-section
-        | ボタンを押して気持ちを伝えよう！
+        .title
+          | ボタンを押して気持ちを伝えよう！
         .ask-buttons
           .card
-            .col-12.text-center
+            .text-center
               - @room.ask_message_buttons.each do |message|
                 button type="button" class='js-command btn btn-success btn-custom' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
                   | #{message.content}
 
         .answer-buttons
           .card
-            .col-12.text-center
+            .text-center
               - @room.answer_message_buttons.each do |message|
                 button type="button" class='js-command btn btn-info btn-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
                   | #{message.content}
