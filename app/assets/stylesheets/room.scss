@@ -3,7 +3,7 @@
 .room {
   min-height: 80vh;
 
-  @mixin myfont-size-ml {
+  @mixin myfont-size-ms {
     font-size: 1.2rem;
   }
 
@@ -22,7 +22,7 @@
     margin: 1rem 0 1rem;
 
     .title {
-      @include myfont-size-ml;
+      @include myfont-size-ms;
     }
     .text-area-custom {
       @include myfont-size-s;
@@ -36,7 +36,7 @@
     margin: 1rem 0 1rem;
 
     .title {
-      @include myfont-size-ml;
+      @include myfont-size-ms;
     }
     .ask-buttons {
       margin-bottom: 1rem;
@@ -52,13 +52,12 @@
 
   .message-section {
     .card {
-      padding: 1rem 0.5rem 1rem;
+      padding: 0rem 0.5rem 0rem;
     }
 
     .message {
       @include under-bar;
-      min-height: 6rem;
-      margin-bottom: 0.5rem;
+      min-height: 5rem;
       line-height: 1.4;
 
       p {
@@ -69,7 +68,7 @@
         @include myfont-size-s;
       }
       .content {
-        @include myfont-size-ml;
+        @include myfont-size-ms;
       }
       .created_at {
         @include myfont-size-xs;
