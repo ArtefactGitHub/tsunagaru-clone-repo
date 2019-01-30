@@ -1,27 +1,26 @@
 .edit-message-button-list-section
   .row
     .col-12.text-right
-      button.btn.btn-success.mybtn-l-2line type="button" data-toggle="modal" data-target="#myModal"
-        | メッセージボタンの
-        br
-        | 編集
+      button.btn.btn-secondary.btn-edit-message_button_list type="button" data-toggle="modal" data-target="#myModal"
+        | メッセージボタンの編集
 
-.modal.fade id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-  .modal-dialog.modal-lg role="document"
-    .modal-content
-      .modal-header
-        h2 class="modal-title" id="exampleModalLabel"
-          = fa_icon 'comment', class: 'icon'
-          | メッセージボタンの編集
-        button type="button" class="close" data-dismiss="modal" aria-label="閉じる"
-          span aria-hidden="true"
-            | &times;
-      .modal-body
-        .message_buttons
-          .row
-            .col-12
-              = render 'message_button_list', message_button_list: message_button_list
+  .modal.fade id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    .modal-dialog.modal-lg role="document"
+      .modal-content
+        .modal-header
+          / h3 class="modal-title" id="exampleModalLabel"
+          .modal-title.mymodal-title#exampleModalLabel
+            = fa_icon 'comment', class: 'icon'
+            | メッセージボタンの編集
+          button type="button" class="close" data-dismiss="modal" aria-label="閉じる"
+            span aria-hidden="true"
+              | &times;
+        .modal-body
+          .message_buttons
+            .row
+              .col-12
+                = render 'message_button_list', message_button_list: message_button_list
 
-      .modal-footer
-        button type="button" class="btn btn-secondary" data-dismiss="modal"
-          | 閉じる
+        .modal-footer
+          button type="button" class="btn btn-secondary" data-dismiss="modal"
+            | 閉じる

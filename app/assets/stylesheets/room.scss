@@ -8,72 +8,86 @@
     width: 5rem;
     height: 5rem;
   }
-
-  .text-message-section {
-    margin: 1rem 0 1rem
-  }
-  .button-message-section {
-    margin: 1rem 0 1rem
-  }
-  .ask-buttons {
-    margin-bottom: 1rem;
-  }
-  .delete-message-section {
-    margin-bottom: 1rem;
-  }
-  .message-section {
-    .card {
-      padding: 1rem 0.5rem 1rem;
-    }
-  }
-  .edit-message-button-list-section{
-    margin: 1rem 0 1rem;
-  }
-  .message {
-    @include under-bar;
-    min-height: 6rem;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-
-    p {
-      margin-bottom: 0;
-      word-break: break-all;
-    }
-    .name {}
-    .introduction {}
-    .created_at {
-      @include myfont-size-s;
-    }
-  }
-
-  .text-area-custom {
+  .btn-custom {
     @include myfont-size-s;
-  }
-  .button-custom {
-    @include myfont-size-s;
-    height: 70px;
+    height: 3rem;
     line-height: 2;
     margin: 1rem;
   }
 
-  .reset-input-button {
-    height: 15vh;
+  .text-message-section {
+    margin: 1rem 0 1rem;
+
+    .text-area-custom {
+      @include myfont-size-s;
+    }
+    .reset-input-button {
+      height: 5rem;
+    }
   }
 
-  .mybtn-disconnect {
-    @include myfont-size-xs;
-    width: 200px;
-    height: 60px;
-    margin-top: 30px;
-    margin-bottom: 30px;
+  .button-message-section {
+    margin: 1rem 0 1rem;
+
+    .ask-buttons {
+      margin-bottom: 1rem;
+    }
+  }
+
+  .delete-message-section {
+    margin-bottom: 1rem;
+  }
+
+  .message-section {
+    .card {
+      padding: 1rem 0.5rem 1rem;
+    }
+
+    .message {
+      @include under-bar;
+      min-height: 6rem;
+      margin-bottom: 0.5rem;
+      line-height: 1.4;
+
+      p {
+        margin-bottom: 0;
+        word-break: break-all;
+      }
+      .name {}
+      .introduction {}
+      .created_at {
+        @include myfont-size-s;
+      }
+    }
+  }
+
+  .edit-message-button-list-section{
+    margin: 1rem 0 1rem;
+
+    .mymodal-title {
+      @include myfont-size-m;
+    }
+    .btn-edit-message_button_list {
+      @include myfont-size-s;
+      margin: 3rem 0 0;
+      height: 2rem;
+    }
+    .form-message_button_value {
+      @include myfont-size-s;
+      width: 100%;
+    }
   }
 
   #js-disconnect-room {
     display: none;
-  }
 
-  .form-message_button_value {
-    @include myfont-size-s;
-    width: 100%;
+    .disconnect-room-section {
+      margin-top: 3rem;
+
+      .button-back {
+        @extend .mybtn-m;
+        width: 10rem;
+      }
+    }
   }
 }
