@@ -65,10 +65,14 @@
         margin-bottom: 0;
         word-break: break-all;
       }
-      .name {}
-      .introduction {}
-      .created_at {
+      .name {
         @include myfont-size-s;
+      }
+      .content {
+        @include myfont-size-ml;
+      }
+      .created_at {
+        @include myfont-size-xs;
       }
     }
   }
@@ -82,7 +86,7 @@
     .btn-edit-message_button_list {
       @include myfont-size-s;
       margin: 3rem 0 0;
-      height: 2rem;
+      line-height: 3rem;
     }
     .form-message_button_value {
       @include myfont-size-s;
