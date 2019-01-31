@@ -1,7 +1,7 @@
 .row
-  .col-sm-10.offset-sm-1.col-12
-    #js-connect-room
-      .input-area
+  #js-connect-room
+    .input-area
+      .col-sm-10.offset-sm-1.col-12
         .text-message-section
           .title.offset-sm-0.offset-1
             | 文字を入力して気持ちを伝えよう！
@@ -35,17 +35,17 @@
 
         = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
-      .output-area
-        .message-section-frame
-        .message-section
-          .card.text-center
-            / - if @messages.size == 0
-            /   .info
-            /     | メッセージ欄
-            #messages data-room_id=@room.id
-              = render @messages
+    .output-area
+      .message-section-frame
+      .message-section
+        .card.text-center
+          / - if @messages.size == 0
+          /   .info
+          /     | メッセージ欄
+          #messages data-room_id=@room.id
+            = render @messages
 
-        .message-margin
+      .message-margin
 
     #js-disconnect-room
       .disconnect-room-section
