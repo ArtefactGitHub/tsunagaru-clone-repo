@@ -1,13 +1,16 @@
 @import 'application';
 
 .room {
-  --message-min-height: 5rem;
-  // 5*2+1rem
-  --message-section-frame-min-height: 11rem;
-  // 5*2rem
-  --message-section-min-height: 10rem;
+  // １メッセージの高さ
+  --message-min-height: 10vh;
+  // メッセージセクションの枠を含めた高さ
+  --message-section-frame-min-height: 30vh;
+  // メッセージセクションの高さ
+  --message-section-min-height: 28vh;
+  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
+  --input-area-height: 60vh;
 
-  min-height: 80vh;
+  // min-height: 80vh;
 
   @mixin myfont-size-ms {
     font-size: 1.2rem;
@@ -56,6 +59,23 @@
     margin-bottom: 1rem;
   }
 
+  .input-area {
+    position: fixed;
+    top: 8vh;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    min-height: var(--input-area-height);
+    max-height: 20rem;
+    // padding: 0rem 0.5rem 0rem;
+    // background-color: #2b2926;
+    // background: rgba(45,45,45, 0.5);
+    // width: 100%;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    // margin: 0 0rem 0 0.5rem;
+  }
+
   .message-section-frame {
     position: fixed;
     border-style: double;
@@ -93,10 +113,11 @@
     margin: 0 0rem 0 0.5rem;
 
     .card {
-      padding: 0rem 0.5rem 0rem;
+      // padding: 0rem 0.5rem 0rem;
+      margin: 0 0.5rem 0 0;
       background-color: #006c86;
       border-radius: 0;
-      
+
       .info {
         line-height: var(--message-section-min-height);
         background: rgba(0,0,0, 0);
@@ -107,6 +128,7 @@
       @include under-bar;
       min-height: --message-min-height;
       line-height: 1.4;
+      background-color: white;
 
       p {
         margin-bottom: 0;
