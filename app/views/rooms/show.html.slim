@@ -34,12 +34,13 @@
 
       = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
-      .row
-        .message-section-frame
-        .message-section
-          .card
-            #messages data-room_id=@room.id
-              = render @messages
+      .message-section-frame
+      .message-section
+        .card.text-center
+          .info
+            | メッセージ欄
+          #messages data-room_id=@room.id
+            = render @messages
 
       .message-margin
 
