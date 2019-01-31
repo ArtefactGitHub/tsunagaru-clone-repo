@@ -33,7 +33,8 @@
               button type="button" id='js-clear-button'
                 | メッセージを全て削除
 
-        = render 'edit_message_button_list_modal', message_button_list: @message_button_list
+    .modal-area
+      = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
     .output-area
       .message-section-frame

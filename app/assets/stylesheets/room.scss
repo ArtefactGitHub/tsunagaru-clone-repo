@@ -1,5 +1,11 @@
 @import 'application';
 
+header {
+  .icon {
+    @include myfont-size-l;
+  }
+}
+
 .room {
   // １メッセージの高さ
   --message-min-height: 10vh;
@@ -9,8 +15,6 @@
   --message-section-min-height: 28vh;
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
   --input-area-height: 60vh;
-
-  // min-height: 80vh;
 
   @mixin myfont-size-ms {
     font-size: 1.2rem;
@@ -67,13 +71,8 @@
     z-index: 10;
     min-height: var(--input-area-height);
     max-height: 20rem;
-    // padding: 0rem 0.5rem 0rem;
-    // background-color: #2b2926;
-    // background: rgba(45,45,45, 0.5);
-    // width: 100%;
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    // margin: 0 0rem 0 0.5rem;
   }
 
   .message-section-frame {
@@ -146,19 +145,17 @@
     }
   }
 
-  .edit-message-button-list-section{
-    margin: 3rem 0 2rem;
+  .modal-area {
+    .edit-message-button-list-section {
+      margin: 1rem 1rem 0 2rem;
 
-    .mymodal-title {
-      @include myfont-size-m;
-    }
-    .btn-edit-message_button_list {
-      @include myfont-size-s;
-      line-height: 3rem;
-    }
-    .form-message_button_value {
-      @include myfont-size-s;
-      width: 100%;
+      .mymodal-title {
+        @include myfont-size-m;
+      }
+      .form-message_button_value {
+        @include myfont-size-s;
+        width: 100%;
+      }
     }
   }
 
