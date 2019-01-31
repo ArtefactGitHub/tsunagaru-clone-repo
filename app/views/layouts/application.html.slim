@@ -1,6 +1,12 @@
 doctype html
 html
   head
+    = render 'layouts/meta_tags'
+    = favicon_link_tag('favicon.ico')
+    meta content=("text/html; charset=UTF-8") http-equiv="Content-Type" /
+    meta charset="UTF-8" /
+    meta lang="ja" /
+    title ログイン
     = csrf_meta_tags
     = csp_meta_tag
 

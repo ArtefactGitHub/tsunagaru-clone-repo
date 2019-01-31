@@ -1,35 +1,176 @@
 @import 'application';
 
+header {
+  .icon {
+    @include myfont-size-l;
+  }
+}
+
+::placeholder{
+  color: #ffffffbd;
+}
+
 .room {
-  min-height: 80vh;
+  // １メッセージの高さ
+  --message-min-height: 5rem;
+  // メッセージセクションの枠を含めた高さ
+  --message-section-frame-min-height: 30vh;
+  // メッセージセクションの高さ
+  --message-section-min-height: 28vh;
+  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
+  --input-area-height: 59vh;
 
-  .text-area-custom {
-    font-size: 2.5rem;
+  @mixin myfont-size-ms {
+    font-size: 1.2rem;
   }
 
-  .button-custom {
-    font-size: 2.0rem;
+  .myavatar-m {
+    @include avatar;
+    width: 4rem;
+    height: 4rem;
+  }
+  .btn-custom {
+    @include myfont-size-s;
+    line-height: 2rem;
+    margin: 0 0.5rem 1rem 0;
   }
 
-  .reset-input-button {
-    height: 15vh;
+  .text-message-section {
+    margin: 1rem 0 1rem;
+
+    .title {
+      @include myfont-size-ms;
+    }
+    .text-area-custom {
+      @include myfont-size-s;
+    }
+    .reset-input-button {
+      height: 5rem;
+    }
   }
 
-  .mybtn-disconnect {
-    width: 200px;
-    height: 60px;
-    font-size: 1.5rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
+  .button-message-section {
+    margin: 1rem 0 1rem;
+
+    .title {
+      @include myfont-size-ms;
+    }
+    .ask-buttons {
+      margin-bottom: 1rem;
+    }
+    .card {
+      padding: 1rem 0 0;
+    }
+  }
+
+  .delete-message-section {
+    margin-bottom: 1rem;
+  }
+
+  .input-area {
+    position: fixed;
+    top: 8vh;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: var(--input-area-height);
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+  }
+
+  .message-section-frame {
+    position: fixed;
+    border-style: solid;
+    border-width: thin;
+    border-color: #ced4da;//rgba(45,45,45, 0.5);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: var(--message-section-frame-min-height);
+  }
+  .message-section {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    height: var(--message-section-min-height);
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    margin: 0 0.5rem 0.5rem 0.5rem;
+
+    .card {
+      background-color: #006c86;
+      border: none;
+
+      .info {
+        line-height: var(--message-section-min-height);
+        background: rgba(0,0,0, 0);
+        color: white;
+      }
+    }
+    .message {
+      @include under-bar;
+      min-height: var(--message-min-height);
+      line-height: 1.4;
+      background-color: white;
+
+      .avatar {
+        line-height: 5rem;
+      }
+      p {
+        margin-bottom: 0;
+        word-break: break-all;
+      }
+      .name {
+        @include myfont-size-s;
+      }
+      .content {
+        @include myfont-size-ms;
+      }
+      .created_at {
+        @include myfont-size-xs;
+      }
+    }
+  }
+
+  .modal-area {
+    .edit-message-button-list-section {
+      margin: 1rem 1rem 0 2rem;
+
+      .mymodal-title {
+        @include myfont-size-m;
+      }
+      .form-message_button_value {
+        @include myfont-size-s;
+        width: 100%;
+      }
+      .btn-ask {
+        background: #28a745;
+        color: white;
+      }
+      .btn-answer {
+        background: #17a2b8;
+        color: white;
+      }
+    }
   }
 
   #js-disconnect-room {
     display: none;
+
+    .disconnect-room-section {
+      margin-top: 3rem;
+
+      .button-back {
+        @extend .mybtn-m;
+        width: 10rem;
+      }
+    }
   }
 
-  .form-message_button_value {
-    @include myfont-size-minimum;
-
-    width: 100%;
+  .message-margin {
+    margin-top: var(--message-section-frame-min-height);
   }
 }

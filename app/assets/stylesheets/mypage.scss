@@ -1,45 +1,11 @@
 @import 'application';
 
 .mypage {
+  margin-top: 8+2vh;
   min-height: 80vh;
 
-  .mybtn-start-chat {
-    width: 400px;
-    height: 100px;
-    font-size: 2.5rem;
-    margin-bottom: 20px;
-    line-height: 1;
-  }
-
-  .mybtn-default {
-    width: 400px;
-    height: 100px;
-    font-size: 2.5rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    line-height: 2;
-  }
-  .mybtn-default-2line {
-    width: 400px;
-    height: 100px;
-    font-size: 2.0rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    line-height: 1.3;
-  }
-  .mybtn-small {
-    width: 200px;
-    height: 60px;
-    font-size: 1.5rem;
-    margin-top: 30px;
-    margin-bottom: 30px;
-    line-height: 2;
-  }
-
-  .mybtn-minimum {
-    width: 120px;
-    height: 50px;
-    font-size: 1.5rem;
+  p {
+    line-height: 1.2rem;
   }
 
   .my-checkbox {
@@ -48,14 +14,11 @@
       -webkit-transform: scale(2, 2);
       transform: scale(2, 2);
     }
-    .info {
-      font-size: 1rem;
-    }
   }
 
   .sidebar {
     position: fixed;
-    top: 0;
+    top: 8vh;
     bottom: 0;
     left: 0;
     z-index: 200; /* Behind the navbar */
@@ -66,10 +29,12 @@
     text-align: center;
 
     .mybtn-sidebar-settings {
-      margin-top: 100px;
+      margin-top: 5rem;
     }
 
     .sidebar-sticky {
+      // font-size: 6rem;
+      @include myfont-size-xl;
       position: -webkit-sticky;
       position: sticky;
       top: 48px; /* Height of navbar */
@@ -79,13 +44,20 @@
       overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
 
       background-color: #2b2926;
-      font-size: 6rem;
     }
   }
 
   .xs-sm-sidebar {
+    // font-size: 4.5rem;
+    @include myfont-size-l;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 200;
+    min-height: 10vh;
+    max-height: 10vh;
+
     background-color: #2b2926;
-    font-size: 3.5rem;
     width: 100%;
   }
 
@@ -99,57 +71,92 @@
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
-  .avatar {
-    border-style: solid;
-    border-width: 0.1rem;
-    color: lightgray;
-    background: #f1f1f1;
+  .myavatar-xl {
+    @include avatar;
+    width: 8rem;
+    height: 8rem;
+  }
+  .myavatar-l {
+    @include avatar;
+    width: 6.5rem;
+    height: 6.5rem;
+  }
+  .myavatar-m {
+    @include avatar;
+    width: 5rem;
+    height: 5rem;
   }
   .mycard-default {
     max-height: 20vh;
   }
   .text-introduction {
+    @include myfont-size-s;
     max-height: 15vh;
     overflow: auto;
   }
   .friend-count-text {
-    @include myfont-size-minimum;
+    @include myfont-size-s;
     margin-left: 20px;
     padding-top: 20px;
   }
 
   .dashboard {
     .chat-buttons {
-      margin-bottom: 40px;
+      margin: 0 0 1.5rem;
+    }
+    .chat-button {
+      @extend .mybtn-l-2line;
+      margin-bottom: 2rem;
     }
     .myprofile {
       margin-bottom: 70px;
     }
     .profile-text {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
     }
     .profile-introduction-card {
+      @include myfont-size-s;
       @extend .mycard-default;
-      margin-top: 20px;
-      font-size: 1.5rem;
+      margin-top: 1rem;
       overflow: auto;
+
+      .card-body {
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
+      }
     }
   }
 
-  .users {
+  .myprofile {
+    @include myfont-size-m;
+
+    .name {
+      margin-top: 1rem;
+    }
+    .user-id {
+      @include myfont-size-s;
+      @include under-bar;
+      margin-bottom: 1rem;
+    }
+
+    .mylabel-avatar {
+      margin-top: 1rem;
+    }
     .filelabel:hover {
       opacity: 0.5;
       cursor: pointer;
     }
+    // デフォルトのファイル選択ボタンを非表示にする
     #user_avatar {
       display: none;
     }
     .profile-introduction-card {
-      margin-top: 20px;
-      font-size: 1.5rem;
-      max-height: 25vh;
+      margin-top: 1rem;
+      max-height: 15rem;
+      margin-bottom: 1rem;
     }
     .form-introduction {
+      @include myfont-size-s;
       padding: 10px;
       word-wrap: break-word;
       background-color: #fff;
@@ -160,24 +167,47 @@
   }
 
   .friend {
-    .break-friendship-button {
-      margin-top: 5vh;
+    .friend-button {
+      margin-bottom: 2rem;
     }
-    .mybtn-break-friendship {
-      @include myfont-size-small;
+    .break-friendship-button {
+      @include myfont-size-xs;
+      margin: 0.5rem 0 0.5rem 0.5rem;
+      text-align: right;
     }
   }
 
   .friend-card {
-    @extend .mycard-default;
-    margin-top: 10px;
-    margin-bottom: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    min-height: 7rem;
 
     .friend-card-body {
-    }
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
 
-    .friend-text {
-      @include myfont-size-minimum;
+      .friend-text {
+        @include myfont-size-s;
+
+        .name {
+          @include under-bar;
+          margin-bottom: 20px;
+        }
+        .introduction {
+          @include myfont-size-s;
+          @include under-bar;
+          // line-height含めた3行分の高さ
+          max-height: 1.2*3rem;
+          overflow: hidden;
+        }
+        .introduction-overflow {
+          @include myfont-size-s;
+          @include under-bar;
+          // line-height含めた3行分の高さ
+          max-height: 1.2*3rem;
+          overflow: auto;
+        }
+      }
     }
   }
 
@@ -186,7 +216,7 @@
     margin-bottom: 20px;
 
     .friend_request-text {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
     }
 
     .form-friend_requests {
@@ -196,15 +226,34 @@
       margin-top: 20px;
     }
     .form-input-info {
-      @include myfont-size-minimum;
+      @include myfont-size-s;
+    }
+    .friend_request_list {
+      margin-top: 1rem;
     }
   }
 
   .setting {
+    .restrict_setting_editing {
+      .mycheckbox-restrict_setting_editing {
+        @extend .my-checkbox;
+        margin: 10px;
+      }
+      .card {
+        margin-top: 5vh;
+        border-color: red;
+      }
+      .info {
+        @include myfont-size-xs;
+        margin-left: 20px;
+      }
+    }
     .form-message_button_value {
-      @include myfont-size-minimum;
-
+      @include myfont-size-s;
       width: 100%;
+    }
+    .btn-logout {
+      margin-top: 3rem;
     }
   }
 }

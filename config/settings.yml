@@ -1,6 +1,35 @@
+common:
+  app:
+    name: 1ButtonChat
+    page_description: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
+    page_keywords: "チャット,ちゃっと,療養"
+    page_title: １ボタンで想いを届けよう
+    og:
+      title: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
+      type: website
+      url: https://www.xxx.com
+      image: site_image.jpg
+      site_name: xxxx
+      description: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
+    mail:
+      from: '"xxxx" <noreply@xxxx.com>'
+    contact: https://twitter.com/xxxx
+  password:
+    minimum_count: 6
+  host_name: www.xxx
+
+twitter:
+  url: https://twitter.com
+  account_name: xxxx
+  share_url: https://twitter.com/intent/tweet
+  card: summary_large_image
+  auto_fill_password_count: 8
+  hashtag: xxxx
+
 user:
   avatar:
-    default_file_name: 'avatar_sample.png'
+    default_file_name: avatar_sample.png
+    by_sns_file_name: profile_image
 
 room:
   limit_of_entry: 15
