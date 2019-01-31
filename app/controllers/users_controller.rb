@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   include RoomsControllerModule
+  include UseTypeSettingsControllerModule
 
   skip_before_action :require_login, only: %i[new create]
 
@@ -12,6 +13,7 @@ class UsersController < ApplicationController
     @user.set_uuid
     if @user.save
       create_owner_room @user
+      create_use_type_setting @user
 
       redirect_to login_url, success: 'ユーザー登録しました'
     else

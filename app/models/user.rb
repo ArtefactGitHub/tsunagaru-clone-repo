@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_many :receive_requests, class_name: 'FriendRequest', foreign_key: 'receiver_id', dependent: :destroy
   has_many :receivers, through: :send_requests, source: :receiver
   has_many :senders, through: :receive_requests, source: :sender
+  has_one :use_type_setting, dependent: :destroy
 
   has_one_attached :avatar
 
