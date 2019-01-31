@@ -1,5 +1,5 @@
 - message_buttons.each_with_index do |message_button, index|
   = f.hidden_field :message_type, value: message_button.message_type, name: "message_button_list[message_button][#{index}][message_type]"
   = f.hidden_field :message_type, value: message_button.message_no, name: "message_button_list[message_button][#{index}][message_no]"
-  = f.text_field :content, value: message_button.content, name: "message_button_list[message_button][#{index}][content]", class: 'form-message_button_value'
+  = f.text_field :content, value: message_button.content, name: "message_button_list[message_button][#{index}][content]", class: "form-message_button_value btn-#{message_button.message_type}", placeholder: '（非表示になります）'
   end
