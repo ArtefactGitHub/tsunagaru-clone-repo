@@ -39,10 +39,11 @@
     .output-area
       .message-section-frame
       .message-section
-        .card.text-center
-          / - if @messages.size == 0
-          /   .info
-          /     | メッセージ欄
+        .card
+          / .text-center
+          /   - if @messages.size == 0
+          /     .info
+          /       | メッセージ欄
           #messages data-room_id=@room.id
             = render @messages
 
