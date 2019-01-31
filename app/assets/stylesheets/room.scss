@@ -8,13 +8,13 @@ header {
 
 .room {
   // １メッセージの高さ
-  --message-min-height: 10vh;
+  --message-min-height: 5rem;
   // メッセージセクションの枠を含めた高さ
   --message-section-frame-min-height: 30vh;
   // メッセージセクションの高さ
   --message-section-min-height: 28vh;
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 60vh;
+  --input-area-height: 59vh;
 
   @mixin myfont-size-ms {
     font-size: 1.2rem;
@@ -69,8 +69,7 @@ header {
     left: 0;
     right: 0;
     z-index: 10;
-    min-height: var(--input-area-height);
-    max-height: 20rem;
+    height: var(--input-area-height);
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }
@@ -84,29 +83,15 @@ header {
     left: 0;
     right: 0;
     z-index: 10;
-    min-height: var(--message-section-frame-min-height);
-    // // max-height: 5*2rem;
-    // padding: 1rem 0.5rem 1rem;
-    // // background-color: #2b2926;
-    // // opacity: 0.4;
-    // background: rgba(45,45,45, 0.5);
-    // // width: 100%;
-    // // overflow-x: hidden;
-    // // overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    height: var(--message-section-frame-min-height);
   }
   .message-section {
     position: fixed;
-    bottom: 4px;
+    bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    min-height: var(--message-section-min-height);
-    max-height: var(--message-section-min-height);
-    // padding: 0rem 0.5rem 0rem;
-    // background-color: #2b2926;
-    // opacity: 0.4;
-    // background: rgba(45,45,45, 0.5);
-    // width: 100%;
+    height: var(--message-section-min-height);
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     margin: 0 0.5rem 0.5rem 0.5rem;
@@ -123,12 +108,12 @@ header {
     }
     .message {
       @include under-bar;
-      min-height: --message-min-height;
+      min-height: var(--message-min-height);
       line-height: 1.4;
       background-color: white;
 
       .avatar {
-        line-height: 6rem;
+        line-height: 5rem;
       }
       p {
         margin-bottom: 0;
