@@ -1,9 +1,9 @@
 .message
   .row
-    .col-sm-3.col-4
+    .col-sm-3.col-3.avatar
       .text-center
         = render 'shared/users/avatar', user: message.user, assign_class: 'myavatar-m'
-    .col-sm-9.offset-sm-0.col-8.friend-text
+    .col-sm-8.offset-sm-0.col-8.friend-text
       .row.name
         | - #{message.user.name} -
       .row.content

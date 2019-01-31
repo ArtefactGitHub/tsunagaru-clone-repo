@@ -22,8 +22,8 @@ header {
 
   .myavatar-m {
     @include avatar;
-    width: 5rem;
-    height: 5rem;
+    width: 4rem;
+    height: 4rem;
   }
   .btn-custom {
     @include myfont-size-s;
@@ -129,6 +129,9 @@ header {
       line-height: 1.4;
       background-color: white;
 
+      .avatar {
+        line-height: 6rem;
+      }
       p {
         margin-bottom: 0;
         word-break: break-all;
