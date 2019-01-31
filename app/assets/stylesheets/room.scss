@@ -6,6 +6,10 @@ header {
   }
 }
 
+::placeholder{
+  color: #ffffffbd;
+}
+
 .room {
   // １メッセージの高さ
   --message-min-height: 5rem;
@@ -141,6 +145,14 @@ header {
       .form-message_button_value {
         @include myfont-size-s;
         width: 100%;
+      }
+      .btn-ask {
+        background: #28a745;
+        color: white;
+      }
+      .btn-answer {
+        background: #17a2b8;
+        color: white;
       }
     }
   }
