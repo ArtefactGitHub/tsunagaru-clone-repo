@@ -3,24 +3,26 @@
     .row.headline
       = fa_icon 'user-circle', class: 'icon'
       | プロフィール画面
-    .row.profile-text
-      .col-md-2.text-center
-        = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar'
-        label
+    .row
+      .col-md-3.text-center
+        = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar', assign_class: 'myavatar-xl'
+        label.mylabel-avatar
           span.filelabel title="ファイルを選択"
             = fa_icon 'edit', class: 'icon'
           .file
             = f.file_field :avatar, accept: 'image/jpg,image/jpeg,image/png,image/gif'
 
-      .col-md-10
-        div
+      .col-md-9
+        .name
           | #{current_user.name}
-        div
-          | （ユーザーID：#{current_user.uuid}）
+        .user-id
+          | （ユーザーID: #{current_user.uuid}）
     .row.text-left
       .col-12
         .card.profile-introduction-card
           = f.text_area :introduction, value: current_user.introduction, class: 'form-introduction', rows: '10'
 
-    .text-right
-      = f.submit '更新', class: 'btn btn-primary btn-raised mybtn-minimum'
+    .row
+      .col-sm-4.offset-sm-4.col-8.offset-2
+        .text-center
+          = f.submit '更新', class: 'btn btn-primary btn-raised mybtn-m'

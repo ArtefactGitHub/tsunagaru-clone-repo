@@ -9,14 +9,11 @@
         .row
           .col-lg-6
             .text-center
-              p.mt-5
-                = link_to room_path(current_user.my_room), class: 'btn btn-primary btn-raised mybtn-start-chat' do
-                  | 自分のチャット</br>部屋に入る
-                  end
+              = link_to room_path(current_user.my_room), class: 'btn btn-primary chat-button' do
+                | 自分のチャット</br>部屋に入る
           .col-lg-6
             .text-center
-              p.mt-5
-                = render 'modal', friends: @friends
+              = render 'modal', friends: @friends
 
       = render 'profile'
 

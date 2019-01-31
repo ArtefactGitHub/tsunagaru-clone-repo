@@ -1,0 +1,7 @@
+header.fixed-top
+  .nav.navbar.navbar-expand.navbar-light.bg-white.common-header
+    = link_to root_url
+      = image_tag 'logo.png', class: 'logo'
+    = link_to '', class: 'ml-auto icon', data: { toggle: "modal", target: "#myModal" } do
+      = fa_icon 'cog'
+      end
