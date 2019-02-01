@@ -268,13 +268,13 @@
 
     .use_type_setting {
       .form-section {
-        margin-top: 2rem;
+        margin-top: 1rem;
 
         .selection-area {
-          margin-bottom: 3rem;
+          margin-bottom: 2rem;
         }
         .form-radio_buttons {
-          margin-bottom: 2rem;
+          margin-bottom: 1rem;
         }
         .form-radio_button {
           margin-bottom: 1rem;
@@ -285,6 +285,9 @@
         .info {
           @include myfont-size-ss;
           margin-left: 1rem;
+        }
+        .form-check_box {
+          line-height: 1.2;
         }
         .optional_label {
           @include myfont-size-s;
