@@ -127,16 +127,17 @@ header {
 
 footer {
   .common-footer {
-    // font-size: 1rem;
     @include myfont-size-xs;
     position: relative;
-    height: 80px;
-    padding: 10px;
+    height: 8vh;
+    padding: 0.5rem;
     z-index: 100;
-    background: white;
     box-shadow: 0 3px 6px gray;
     text-align: right;
 
+    .link-logout {
+      margin-left: 2rem;
+    }
     .copyright {
     }
   }
