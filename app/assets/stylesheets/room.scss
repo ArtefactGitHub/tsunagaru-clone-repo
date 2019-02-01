@@ -14,11 +14,11 @@ header {
   // １メッセージの高さ
   --message-min-height: 5rem;
   // メッセージセクションの枠を含めた高さ
-  --message-section-frame-min-height: 30vh;
+  --message-section-frame-min-height: 40vh;
   // メッセージセクションの高さ
-  --message-section-min-height: 28vh;
+  --message-section-min-height: 38vh;
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 59vh;
+  --input-area-height: 49vh;
 
   .myavatar-m {
     @include avatar;
