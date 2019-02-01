@@ -20,10 +20,6 @@ header {
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
   --input-area-height: 59vh;
 
-  @mixin myfont-size-ms {
-    font-size: 1.2rem;
-  }
-
   .myavatar-m {
     @include avatar;
     width: 4rem;
