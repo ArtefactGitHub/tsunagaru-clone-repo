@@ -1,0 +1,24 @@
+= form_for [:mypage, :setting, use_type_setting] do |f|
+  .row.selection-area
+    .col-sm-10.offset-sm-1.col-12
+      / = f.collection_radio_buttons :use_type_setting, :use_type, UseType.all, :id, :use_type
+      .form-radio_button
+        = f.radio_button :use_type, :use_normal, checked: "checked"
+        = f.label 'いろいろ', class: "use_type_label"
+        .info 各種機能をご利用出来ます。
+        .info 「チャットのみ」へ移行前に「プロフィール編集」や「トモダチの追加」をお済ませください。
+      .form-radio_button
+        = f.radio_button :use_type, :only_chat
+        = f.label 'チャットのみ', class: "use_type_label"
+        .info 各種編集機能や「トモダチの追加」などの機能が制限されます。
+        .info チャット以外の操作を必要としない場合はこちらをご利用ください。
+
+  .row.text-center
+    .col-sm-4.offset-sm-2
+      = f.submit '更新', class: 'btn btn-primary btn-raised mybtn-m'
+
+    .col-sm-4
+      = link_to mypage_setting_root_path, class: 'btn btn-secondary btn-raised mybtn-m' do
+        | 戻る
+        end
+end
