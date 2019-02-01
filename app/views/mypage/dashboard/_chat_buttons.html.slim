@@ -7,6 +7,6 @@
       .col-lg-6
         = render 'modal', friends: friends
     - else
-      .col-lg-6.offset-lg-3.col-10.offset-1
+      .col-sm-8.offset-sm-2
           = link_to room_path(current_user.my_room), class: 'btn btn-primary chat-button' do
             | 自分のチャット</br>部屋に入る

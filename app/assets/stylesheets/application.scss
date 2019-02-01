@@ -47,7 +47,6 @@ html {
 .mybtn-l {
   @extend .mybtn;
   @include myfont-size-m;
-  min-width: 310px;
   line-height: 4.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -55,7 +54,6 @@ html {
 .mybtn-l-2line {
   @extend .mybtn;
   @include myfont-size-m;
-  min-width: 310px;
   line-height: 2.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
