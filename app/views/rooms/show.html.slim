@@ -42,10 +42,9 @@
       .message-section-frame
       .message-section
         .card
-          / .text-center
-          /   - if @messages.size == 0
-          /     .info
-          /       | メッセージ欄
+          .text-center.title
+            | メッセージ欄
+          .padding
           #messages data-room_id=@room.id
             = render @messages
 
