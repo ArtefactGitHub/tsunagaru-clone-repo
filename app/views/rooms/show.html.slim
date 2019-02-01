@@ -39,16 +39,14 @@
       = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
     .output-area
-      .message-section-frame
+      .message-section-title
+        .text-center.title
+          | メッセージ欄
+
       .message-section
         .card
-          .text-center.title
-            | メッセージ欄
-          .padding
           #messages data-room_id=@room.id
             = render @messages
-
-      .message-margin
 
     #js-disconnect-room
       .disconnect-room-section
