@@ -21,4 +21,15 @@ document.addEventListener("turbolinks:load", function(){
       reader.readAsDataURL(file);
     }
   }
+
+  $('input[name="use_type_setting[use_type]"').click(function() {
+    if($('input[name="use_type_setting[use_type]"]:checked').val() == 'use_normal') {
+      $('#use_type_setting_use_text_input').prop('checked', true);
+      $('#use_type_setting_use_button_input').prop('checked', false);
+    }
+    if($('input[name="use_type_setting[use_type]"]:checked').val() == 'only_chat') {
+      $('#use_type_setting_use_text_input').prop('checked', false);
+      $('#use_type_setting_use_button_input').prop('checked', true);
+    }
+  });
 })
