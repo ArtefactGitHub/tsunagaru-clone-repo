@@ -21,15 +21,6 @@
           end
 
   .row
-    .col-sm-8.offset-sm-2.restrict_setting_editing
-      .card
-        .mycheckbox-restrict_setting_editing
-          = check_box_tag :sample
-          span.ml-3 機能を制限する
-          .info ※「メッセージボタンの編集」や「トモダチの追加」などの機能が制限されます。
-          .info チャット以外の操作を必要としない場合はチェックを入れてください。　　　　　　
-
-  .row
     .col-sm-4.offset-sm-4
       .text-center
         = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-m btn-logout' do
