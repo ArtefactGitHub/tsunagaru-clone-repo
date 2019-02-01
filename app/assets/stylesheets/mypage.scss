@@ -31,6 +31,9 @@
     .mybtn-sidebar-settings {
       margin-top: 5rem;
     }
+    .mybtn-sidebar-settings-only_chat {
+      margin-top: 15rem;
+    }
 
     .sidebar-sticky {
       // font-size: 6rem;
@@ -59,6 +62,10 @@
 
     background-color: #2b2926;
     width: 100%;
+
+    .btn-icon {
+      @include myfont-size-ll;
+    }
   }
 
   .headline {
