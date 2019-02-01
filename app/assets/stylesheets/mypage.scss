@@ -255,5 +255,25 @@
     .btn-logout {
       margin-top: 3rem;
     }
+
+    .use_type_setting {
+      .form-section {
+        margin-top: 2rem;
+
+        .selection-area {
+          margin-bottom: 3rem;
+        }
+        .form-radio_button {
+          margin-bottom: 1rem;
+        }
+        .use_type_label {
+          margin: 0 0 0 0.5rem;
+        }
+        .info {
+          @include myfont-size-ss;
+          margin-left: 1rem;
+        }
+      }
+    }
   }
 }
