@@ -1,0 +1,12 @@
+.chat-buttons
+  .row.text-center
+    - if current_user.use_type_normal?
+      .col-lg-6
+        = link_to room_path(current_user.my_room), class: 'btn btn-primary chat-button' do
+          | 自分のチャット</br>部屋に入る
+      .col-lg-6
+        = render 'modal', friends: friends
+    - else
+      .col-lg-6.offset-lg-3.col-10.offset-1
+          = link_to room_path(current_user.my_room), class: 'btn btn-primary chat-button' do
+            | 自分のチャット</br>部屋に入る
