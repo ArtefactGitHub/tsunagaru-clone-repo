@@ -66,6 +66,9 @@
     .btn-icon {
       @include myfont-size-ll;
     }
+    .nav-link {
+      padding: 0rem 1rem;
+    }
   }
 
   .headline {
