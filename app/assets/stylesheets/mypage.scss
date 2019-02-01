@@ -263,6 +263,9 @@
         .selection-area {
           margin-bottom: 3rem;
         }
+        .form-radio_buttons {
+          margin-bottom: 2rem;
+        }
         .form-radio_button {
           margin-bottom: 1rem;
         }
@@ -272,6 +275,9 @@
         .info {
           @include myfont-size-ss;
           margin-left: 1rem;
+        }
+        .optional_label {
+          @include myfont-size-s;
         }
       }
     }

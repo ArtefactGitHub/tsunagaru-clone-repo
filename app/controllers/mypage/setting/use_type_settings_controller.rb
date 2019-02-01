@@ -19,6 +19,6 @@ class Mypage::Setting::UseTypeSettingsController < Mypage::SettingController
   end
 
   def use_type_setting_params
-    params.require(:use_type_setting).permit(:use_type, :user_id, :use_text_input, :use_button_input)
+    params.require(:use_type_setting).permit(:use_type, :use_text_input, :use_button_input)
   end
 end

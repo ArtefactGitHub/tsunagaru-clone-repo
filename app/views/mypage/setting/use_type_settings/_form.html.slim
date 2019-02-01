@@ -2,16 +2,26 @@
   .row.selection-area
     .col-sm-10.offset-sm-1.col-12
       / = f.collection_radio_buttons :use_type_setting, :use_type, UseType.all, :id, :use_type
-      .form-radio_button
-        = f.radio_button :use_type, :use_normal, checked: "checked"
-        = f.label 'いろいろ', class: "use_type_label"
-        .info 各種機能をご利用出来ます。
-        .info 「チャットのみ」へ移行前に「プロフィール編集」や「トモダチの追加」をお済ませください。
-      .form-radio_button
-        = f.radio_button :use_type, :only_chat
-        = f.label 'チャットのみ', class: "use_type_label"
-        .info 各種編集機能や「トモダチの追加」などの機能が制限されます。
-        .info チャット以外の操作を必要としない場合はこちらをご利用ください。
+      .form-radio_buttons
+        .form-radio_button
+          = f.radio_button :use_type, :use_normal, checked: "checked"
+          = f.label 'いろいろ', class: "use_type_label"
+          .info 各種機能をご利用出来ます。
+          .info 「チャットのみ」へ移行前に「プロフィール編集」や「トモダチの追加」をお済ませください。
+        .form-radio_button
+          = f.radio_button :use_type, :only_chat
+          = f.label 'チャットのみ', class: "use_type_label"
+          .info 各種編集機能や「トモダチの追加」などの機能が制限されます。
+          .info チャット以外の操作を必要としない場合はこちらをご利用ください。
+
+      .form-check_box
+        = f.hidden_field :use_button_input, value: false
+        = f.check_box :use_button_input, {checked: false}, true, false
+        = f.label 'メッセージボタンを有効にする', class: "optional_label"
+      .form-check_box
+        = f.hidden_field :use_text_input, value: false
+        = f.check_box :use_text_input, {checked: false}, true, false
+        = f.label 'テキスト入力を有効にする', class: "optional_label"
 
   .row.text-center
     .col-sm-4.offset-sm-2
