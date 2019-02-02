@@ -1,12 +1,14 @@
-.container
-  .col-md
+.login
+  .row.
+    .col-10.offset-1.headline
+      = fa_icon 'sign-in', class: 'icon'
+      | ログイン
+
+  .container
     .card
       .card-body
-        h2.text-center
-          | ログイン
-
-        = form_tag login_path do
-          .col-12
+        = form_tag login_path, class: 'myform' do
+          .col-sm-8.offset-sm-2.col-12
             .form-group
               = label :email, 'メールアドレス'
               = email_field '', :email, class: 'form-control'
@@ -14,7 +16,8 @@
               = label :password, 'パスワード'
               = password_field '', :password, class: 'form-control'
             .text-center
-              = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised'
+              = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
 
-        = link_to '登録はこちら', new_user_path, class: 'mr15'
-        = link_to 'パスワードを忘れた方はこちら', '#'
+        .info
+          p = link_to '登録はこちら', new_user_path
+          / p = link_to 'パスワードを忘れた方はこちら', '#'

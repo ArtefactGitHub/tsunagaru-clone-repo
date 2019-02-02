@@ -4,5 +4,6 @@ header.fixed-top
       = image_tag 'logo.png', class: 'logo'
     - unless logged_in?
       = link_to login_path, class: 'btn btn-default btn-raised ml-auto' do
+        = fa_icon 'sign-in', class: 'icon'
         | ログイン
         end
