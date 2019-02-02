@@ -7,7 +7,7 @@
             .col-md-8
               .row
                 .col-md-3
-                  = render 'shared/users/avatar', user: current_user
+                  = render 'shared/users/avatar', user: request.receiver
                 .col-md-8
                   .friend_request-text
                     | #{request.receiver.name}さんに
