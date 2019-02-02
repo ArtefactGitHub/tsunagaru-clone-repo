@@ -225,8 +225,10 @@
   .friend_request {
     margin-bottom: 20px;
 
-    .friend_request-text {
-      @include myfont-size-s;
+    .text-friend_request {
+      @include myfont-size-ms;
+      line-height: 1.5rem;
+      margin: 1rem 0 1rem;
     }
 
     .form-friend_requests {

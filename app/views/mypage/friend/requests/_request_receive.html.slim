@@ -4,20 +4,21 @@
       .card
         .card-body
           .row.text-center
-            .col-md-8
+            .col-md-9
               .row
                 .col-md-3
-                  = render 'shared/users/avatar', user: current_user
-                .col-md-8
-                  p.friend_request-text
+                  = render 'shared/users/avatar', user: sender
+                .col-md-9
+                  p.text-friend_request
                     | #{sender.name}さんから
                     br トモダチ申請を受けています
+                    br
                     | 申請を受けますか？
-            .col-md-4
+            .col-md-3.offset-md-0.col-6.offset-3
               p
                 = form_for [:mypage, FriendRequest.new] do |f|
                   = f.hidden_field :receiver_id, value: sender.id
-                  = f.submit 'はい', class: 'btn btn-success btn-raised mybtn-s'
+                  = f.submit 'はい', class: 'btn btn-success btn-raised mybtn-m'
                 end
               / p
               /   = link_to '#', class: 'btn btn-warning btn-raised mybtn-s' do
