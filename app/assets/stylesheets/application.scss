@@ -151,5 +151,27 @@ footer {
   @include myfont-size-s;
 }
 
-.title {
+.login {
+  padding-top: 1rem;
+
+  .headline {
+    border-bottom-style: solid;
+    border-bottom-width: thin;
+    margin-bottom: 20px;
+  }
+  .icon {
+    @extend .vertical-center;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+  .form-login {
+    margin-bottom: 2rem;
+  }
+  .btn-login {
+    margin: 1rem 1rem;
+  }
+  .info {
+    @include myfont-size-s;
+    text-align: right;
+  }
 }
