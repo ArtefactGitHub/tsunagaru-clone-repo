@@ -5,15 +5,7 @@
 
   .row
     .col-12
-      .chat-buttons
-        .row
-          .col-lg-6
-            .text-center
-              = link_to room_path(current_user.my_room), class: 'btn btn-primary chat-button' do
-                | 自分のチャット</br>部屋に入る
-          .col-lg-6
-            .text-center
-              = render 'modal', friends: @friends
+      = render 'chat_buttons', friends: @friends
 
       = render 'profile'
 

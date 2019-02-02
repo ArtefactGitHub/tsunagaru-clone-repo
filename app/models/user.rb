@@ -13,8 +13,13 @@ class User < ApplicationRecord
   has_many :receive_requests, class_name: 'FriendRequest', foreign_key: 'receiver_id', dependent: :destroy
   has_many :receivers, through: :send_requests, source: :receiver
   has_many :senders, through: :receive_requests, source: :sender
-
+  has_one :use_type_setting, dependent: :destroy
   has_one_attached :avatar
+
+  delegate :use_type_normal?, to: :use_type_setting, allow_nil: false
+  delegate :use_type_only_chat?, to: :use_type_setting, allow_nil: false
+  delegate :use_text_input?, to: :use_type_setting, allow_nil: false
+  delegate :use_button_input?, to: :use_type_setting, allow_nil: false
 
   validates :name, presence: true
   validates :introduction, length: { maximum: 999 }

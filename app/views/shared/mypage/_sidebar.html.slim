@@ -1,20 +1,30 @@
 nav.d-none.d-lg-block.bg-light.sidebar
   div class="sidebar-sticky"
     ul class="nav flex-column"
-      li class="nav-item"
-        = link_to mypage_root_path, class: 'nav-link mybtn-sidebar' do
-          = fa_icon 'home'
-        end
-      li class="nav-item"
-        = link_to edit_mypage_user_user_path(current_user), class: 'nav-link mybtn-sidebar' do
-          = fa_icon 'user'
-        end
-      li class="nav-item"
-        = link_to mypage_friend_root_path, class: 'nav-link mybtn-sidebar' do
-          = fa_icon 'users'
-        end
+      - if current_user.use_type_normal?
+        li class="nav-item"
+          = link_to mypage_root_path, class: 'nav-link' do
+            = fa_icon 'home'
+          end
+        li class="nav-item"
+          = link_to edit_mypage_user_user_path(current_user), class: 'nav-link' do
+            = fa_icon 'user'
+          end
+        li class="nav-item"
+          = link_to mypage_friend_root_path, class: 'nav-link' do
+            = fa_icon 'users'
+          end
+        li class="nav-item"
+          = link_to mypage_setting_root_path, class: 'nav-link mybtn-sidebar-settings' do
+            = fa_icon 'cog'
+          end
 
-      li class="nav-item"
-        = link_to mypage_setting_root_path, class: 'nav-link mybtn-sidebar-settings' do
-          = fa_icon 'cog'
-        end
+      - else
+        li class="nav-item"
+          = link_to mypage_root_path, class: 'nav-link' do
+            = fa_icon 'home'
+          end
+        li class="nav-item"
+          = link_to mypage_setting_root_path, class: 'nav-link mybtn-sidebar-settings-only_chat' do
+            = fa_icon 'cog'
+          end
