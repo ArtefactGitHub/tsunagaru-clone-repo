@@ -28,8 +28,21 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :uuid, presence: true
+  validate :avatar_validation
 
   scope :friends_of, ->(user){ where(id: user.send_requests.where(friend_request_status: :approval).pluck(:receiver_id)) }
+
+  def avatar_validation
+    if avatar.attached?
+      if avatar.blob.byte_size > Settings.user.avatar.maximum_size
+        avatar.purge
+        errors[:avatar] << 'は 1MB 以下のサイズにしてください'
+      elsif !avatar.blob.content_type.starts_with?('image/')
+        avatar.purge
+        errors[:avatar] << 'のフォーマットが正しくありません'
+      end
+    end
+  end
 
   class << self
     def system_user
