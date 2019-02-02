@@ -1,19 +1,29 @@
 nav.d-block.d-lg-none.xs-sm-sidebar
   .row.text-center
-    .col-3
-      = link_to mypage_root_path, class: 'nav-link' do
-        = fa_icon 'home'
-      end
-    .col-3
-      = link_to edit_mypage_user_user_path(current_user), class: 'nav-link mybtn-sidebar' do
-        = fa_icon 'user'
-      end
-    .col-3
-      = link_to mypage_friend_root_path, class: 'nav-link mybtn-sidebar' do
-        = fa_icon 'users'
-      end
+    - if current_user.use_type_normal?
+      .col-3
+        = link_to mypage_root_path, class: 'nav-link btn-icon' do
+          = fa_icon 'home'
+        end
+      .col-3
+        = link_to edit_mypage_user_user_path(current_user), class: 'nav-link btn-icon' do
+          = fa_icon 'user'
+        end
+      .col-3
+        = link_to mypage_friend_root_path, class: 'nav-link btn-icon' do
+          = fa_icon 'users'
+        end
+      .col-3
+        = link_to mypage_setting_root_path, class: 'nav-link btn-icon' do
+          = fa_icon 'cog'
+        end
 
-    .col-3
-      = link_to mypage_setting_root_path, class: 'nav-link' do
-        = fa_icon 'cog'
-      end
+    - else
+      .col-3.offset-2
+        = link_to mypage_root_path, class: 'nav-link btn-icon' do
+          = fa_icon 'home'
+        end
+      .col-3.offset-2
+        = link_to mypage_setting_root_path, class: 'nav-link btn-icon' do
+          = fa_icon 'cog'
+        end

@@ -3,27 +3,19 @@
     = fa_icon 'cog', class: 'icon'
     | 設定画面
 
+  - if current_user.use_type_normal?
+    .row
+      .col-sm-8.offset-sm-2
+        .text-center
+          = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-l-2line' do
+            | メッセージボタンの
+            br
+            | 編集
+            end
+
   .row
     .col-sm-8.offset-sm-2
       .text-center
-        = link_to edit_mypage_setting_message_button_list_path(@message_button_list), class: 'btn btn-primary btn-raised mybtn-l-2line' do
-          | メッセージボタンの
-          br
-          | 編集
-          end
-
-  .row
-    .col-sm-8.offset-sm-2.restrict_setting_editing
-      .card
-        .mycheckbox-restrict_setting_editing
-          = check_box_tag :sample
-          span.ml-3 機能を制限する
-          .info ※「メッセージボタンの編集」や「トモダチの追加」などの機能が制限されます。
-          .info チャット以外の操作を必要としない場合はチェックを入れてください。　　　　　　
-
-  .row
-    .col-sm-4.offset-sm-4
-      .text-center
-        = link_to user_session_path(current_user), method: :delete, class: 'btn btn-secondary btn-raised mybtn-m btn-logout' do
-          | ログアウト
+        = link_to edit_mypage_setting_use_type_setting_path(@use_type_setting), class: 'btn btn-primary btn-raised mybtn-l' do
+          | 利用タイプの変更
           end

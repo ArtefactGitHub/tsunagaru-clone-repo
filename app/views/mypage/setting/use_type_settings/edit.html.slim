@@ -1,0 +1,9 @@
+.setting
+  .use_type_setting
+    .row.headline
+      = fa_icon 'window-restore', class: 'icon'
+      | 利用タイプの変更
+
+    .row.form-section
+      .col-12
+        = render 'form', use_type_setting: @use_type_setting

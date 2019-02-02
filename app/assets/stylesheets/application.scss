@@ -4,14 +4,23 @@
 @mixin myfont-size-xl {
   font-size: 3.0rem;
 }
+@mixin myfont-size-ll {
+  font-size: 2.5rem;
+}
 @mixin myfont-size-l {
   font-size: 2.0rem;
 }
 @mixin myfont-size-m {
   font-size: 1.5rem;
 }
+@mixin myfont-size-ms {
+  font-size: 1.2rem;
+}
 @mixin myfont-size-s {
   font-size: 1.0rem;
+}
+@mixin myfont-size-ss {
+  font-size: 0.85rem;
 }
 @mixin myfont-size-xs {
   font-size: 0.7rem;
@@ -38,7 +47,6 @@ html {
 .mybtn-l {
   @extend .mybtn;
   @include myfont-size-m;
-  min-width: 310px;
   line-height: 4.5rem;
   margin-top: 2rem;
   margin-bottom: 2rem;
@@ -46,7 +54,6 @@ html {
 .mybtn-l-2line {
   @extend .mybtn;
   @include myfont-size-m;
-  min-width: 310px;
   line-height: 2.5rem;
   margin-top: 1.5rem;
   margin-bottom: 1.5rem;
@@ -120,16 +127,17 @@ header {
 
 footer {
   .common-footer {
-    // font-size: 1rem;
     @include myfont-size-xs;
     position: relative;
-    height: 80px;
-    padding: 10px;
+    height: 8vh;
+    padding: 0.5rem;
     z-index: 100;
-    background: white;
     box-shadow: 0 3px 6px gray;
     text-align: right;
 
+    .link-logout {
+      margin-left: 2rem;
+    }
     .copyright {
     }
   }

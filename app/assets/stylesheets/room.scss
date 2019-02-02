@@ -11,18 +11,18 @@ header {
 }
 
 .room {
+  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
+  --input-area-height: 49vh;
   // １メッセージの高さ
   --message-min-height: 5rem;
-  // メッセージセクションの枠を含めた高さ
-  --message-section-frame-min-height: 30vh;
+  // メッセージセクションのタイトルまでのオフセット
+  --message-section-title-offset-top: 58vh;
+  // メッセージセクションのタイトルの高さ
+  --message-section-title-height: 4vh;
+  // メッセージセクションまでのオフセット
+  --message-section-offset-top: 62vh;
   // メッセージセクションの高さ
-  --message-section-min-height: 28vh;
-  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 59vh;
-
-  @mixin myfont-size-ms {
-    font-size: 1.2rem;
-  }
+  --message-section-height: 38vh;
 
   .myavatar-m {
     @include avatar;
@@ -78,37 +78,47 @@ header {
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
   }
 
-  .message-section-frame {
+  .message-section-title {
     position: fixed;
-    border-style: solid;
-    border-width: thin;
-    border-color: #ced4da;//rgba(45,45,45, 0.5);
-    bottom: 0;
+    // border-style: solid;
+    // border-width: thin;
+    // border-color: #ced4da;//rgba(45,45,45, 0.5);
+    top: var(--message-section-title-offset-top);
+    // bottom: 0;
     left: 0;
     right: 0;
-    z-index: 10;
-    height: var(--message-section-frame-min-height);
+    // z-index: 10;
+    height: var(--message-section-title-height);
+    // height: var(--message-section-frame-min-height);
+
+    @include under-bar;
+    @include myfont-size-s;
+    background: #143552;
+    color: white;
+    border-bottom: solid;
+    border-color: white;
+    border-width: thin;
   }
+
   .message-section {
     position: fixed;
-    bottom: 0;
+    top: var(--message-section-offset-top);
+    // bottom: 0;
     left: 0;
     right: 0;
     z-index: 100;
-    height: var(--message-section-min-height);
+    height: var(--message-section-height);
+    // height: var(--message-section-min-height);
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    margin: 0 0.5rem 0.5rem 0.5rem;
+    // margin: 0 0.5rem 0.5rem 0.5rem;
+
+    background: #143552;
+    padding: 0.2rem;
+    margin: 0;
 
     .card {
-      background-color: #006c86;
       border: none;
-
-      .info {
-        line-height: var(--message-section-min-height);
-        background: rgba(0,0,0, 0);
-        color: white;
-      }
     }
     .message {
       @include under-bar;
@@ -168,9 +178,5 @@ header {
         width: 10rem;
       }
     }
-  }
-
-  .message-margin {
-    margin-top: var(--message-section-frame-min-height);
   }
 }
