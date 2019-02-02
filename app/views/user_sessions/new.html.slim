@@ -1,13 +1,13 @@
 .login
   .row.
-    .container.headline
+    .col-10.offset-1.headline
       = fa_icon 'sign-in', class: 'icon'
       | ログイン
 
   .container
     .card
       .card-body
-        = form_tag login_path, class: 'form-login' do
+        = form_tag login_path, class: 'myform' do
           .col-sm-8.offset-sm-2.col-12
             .form-group
               = label :email, 'メールアドレス'
@@ -16,7 +16,7 @@
               = label :password, 'パスワード'
               = password_field '', :password, class: 'form-control'
             .text-center
-              = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised btn-login'
+              = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
 
         .info
           p = link_to '登録はこちら', new_user_path
