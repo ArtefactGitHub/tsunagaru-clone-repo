@@ -4,15 +4,14 @@
       .card
         .card-body
           .row.text-center
-            .col-md-8
+            .col-md-9
               .row
                 .col-md-3
                   = render 'shared/users/avatar', user: request.receiver
-                .col-md-8
-                  .friend_request-text
-                    | #{request.receiver.name}さんに
-                    br トモダチ申請中です
-            .col-md-4
+                .col-md-8.text-friend_request
+                  | #{request.receiver.name}さんに
+                  br トモダチ申請中です
+            .col-md-3.offset-md-0.col-6.offset-3
               = form_for [:mypage, request], method: :delete do |f|
-                = f.submit 'やめる', class: 'btn btn-warning btn-raised mybtn-s'
+                = f.submit 'やめる', class: 'btn btn-warning btn-raised mybtn-m'
               end
