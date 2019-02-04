@@ -16,23 +16,15 @@ header {
 .room {
   // １メッセージの高さ
   --message-min-height: 5rem;
-  // メッセージセクションのタイトルまでのオフセット
-  --message-section-title-offset-top: 8vh;
   // メッセージセクションのタイトルの高さ
-  --message-section-title-height: 4vh;
-  // メッセージセクションまでのオフセット
-  --message-section-offset-top: 12vh;
+  --message-section-title-height: 1.5rem;//4vh;
   // メッセージセクションの高さ
-  --message-section-height: 35vh;
+  --message-section-height: 13rem;//35vh;
   // ページネーションの高さ
-  --message-section-pagenate-height: 6vh;
-  // ページネーションまでのオフセット
-  --message-section-pagenate-offset: 47vh;
-  // 入力エリアまでのオフセット
-  --input-area-offset-top: 54vh;
+  --message-section-pagenate-height: 2rem;//6vh;
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 46vh;
-
+  --input-area-height: 17rem;//46vh;
+  // 背景色
   --message-title-bg-color: #dcedfb;
   --message-bg-color: #ebf6ff;
 
@@ -84,28 +76,13 @@ header {
   }
 
   .input-area {
-    position: fixed;
-    top: var(--input-area-offset-top);
-    left: 0;
-    right: 0;
-    z-index: 10;
     height: var(--input-area-height);
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;
   }
 
   .message-section-title {
-    position: fixed;
-    // border-style: solid;
-    // border-width: thin;
-    // border-color: #ced4da;//rgba(45,45,45, 0.5);
-    top: var(--message-section-title-offset-top);
-    // bottom: 0;
-    left: 0;
-    right: 0;
-    // z-index: 10;
     height: var(--message-section-title-height);
-    // height: var(--message-section-frame-min-height);
 
     @include under-bar;
     @include myfont-size-s;
@@ -117,17 +94,9 @@ header {
   }
 
   .message-section {
-    position: fixed;
-    top: var(--message-section-offset-top);
-    // bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
     height: var(--message-section-height);
-    // height: var(--message-section-min-height);
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    // margin: 0 0.5rem 0.5rem 0.5rem;
+    overflow-y: auto;
 
     background: var(--message-bg-color);
     padding: 0.2rem;
@@ -162,11 +131,6 @@ header {
   }
 
   .pagenate-area {
-    position: fixed;
-    top: var(--message-section-pagenate-offset);
-    left: 0;
-    right: 0;
-    z-index: 10;
     height: var(--message-section-pagenate-height);
 
     border-top: solid;
