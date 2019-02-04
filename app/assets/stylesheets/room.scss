@@ -4,6 +4,9 @@ header {
   .icon {
     @include myfont-size-l;
   }
+  .btn-reload {
+    margin-left: 2rem;
+  }
 }
 
 ::placeholder{
