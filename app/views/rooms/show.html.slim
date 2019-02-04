@@ -16,8 +16,11 @@
               = render @messages
 
       .pagenate-area
-        .pagenate
-          = paginate @messages
+        .row
+          .col-12
+            .pagenate
+              = paginate @messages
+
 
       .input-area
         .col-sm-10.offset-sm-1.col-12
