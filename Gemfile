@@ -48,6 +48,8 @@ gem 'meta-tags'
 gem 'aws-sdk-s3', require: false
 # ページング
 gem 'kaminari'
+gem 'kaminari-bootstrap', '~> 3.0.1'
+
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
