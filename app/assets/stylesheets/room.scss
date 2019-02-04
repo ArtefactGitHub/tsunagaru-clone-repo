@@ -5,7 +5,10 @@ header {
     @include myfont-size-l;
   }
   .btn-reload {
-    margin-left: 2rem;
+    margin-left: 1rem;
+  }
+  .navbar {
+    padding: 0 0.5rem;
   }
 }
 
@@ -26,7 +29,7 @@ header {
   --input-area-height: 17rem;//46vh;
   // 背景色
   --message-title-bg-color: #dcedfb;
-  --message-bg-color: #ebf6ff;
+  --message-bg-color: aliceblue;
 
   .myavatar-m {
     @include avatar;
@@ -56,7 +59,7 @@ header {
   }
 
   .button-message-section {
-    margin: 1rem 0 1rem;
+    margin: 0.5rem 0 1rem;
 
     .title {
       @include myfont-size-ms;
@@ -132,6 +135,8 @@ header {
 
   .pagenate-area {
     height: var(--message-section-pagenate-height);
+    background: var(--message-bg-color);
+    height: 3.2rem;
 
     border-top: solid;
     border-color: var(--message-bg-color);
@@ -149,8 +154,6 @@ header {
 
   .modal-area {
     .edit-message-button-list-section {
-      margin: 1rem 1rem 0 2rem;
-
       .mymodal-title {
         @include myfont-size-m;
       }
