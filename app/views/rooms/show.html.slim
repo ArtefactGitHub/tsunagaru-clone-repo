@@ -48,6 +48,10 @@
           #messages data-room_id=@room.id
             = render @messages
 
+    .pagenate-area
+      = paginate @messages
+
+
     #js-disconnect-room
       .disconnect-room-section
         .text-center
