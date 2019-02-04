@@ -11,18 +11,37 @@ header {
 }
 
 .room {
+  // // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
+  // --input-area-height: 49vh;
+  // // １メッセージの高さ
+  // --message-min-height: 5rem;
+  // // メッセージセクションのタイトルまでのオフセット
+  // --message-section-title-offset-top: 58vh;
+  // // メッセージセクションのタイトルの高さ
+  // --message-section-title-height: 4vh;
+  // // メッセージセクションまでのオフセット
+  // --message-section-offset-top: 62vh;
+  // // メッセージセクションの高さ
+  // --message-section-height: 38vh;
+
+  // 入力エリアまでのオフセット
+  --input-area-offset-top: 52vh;
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 49vh;
+  --input-area-height: 48vh;
   // １メッセージの高さ
   --message-min-height: 5rem;
   // メッセージセクションのタイトルまでのオフセット
-  --message-section-title-offset-top: 58vh;
+  --message-section-title-offset-top: 8vh;
   // メッセージセクションのタイトルの高さ
   --message-section-title-height: 4vh;
   // メッセージセクションまでのオフセット
-  --message-section-offset-top: 62vh;
+  --message-section-offset-top: 12vh;
   // メッセージセクションの高さ
-  --message-section-height: 38vh;
+  --message-section-height: 35vh;
+  // ページネーションの高さ
+  --message-section-pagenate-height: 5vh;
+  // ページネーションまでのオフセット
+  --message-section-pagenate-offset: 47vh;
 
   .myavatar-m {
     @include avatar;
@@ -69,7 +88,7 @@ header {
 
   .input-area {
     position: fixed;
-    top: 8vh;
+    top: var(--input-area-offset-top);
     left: 0;
     right: 0;
     z-index: 10;
@@ -143,6 +162,19 @@ header {
         @include myfont-size-xs;
       }
     }
+  }
+
+  .pagenate-area {
+    position: fixed;
+    top: var(--message-section-pagenate-offset);
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: var(--message-section-pagenate-height);
+    // overflow-x: hidden;
+    // overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    // background: #143552;
+    background: gray;
   }
 
   .modal-area {
