@@ -26,7 +26,7 @@
         .col-sm-10.offset-sm-1.col-12
           - if current_user.use_text_input?
             .text-message-section
-              .title.offset-sm-0.offset-1
+              .title
                 | 文字を入力して気持ちを伝えよう！
               .col-sm-12.offset-sm-0.col-10.offset-1
                 = text_area_tag 'text', '', class: 'form-control text-area-custom', data: { behavior: "room_speaker" }, placeholder: '（最大100文字）'
@@ -35,7 +35,7 @@
 
           - if current_user.use_button_input?
             .button-message-section
-              .title.offset-sm-0.offset-1
+              .title
                 | ボタンを押して気持ちを伝えよう！
               .ask-buttons
                 .card
@@ -48,7 +48,7 @@
                 .card
                   .text-center
                     - @room.answer_message_buttons.each do |message|
-                      button type="button" class='js-command btn btn-info btn-custom mr-3 ml-3 mb-2' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
+                      button type="button" class='js-command btn btn-info btn-custom' data-message_no='#{message.message_no}' data-message_type='#{message.message_type}'
                         | #{message.content}
 
           - if Rails.env.development?

@@ -44,7 +44,7 @@ header {
   .btn-custom {
     @include myfont-size-s;
     line-height: 2rem;
-    margin: 0 0.5rem 1rem 0;
+    margin: 0.5rem 0.5rem 0.5rem 0;
   }
 
   .text-message-section {
@@ -52,6 +52,8 @@ header {
 
     .title {
       @include myfont-size-ms;
+      display: flex;
+      justify-content: center;
     }
     .text-area-custom {
       @include myfont-size-s;
@@ -66,12 +68,14 @@ header {
 
     .title {
       @include myfont-size-ms;
+      display: flex;
+      justify-content: center;
     }
     .ask-buttons {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .card {
-      padding: 1rem 0 0;
+      padding: 0;
     }
   }
 
