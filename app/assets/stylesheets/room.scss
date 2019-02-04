@@ -11,23 +11,6 @@ header {
 }
 
 .room {
-  // // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  // --input-area-height: 49vh;
-  // // １メッセージの高さ
-  // --message-min-height: 5rem;
-  // // メッセージセクションのタイトルまでのオフセット
-  // --message-section-title-offset-top: 58vh;
-  // // メッセージセクションのタイトルの高さ
-  // --message-section-title-height: 4vh;
-  // // メッセージセクションまでのオフセット
-  // --message-section-offset-top: 62vh;
-  // // メッセージセクションの高さ
-  // --message-section-height: 38vh;
-
-  // 入力エリアまでのオフセット
-  --input-area-offset-top: 52vh;
-  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 48vh;
   // １メッセージの高さ
   --message-min-height: 5rem;
   // メッセージセクションのタイトルまでのオフセット
@@ -39,9 +22,13 @@ header {
   // メッセージセクションの高さ
   --message-section-height: 35vh;
   // ページネーションの高さ
-  --message-section-pagenate-height: 5vh;
+  --message-section-pagenate-height: 6vh;
   // ページネーションまでのオフセット
   --message-section-pagenate-offset: 47vh;
+  // 入力エリアまでのオフセット
+  --input-area-offset-top: 54vh;
+  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
+  --input-area-height: 46vh;
 
   .myavatar-m {
     @include avatar;
@@ -171,10 +158,19 @@ header {
     right: 0;
     z-index: 10;
     height: var(--message-section-pagenate-height);
-    // overflow-x: hidden;
-    // overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    // background: #143552;
-    background: gray;
+
+    border-top: solid;
+    border-color: #143552;
+    border-width: 0.2rem;
+
+    .pagenate {
+      @include myfont-size-xs;
+      margin-top: 0.5rem;
+
+      .pagination {
+        justify-content: center;
+      }
+    }
   }
 
   .modal-area {
