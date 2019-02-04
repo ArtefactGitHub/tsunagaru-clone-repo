@@ -33,6 +33,9 @@ header {
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
   --input-area-height: 46vh;
 
+  --message-title-bg-color: #dcedfb;
+  --message-bg-color: #ebf6ff;
+
   .myavatar-m {
     @include avatar;
     width: 4rem;
@@ -102,8 +105,8 @@ header {
 
     @include under-bar;
     @include myfont-size-s;
-    background: #143552;
-    color: white;
+    background: var(--message-title-bg-color);
+    color: black;
     border-bottom: solid;
     border-color: white;
     border-width: thin;
@@ -122,7 +125,7 @@ header {
     overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
     // margin: 0 0.5rem 0.5rem 0.5rem;
 
-    background: #143552;
+    background: var(--message-bg-color);
     padding: 0.2rem;
     margin: 0;
 
@@ -163,7 +166,7 @@ header {
     height: var(--message-section-pagenate-height);
 
     border-top: solid;
-    border-color: #143552;
+    border-color: var(--message-bg-color);
     border-width: 0.2rem;
 
     .pagenate {
