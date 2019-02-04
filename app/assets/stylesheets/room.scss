@@ -26,7 +26,7 @@ header {
   // ページネーションの高さ
   --message-section-pagenate-height: 2rem;//6vh;
   // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 17rem;//46vh;
+  // --input-area-height: 17rem;//46vh;
   // 背景色
   --message-title-bg-color: #dcedfb;
   --message-bg-color: aliceblue;
@@ -79,7 +79,7 @@ header {
   }
 
   .input-area {
-    height: var(--input-area-height);
+    // height: var(--input-area-height);
     overflow-x: hidden;
     overflow-y: auto;
   }
