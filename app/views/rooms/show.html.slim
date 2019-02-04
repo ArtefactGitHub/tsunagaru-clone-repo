@@ -15,11 +15,12 @@
             #messages data-room_id=@room.id
               = render @messages
 
-      .pagenate-area
-        .row
-          .col-12
-            .pagenate
-              = paginate @messages
+      - if current_user.use_type_normal?
+        .pagenate-area
+          .row
+            .col-12
+              .pagenate
+                = paginate @messages
 
 
       .input-area
