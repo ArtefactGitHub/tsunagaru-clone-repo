@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   include Role
   include Rails.application.routes.url_helpers
+  include AvatarInfo
+  include LoggerModule
 
   authenticates_with_sorcery!
 
@@ -41,8 +43,30 @@ class User < ApplicationRecord
     end
   end
 
+  def avatar_validation(params)
+    return true if params.dig(:avatar).blank?
+
+    size = params.dig(:avatar).size
+    content_type = params.dig(:avatar).content_type
+
+    if size > LIMIT_FILE_SIZE
+      log_debug("size[#{size}] > LIMIT_FILE_SIZE[#{LIMIT_FILE_SIZE}]")
+      # avatar.detach
+      errors[:avatar] << "は #{ActiveSupport::NumberHelper.number_to_human_size(LIMIT_FILE_SIZE)} 以下のサイズにしてください"
+    elsif content_type.blank? || !content_type.starts_with?('image/')
+      log_debug("!avatar.blob.content_type.starts_with?('image/')")
+      # avatar.detach
+      errors[:avatar] << 'のフォーマットが正しくありません'
+    else
+      return true
+    end
+
+    false
+  end
+
   def avatar_or_default
     avatar.attached? ? rails_blob_url(avatar, only_path: true) : Settings.user.avatar.default_file_name
+    # avatar.attached? ? rails_representation_url(avatar.variant(resize: "500"), only_path: true) : Settings.user.avatar.default_file_name
   end
 
   def set_uuid

@@ -1,7 +1,6 @@
 ruby:
-  # size = local_assigns[:size] || '100x100'
-  assign_class = "rounded-circle #{local_assigns[:assign_class]}"
+  add_class = local_assigns[:assign_class] ? local_assigns[:assign_class] : Settings.user.avatar.default_size_class
+  assign_class = "rounded-circle #{add_class}"
   assign_id = local_assigns[:assign_id] || ''
 
-/ = image_tag user.avatar_or_default, id: assign_id, class: assign_class, size: size
 = image_tag user.avatar_or_default, id: assign_id, class: assign_class

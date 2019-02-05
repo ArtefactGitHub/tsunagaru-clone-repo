@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   if Rails.env.development?
     get '/login_as/:user_id', to: 'development/sessions#login_as'
+    get '/messages/clear_messages', to: 'development/messages#clear_messages'
   end
 
   get '/login', to: 'user_sessions#new'

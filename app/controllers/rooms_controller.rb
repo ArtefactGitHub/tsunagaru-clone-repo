@@ -38,7 +38,7 @@ class RoomsController < ApplicationController
     @room = Room.find_by(id: params[id_symbol])
     return redirect_to mypage_root_path, danger: 'ルームが見つかりません' unless can_access_room
 
-    @messages = @room.messages
+    @messages = @room.messages.page(params[:page])
   end
 
   def set_message_button_list

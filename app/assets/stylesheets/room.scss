@@ -4,6 +4,12 @@ header {
   .icon {
     @include myfont-size-l;
   }
+  .btn-reload {
+    margin-left: 1rem;
+  }
+  .navbar {
+    padding: 0 0.5rem;
+  }
 }
 
 ::placeholder{
@@ -11,18 +17,19 @@ header {
 }
 
 .room {
-  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
-  --input-area-height: 49vh;
   // １メッセージの高さ
   --message-min-height: 5rem;
-  // メッセージセクションのタイトルまでのオフセット
-  --message-section-title-offset-top: 58vh;
   // メッセージセクションのタイトルの高さ
-  --message-section-title-height: 4vh;
-  // メッセージセクションまでのオフセット
-  --message-section-offset-top: 62vh;
+  --message-section-title-height: 1.5rem;//4vh;
   // メッセージセクションの高さ
-  --message-section-height: 38vh;
+  --message-section-height: 13rem;//35vh;
+  // ページネーションの高さ
+  --message-section-pagenate-height: 2rem;//6vh;
+  // 入力エリアの高さ（ヘッダー、メッセージセクションを除いた高さ）
+  // --input-area-height: 17rem;//46vh;
+  // 背景色
+  --message-title-bg-color: #dcedfb;
+  --message-bg-color: aliceblue;
 
   .myavatar-m {
     @include avatar;
@@ -32,14 +39,16 @@ header {
   .btn-custom {
     @include myfont-size-s;
     line-height: 2rem;
-    margin: 0 0.5rem 1rem 0;
+    margin: 0.5rem 0.5rem 0.5rem 0;
   }
 
-  .text-message-section {
+  #text-message-section {
     margin: 1rem 0 1rem;
 
     .title {
       @include myfont-size-ms;
+      display: flex;
+      justify-content: center;
     }
     .text-area-custom {
       @include myfont-size-s;
@@ -49,71 +58,53 @@ header {
     }
   }
 
-  .button-message-section {
-    margin: 1rem 0 1rem;
+  #button-message-section {
+    margin: 0.5rem 0 1rem;
 
     .title {
       @include myfont-size-ms;
+      display: flex;
+      justify-content: center;
     }
     .ask-buttons {
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
     }
     .card {
-      padding: 1rem 0 0;
+      padding: 0;
     }
   }
 
-  .delete-message-section {
+  #delete-message-section {
     margin-bottom: 1rem;
   }
 
-  .input-area {
-    position: fixed;
-    top: 8vh;
-    left: 0;
-    right: 0;
-    z-index: 10;
-    height: var(--input-area-height);
+  #input-area {
+    // height: var(--input-area-height);
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+    overflow-y: auto;
   }
 
-  .message-section-title {
-    position: fixed;
-    // border-style: solid;
-    // border-width: thin;
-    // border-color: #ced4da;//rgba(45,45,45, 0.5);
-    top: var(--message-section-title-offset-top);
-    // bottom: 0;
-    left: 0;
-    right: 0;
-    // z-index: 10;
+  #output-area {
+  }
+
+  #message-section-title {
     height: var(--message-section-title-height);
-    // height: var(--message-section-frame-min-height);
 
     @include under-bar;
     @include myfont-size-s;
-    background: #143552;
-    color: white;
+    background: var(--message-title-bg-color);
+    color: black;
     border-bottom: solid;
     border-color: white;
     border-width: thin;
   }
 
-  .message-section {
-    position: fixed;
-    top: var(--message-section-offset-top);
-    // bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 100;
+  #message-section {
     height: var(--message-section-height);
-    // height: var(--message-section-min-height);
     overflow-x: hidden;
-    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
-    // margin: 0 0.5rem 0.5rem 0.5rem;
+    overflow-y: auto;
 
-    background: #143552;
+    background: var(--message-bg-color);
     padding: 0.2rem;
     margin: 0;
 
@@ -145,10 +136,27 @@ header {
     }
   }
 
-  .modal-area {
-    .edit-message-button-list-section {
-      margin: 1rem 1rem 0 2rem;
+  #pagenate-area {
+    height: var(--message-section-pagenate-height);
+    background: var(--message-bg-color);
+    height: 3.2rem;
 
+    border-top: solid;
+    border-color: var(--message-bg-color);
+    border-width: 0.2rem;
+
+    .pagenate {
+      @include myfont-size-xs;
+      margin-top: 0.5rem;
+
+      .pagination {
+        justify-content: center;
+      }
+    }
+  }
+
+  #modal-area {
+    .edit-message-button-list-section {
       .mymodal-title {
         @include myfont-size-m;
       }
@@ -170,7 +178,7 @@ header {
   #js-disconnect-room {
     display: none;
 
-    .disconnect-room-section {
+    #disconnect-room-section {
       margin-top: 3rem;
 
       .button-back {

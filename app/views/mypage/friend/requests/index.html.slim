@@ -11,15 +11,15 @@
           | トモダチのユーザーID
         .col-10.offset-1
           .form-group.form-input
-            = f.text_field :uuid, class: 'form-control text-center friend_request-text', required: true
+            = f.text_field :uuid, class: 'form-control text-center text-friend_request', required: true
             .form-input-info
               | ※
               = fa_icon 'user', class: 'icon'
               | プロフィールに記載されています
       .row.text-center
-        .col-md-4.offset-md-1
+        .col-4.offset-1
           = f.submit '申請', class: 'btn btn-primary btn-raised mybtn-m'
-        .col-md-4.offset-md-1
+        .col-4.offset-1
           = link_to mypage_friend_root_path, class: 'btn btn-secondary btn-raised mybtn-m' do
             | 戻る
             end

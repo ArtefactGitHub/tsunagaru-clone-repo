@@ -30,6 +30,7 @@ user:
   avatar:
     default_file_name: avatar_sample.png
     by_sns_file_name: profile_image
+    default_size_class: myavatar-m
 
 room:
   limit_of_entry: 15

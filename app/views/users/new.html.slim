@@ -1,28 +1,30 @@
-.container
-  .col-md
-    .card.mt-3
+.login
+  .row.
+    .col-10.offset-1.headline
+      = fa_icon 'user-plus', class: 'icon'
+      | ユーザー登録
+
+  .container
+    .card
       .card-body
-        h2.text-center
-          | ユーザ登録
+        .myform
+          = form_for @user, url: users_url, method: :post do |f|
+            .row
+              .col-12
+                .form-group
+                  = label :name, '名前'
+                  = f.text_field :name, class: 'form-control'
+                .form-group
+                  = label :email, 'メールアドレス'
+                  = f.email_field :email, class: 'form-control'
+                .form-group
+                  = label :password, 'パスワード'
+                  = f.password_field :password, class: 'form-control'
+                .form-group
+                  = label :password_confirmation, 'パスワード確認'
+                  = f.password_field :password_confirmation, class: 'form-control'
 
-        = form_for @user, url: users_url, method: :post do |f|
-          .row
-            .col-12
-              .form-group
-                = label :name, '名前'
-                = f.text_field :name, class: 'form-control'
-              .form-group
-                = label :email, 'メールアドレス'
-                = f.email_field :email, class: 'form-control'
-              .form-group
-                = label :password, 'パスワード'
-                = f.password_field :password, class: 'form-control'
-              .form-group
-                = label :password_confirmation, 'パスワード確認'
-                = f.password_field :password_confirmation, class: 'form-control'
-
-              .text-center
-                = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised'
-        .row
-          .col-12.mt-3.text-center
-            = link_to 'ログインはこちら', '#', class: 'mb-10'
+                .text-center
+                  = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
+        .info
+          p = link_to 'ログインはこちら', login_path
