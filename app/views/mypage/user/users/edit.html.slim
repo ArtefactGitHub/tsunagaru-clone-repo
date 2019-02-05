@@ -1,3 +1,10 @@
+- if @user.errors.any?
+  #error_explanation.alert.alert-danger.flash_message
+    ul
+      - @user.errors.full_messages.each do |message|
+        li = message
+      end
+
 .users
   .row
     .col-12

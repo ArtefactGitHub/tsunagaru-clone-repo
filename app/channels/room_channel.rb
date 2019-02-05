@@ -47,6 +47,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def all_clear
-    Message.destroy_all
+    # development のコントローラーで処理するように変更
+    # Message.destroy_all
   end
 end

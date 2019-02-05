@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   include RoomsControllerModule
   include UseTypeSettingsControllerModule
+  include LoggerModule
 
   skip_before_action :require_login, only: %i[new create]
 
@@ -17,7 +18,7 @@ class UsersController < ApplicationController
 
       redirect_to login_url, success: 'ユーザー登録しました'
     else
-      logger.debug @user.errors.full_messages if @user&.errors.present?
+      log_debug @user.errors.full_messages if @user&.errors.present?
 
       flash.now[:danger] = 'ユーザー登録出来ませんでした'
       render :new

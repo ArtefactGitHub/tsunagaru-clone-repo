@@ -100,7 +100,7 @@ body {
     @include myfont-size-m;
     color: #333;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
-    margin-top: 8vh;
+    margin-top: 3rem;//8vh;
     margin-bottom: 40px;
   }
 }
@@ -113,7 +113,7 @@ body {
 header {
   .common-header {
     position: relative;
-    height: 8vh;
+    height: 3rem;//8vh;
     box-shadow: 0 3px 6px gray;
     font-weight: bold;
     background: white;
@@ -129,7 +129,7 @@ footer {
   .common-footer {
     @include myfont-size-xs;
     position: relative;
-    height: 8vh;
+    height: 3rem;//8vh;
     padding: 0.5rem;
     z-index: 100;
     box-shadow: 0 3px 6px gray;
