@@ -55,8 +55,8 @@
           - if Rails.env.development?
             .delete-message-section
               .text-center
-                  button type="button" id='js-clear-button'
-                    | メッセージを全て削除
+                = link_to messages_clear_messages_path, id: 'js-clear-button' do
+                  | メッセージを全て削除
 
     #js-disconnect-room
       .disconnect-room-section
