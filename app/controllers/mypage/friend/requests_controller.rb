@@ -1,4 +1,6 @@
 class Mypage::Friend::RequestsController < Mypage::FriendController
+  include LoggerModule
+
   def index
     set_new_request_params
   end
@@ -18,7 +20,7 @@ class Mypage::Friend::RequestsController < Mypage::FriendController
       end
     else
       flash.now[:danger] = 'トモダチ申請が出来ませんでした'
-      logger.debug @request.errors.full_messages if @request.present?
+      log_debug @request.errors.full_messages if @request.present?
 
       set_new_request_params
       render :index

@@ -4,6 +4,7 @@ class User < ApplicationRecord
   include Role
   include Rails.application.routes.url_helpers
   include AvatarInfo
+  include LoggerModule
 
   authenticates_with_sorcery!
 
@@ -49,11 +50,11 @@ class User < ApplicationRecord
     content_type = params.dig(:avatar).content_type
 
     if size > LIMIT_FILE_SIZE
-      logger.debug("avatar.blob.byte_size[#{avatar.blob.byte_size}] > LIMIT_FILE_SIZE[#{LIMIT_FILE_SIZE}]")
+      log_debug("size[#{size}] > LIMIT_FILE_SIZE[#{LIMIT_FILE_SIZE}]")
       # avatar.detach
       errors[:avatar] << "は #{ActiveSupport::NumberHelper.number_to_human_size(LIMIT_FILE_SIZE)} 以下のサイズにしてください"
     elsif content_type.blank? || !content_type.starts_with?('image/')
-      logger.debug("!avatar.blob.content_type.starts_with?('image/')")
+      log_debug("!avatar.blob.content_type.starts_with?('image/')")
       # avatar.detach
       errors[:avatar] << 'のフォーマットが正しくありません'
     else
