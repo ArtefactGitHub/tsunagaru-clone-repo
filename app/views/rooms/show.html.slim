@@ -2,31 +2,32 @@
   .col-12
     #js-connect-room
 
-      .modal-area
+      #modal-area
         = render 'edit_message_button_list_modal', message_button_list: @message_button_list
 
-      .output-area
-        .message-section-title
+      #output-area
+        #message-section-title
           .text-center.title
             | メッセージ欄
 
-        .message-section
+        #message-section
           .card
             #messages data-room_id=@room.id
               = render @messages
 
       - if current_user.use_type_normal?
-        .pagenate-area
+        #pagenate-area
           .row
             .col-12
               .pagenate
                 = paginate @messages
 
 
-      .input-area
+      #input-area
         .col-sm-10.offset-sm-1.col-12
           - if current_user.use_text_input?
-            .text-message-section
+
+            #text-message-section
               .title
                 | 文字を入力して気持ちを伝えよう！
               .col-sm-12.offset-sm-0.col-10.offset-1
@@ -35,7 +36,7 @@
                 /     | 入力状態を戻す
 
           - if current_user.use_button_input?
-            .button-message-section
+            #button-message-section
               .title
                 | ボタンを押して気持ちを伝えよう！
               .ask-buttons
@@ -53,13 +54,13 @@
                         | #{message.content}
 
           - if Rails.env.development?
-            .delete-message-section
+            #delete-message-section
               .text-center
                 = link_to messages_clear_messages_path, id: 'js-clear-button' do
                   | メッセージを全て削除
 
     #js-disconnect-room
-      .disconnect-room-section
+      #disconnect-room-section
         .text-center
           p
             | ルームに入室出来ませんでした

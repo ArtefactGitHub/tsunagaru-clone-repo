@@ -42,7 +42,7 @@ header {
     margin: 0.5rem 0.5rem 0.5rem 0;
   }
 
-  .text-message-section {
+  #text-message-section {
     margin: 1rem 0 1rem;
 
     .title {
@@ -58,7 +58,7 @@ header {
     }
   }
 
-  .button-message-section {
+  #button-message-section {
     margin: 0.5rem 0 1rem;
 
     .title {
@@ -74,17 +74,20 @@ header {
     }
   }
 
-  .delete-message-section {
+  #delete-message-section {
     margin-bottom: 1rem;
   }
 
-  .input-area {
+  #input-area {
     // height: var(--input-area-height);
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  .message-section-title {
+  #output-area {
+  }
+
+  #message-section-title {
     height: var(--message-section-title-height);
 
     @include under-bar;
@@ -96,7 +99,7 @@ header {
     border-width: thin;
   }
 
-  .message-section {
+  #message-section {
     height: var(--message-section-height);
     overflow-x: hidden;
     overflow-y: auto;
@@ -133,7 +136,7 @@ header {
     }
   }
 
-  .pagenate-area {
+  #pagenate-area {
     height: var(--message-section-pagenate-height);
     background: var(--message-bg-color);
     height: 3.2rem;
@@ -152,7 +155,7 @@ header {
     }
   }
 
-  .modal-area {
+  #modal-area {
     .edit-message-button-list-section {
       .mymodal-title {
         @include myfont-size-m;
@@ -175,7 +178,7 @@ header {
   #js-disconnect-room {
     display: none;
 
-    .disconnect-room-section {
+    #disconnect-room-section {
       margin-top: 3rem;
 
       .button-back {
