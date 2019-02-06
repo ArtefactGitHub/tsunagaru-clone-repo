@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       create_use_type_setting @user
 
       # 登録の流れでそのままログインする
-      auto_login(@user)
+      auto_login(@user, params.dig(:remember))
       redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
       log_debug @user.errors.full_messages if @user&.errors.present?
@@ -30,6 +30,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, :remember)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end
