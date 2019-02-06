@@ -16,7 +16,9 @@ class UsersController < ApplicationController
       create_owner_room @user
       create_use_type_setting @user
 
-      redirect_to login_url, success: 'ユーザー登録しました'
+      # 登録の流れでそのままログインする
+      auto_login(@user)
+      redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
       log_debug @user.errors.full_messages if @user&.errors.present?
 
@@ -28,6 +30,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation, :remember)
   end
 end
