@@ -280,7 +280,8 @@ Rails.application.config.sorcery.configure do |config|
     # How long in seconds the session length will be
     # Default: `604800`
     #
-    # user.remember_me_for =
+    user.remember_me_for = 1209600 # Two weeks in seconds
+
 
     # when true sorcery will persist a single remember me token for all
     # logins/logouts (supporting remembering on multiple browsers simultaneously).
@@ -384,7 +385,7 @@ Rails.application.config.sorcery.configure do |config|
     # Default: `5 * 60`
     #
     # user.reset_password_time_between_emails =
-    
+
     # access counter to a reset password page attribute name
     # Default: `:access_count_to_reset_password_page`
     #
