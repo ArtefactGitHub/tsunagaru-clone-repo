@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
+  resources :password_resets, only: %i[new create edit update]
 
   namespace :mypage do
     root to: 'dashboard#show'

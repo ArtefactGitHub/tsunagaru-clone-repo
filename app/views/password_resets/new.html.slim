@@ -1,0 +1,18 @@
+.login
+  .row.
+    .col-10.offset-1.headline
+      = fa_icon 'unlock', class: 'icon'
+      | パスワードの初期化
+
+  .container
+    .card
+      .card-body
+        .myform
+          = form_tag password_resets_path, method: :post do
+            .row.text-center
+              .col-8.offset-2
+                .form-group
+                  = label :email, 'メールアドレス'
+                  = email_field_tag 'user[email]', '', class: 'form-control'
+                .text-center
+                  = submit_tag '送信', class: 'btn btn-primary btn-lg btn-raised mybtn-m'

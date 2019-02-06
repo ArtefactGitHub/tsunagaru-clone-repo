@@ -1,0 +1,23 @@
+.login
+  .row.
+    .col-10.offset-1.headline
+      = fa_icon 'unlock', class: 'icon'
+      | パスワードの初期化
+
+  .container
+    .card
+      .card-body
+        .myform
+          = form_for @user, url: password_reset_path(@token), method: :put do |f|
+            .row
+              .col-12
+                = render 'shared/error_message', object: @user
+
+                .form-group
+                  = label :password, 'パスワード'
+                  = f.password_field :password, class: 'form-control'
+                .form-group
+                  = label :password_confirmation, 'パスワード確認'
+                  = f.password_field :password_confirmation, class: 'form-control'
+                .text-center
+                  = f.submit '送信', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
