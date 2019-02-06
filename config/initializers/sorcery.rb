@@ -367,7 +367,7 @@ Rails.application.config.sorcery.configure do |config|
     # reset password email method on your mailer class.
     # Default: `:reset_password_email`
     #
-    # user.reset_password_email_method_name =
+    user.reset_password_email_method_name = :reset_password_email
 
     # when true sorcery will not automatically
     # email password reset details and allow you to
@@ -384,7 +384,7 @@ Rails.application.config.sorcery.configure do |config|
     # hammering protection, how long in seconds to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
-    # user.reset_password_time_between_emails =
+    user.reset_password_time_between_emails = 1
 
     # access counter to a reset password page attribute name
     # Default: `:access_count_to_reset_password_page`

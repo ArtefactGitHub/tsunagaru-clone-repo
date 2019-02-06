@@ -1,8 +1,8 @@
-.login
+.before-login
   .row.
     .col-10.offset-1.headline
       = fa_icon 'unlock', class: 'icon'
-      | パスワードの初期化
+      | パスワードの再設定
 
   .container
     .card
@@ -13,6 +13,8 @@
               .col-12
                 = render 'shared/error_message', object: @user
 
+            .row
+              .col-8.offset-2
                 .form-group
                   = label :password, 'パスワード'
                   = f.password_field :password, class: 'form-control'
