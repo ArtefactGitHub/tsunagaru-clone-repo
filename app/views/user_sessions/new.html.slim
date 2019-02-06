@@ -15,9 +15,16 @@
             .form-group
               = label :password, 'パスワード'
               = password_field '', :password, class: 'form-control'
+            .form-group
+              label for='remember'
+                = check_box_tag :remember, params[:remember], true
+                | ログインを記憶する
+              br
+              p.info ※ブラウザを閉じた後もすぐログイン出来るようになります（2週間）
             .text-center
               = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
 
-        .info
+
+        .for-register
           p = link_to '登録はこちら', new_user_path
           / p = link_to 'パスワードを忘れた方はこちら', '#'

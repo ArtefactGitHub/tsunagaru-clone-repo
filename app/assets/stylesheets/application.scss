@@ -175,6 +175,9 @@ footer {
   }
   .info {
     @include myfont-size-s;
+  }
+  .for-register {
+    @include myfont-size-s;
     text-align: right;
   }
 }
