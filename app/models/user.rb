@@ -23,10 +23,10 @@ class User < ApplicationRecord
   delegate :use_text_input?, to: :use_type_setting, allow_nil: false
   delegate :use_button_input?, to: :use_type_setting, allow_nil: false
 
-  validates :name, presence: true
+  validates :name, presence: true, length: { maximum: 20 }
   validates :introduction, length: { maximum: 999 }
   validates :email, uniqueness: true, presence: true
-  validates :password, length: { minimum: 3 }, if: -> { new_record? || changes[:crypted_password] }
+  validates :password, length: { minimum: 6 }, if: -> { new_record? || changes[:crypted_password] }
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :uuid, presence: true

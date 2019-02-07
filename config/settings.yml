@@ -12,11 +12,11 @@ common:
       site_name: xxxx
       description: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
     mail:
-      from: '"xxxx" <noreply@xxxx.com>'
+      from: '"tsunagaru" <noreply@tsunagaru.space>'
     contact: https://twitter.com/xxxx
   password:
     minimum_count: 6
-  host_name: www.xxx
+  host_name: www.tsunagaru.space
 
 twitter:
   url: https://twitter.com
