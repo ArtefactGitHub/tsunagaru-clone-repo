@@ -1,30 +1,30 @@
 common:
   app:
-    name: 1ButtonChat
-    page_description: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
-    page_keywords: "チャット,ちゃっと,療養"
-    page_title: １ボタンで想いを届けよう
+    name: tsunagaru
+    page_description: 1ボタンで簡単にチャット！ 家族や友人など、あなたの大切な人へ想いを届けよう。
+    page_keywords: "つながる,ツナガル,繋がる,チャット,ちゃっと,1ボタン,療養"
+    page_title: 1ボタンで想いを届けよう
     og:
-      title: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
+      title: 1ボタンで簡単にチャット！ 家族や友人など、あなたの大切な人へ想いを届けよう。
       type: website
-      url: https://www.xxx.com
+      url: https://tsunagaru.space
       image: site_image.jpg
-      site_name: xxxx
-      description: １ボタンで簡単にチャット！　療養中など体が思うように動かない時も、遠くの相手へ想いを届けます。
+      site_name: tsunagaru
+      description: 1ボタンで簡単にチャット！ 家族や友人など、あなたの大切な人へ想いを届けよう。
     mail:
       from: '"tsunagaru" <noreply@tsunagaru.space>'
-    contact: https://twitter.com/xxxx
+    contact: https://twitter.com/Artefacttw
   password:
     minimum_count: 6
-  host_name: www.tsunagaru.space
+  host_name: tsunagaru.space
 
 twitter:
   url: https://twitter.com
-  account_name: xxxx
+  account_name: Artefacttw
   share_url: https://twitter.com/intent/tweet
   card: summary_large_image
   auto_fill_password_count: 8
-  hashtag: xxxx
+  hashtag: tsunagaru-chat
 
 user:
   avatar:
