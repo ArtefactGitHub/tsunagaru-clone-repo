@@ -10,7 +10,7 @@ class UserSessionsController < ApplicationController
   def create
     return redirect_to login_url, danger: 'ログイン出来ません' if login_to_admin?
 
-    @user = login(params[:email], params[:password])
+    @user = login(params[:email], params[:password], params[:remember])
     if @user
       redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
@@ -20,6 +20,8 @@ class UserSessionsController < ApplicationController
   end
 
   def destroy
+    remember_me!
+    forget_me!
     logout
     redirect_to login_url, success: 'ログアウトしました'
   end

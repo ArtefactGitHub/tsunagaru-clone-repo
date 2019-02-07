@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   if Rails.env.development?
     get '/login_as/:user_id', to: 'development/sessions#login_as'
     get '/messages/clear_messages', to: 'development/messages#clear_messages'
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
   get '/login', to: 'user_sessions#new'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
 
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
+  resources :password_resets, only: %i[new create edit update]
 
   namespace :mypage do
     root to: 'dashboard#show'
