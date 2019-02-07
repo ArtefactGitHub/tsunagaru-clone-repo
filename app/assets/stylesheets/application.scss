@@ -119,8 +119,10 @@ header {
     background: white;
 
     .logo {
-      width: 30%;
-      height: 30%;
+      // 500px * 22%
+      width: 100px;
+      // 300px * 22%
+      height: 60px;
     }
   }
 }
