@@ -21,11 +21,6 @@ jQuery(document).on 'turbolinks:load', ->
       messages.prepend data['message']
       @adjust_layout_own_message()
       # $("#message-section").scrollTop(0);
-      $(body).scrollTop(0);
-      $("body").scrollTop(0);
-      $(".room").scrollTop(0);
-      $(".main").scrollTop(0);
-      $("#input-area").scrollTop(0);
       $(window).scrollTop(0);
 
     speak: (message) ->
@@ -58,10 +53,12 @@ jQuery(document).on 'turbolinks:load', ->
       App.room.speak event.target.value
       event.target.value = ''
       event.preventDefault()
+      $(window).scrollTop(0);
 
   $ ->
     $('.js-command').click (e) ->
       App.room.speak_by_message_button($(this).data('message_no'), $(this).data('message_type'))
+      $(window).scrollTop(0);
 
     $('#js-clear-button').click ->
       messages.empty()
