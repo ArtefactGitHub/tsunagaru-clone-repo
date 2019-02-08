@@ -43,13 +43,14 @@ gem 'mini_magick', '~> 4.8'
 
 gem 'seed-fu'
 gem 'rails-i18n'
-gem 'config'
 gem 'meta-tags'
 gem 'aws-sdk-s3', require: false
 # ページング
 gem 'kaminari'
 gem 'kaminari-bootstrap', '~> 3.0.1'
-
+# 定数
+gem 'config'
+gem 'dotenv-rails', require: 'dotenv/rails-now'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
