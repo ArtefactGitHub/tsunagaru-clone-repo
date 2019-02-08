@@ -54,7 +54,9 @@ document.addEventListener("DOMFocusOut", function(event) {
     //キーボードが引っ込んだ時
     $(".room").scrollTop(0);
     $(".main").scrollTop(0);
+    $(window).scrollTop(0);
 
+    console.log('DOMFocusOut');
     var message = $('#messages .message').first()
     message.css('height', '400px');
     message.css('display', 'none');

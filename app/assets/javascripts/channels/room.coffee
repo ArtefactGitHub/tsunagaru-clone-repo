@@ -21,6 +21,12 @@ jQuery(document).on 'turbolinks:load', ->
       messages.prepend data['message']
       @adjust_layout_own_message()
       # $("#message-section").scrollTop(0);
+      $(body).scrollTop(0);
+      $("body").scrollTop(0);
+      $(".room").scrollTop(0);
+      $(".main").scrollTop(0);
+      $("#input-area").scrollTop(0);
+      $(window).scrollTop(0);
 
     speak: (message) ->
       @perform 'speak', message: message
