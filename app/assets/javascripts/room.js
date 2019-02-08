@@ -40,7 +40,7 @@ document.addEventListener("turbolinks:load", function() {
         }
 
         // メッセージ欄の拡張（数rem分調整）
-        add_height = add_height - (font_height * 4);
+        add_height = add_height - (font_height * 8);
         if (add_height > 0) {
           $('#message-section').height($('#message-section').outerHeight() + add_height);
         }
