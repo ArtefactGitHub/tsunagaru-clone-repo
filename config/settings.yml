@@ -16,7 +16,7 @@ common:
     contact: https://twitter.com/Artefacttw
   password:
     minimum_count: 6
-  host_name: tsunagaru.space
+  domain: tsunagaru.space
 
 twitter:
   url: https://twitter.com
