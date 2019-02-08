@@ -47,6 +47,7 @@ jQuery(document).on 'turbolinks:load', ->
       if current_user_uuid == user_uuid
         message.css('text-align', 'right');
         message.find('.avatar').addClass('order-2');
+        $("#message-section").scrollTop(0);
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
