@@ -1,6 +1,6 @@
 .row
   .col-12
-    #js-connect-room
+    #js-connect-room data-current_user_uuid=current_user.uuid
 
       #modal-area
         = render 'edit_message_button_list_modal', message_button_list: @message_button_list
@@ -63,7 +63,7 @@
       #disconnect-room-section
         .text-center
           p
-            | ルームに入室出来ませんでした
+            | 部屋と接続が切れました
           .row
             .col-6
               = link_to room_path(@room), class: 'btn btn-primary btn-raised button-back' do
