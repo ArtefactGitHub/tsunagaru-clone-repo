@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       create_owner_room @user
       create_use_type_setting @user
 
-      if can_login?(@user)
+      if can_login_user?(@user)
         # 登録の流れでそのままログインする
         auto_login(@user, params.dig(:remember))
         redirect_back_or_to mypage_root_url, success: 'ログインしました'

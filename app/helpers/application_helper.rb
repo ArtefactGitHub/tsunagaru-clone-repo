@@ -11,8 +11,12 @@ module ApplicationHelper
     current_user.present?
   end
 
-  def can_login?(user)
-    user&.admin? || ENV.fetch(Settings.env.can_login, 'true') == 'true'
+  def env_can_login?
+    ENV.fetch(Settings.env.can_login, 'true') == 'true'
+  end
+
+  def can_login_user?(user)
+    user&.admin? || env_can_login?
     # true
   end
 
