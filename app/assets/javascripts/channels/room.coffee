@@ -20,6 +20,7 @@ jQuery(document).on 'turbolinks:load', ->
       @perform 'received'
       messages.prepend data['message']
       @adjust_layout_own_message()
+      # $("#message-section").scrollTop(0);
 
     speak: (message) ->
       @perform 'speak', message: message

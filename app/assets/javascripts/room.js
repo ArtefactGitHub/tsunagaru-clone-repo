@@ -48,3 +48,10 @@ document.addEventListener("turbolinks:load", function() {
 
     adjust_message_section();
 });
+
+document.addEventListener("DOMFocusOut", function(event) {
+    'use strict';
+    //キーボードが引っ込んだ時
+    $(".room").scrollTop(0);
+    $(".main").scrollTop(0);
+}, false);
