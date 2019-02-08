@@ -1,0 +1,12 @@
+.message data-message_id=message.id data-user_id=message.user.id
+  .row
+    .col-3.avatar
+      .text-center
+        = render 'shared/users/avatar', user: message.user, assign_class: 'myavatar-m'
+    .col-9.friend-text
+      div.name
+        | - #{message.user.name} -
+      div.content
+        = escape_with_linefeed message.content
+      div.created_at
+        | [#{simple_time message.created_at}]

@@ -19,6 +19,7 @@ jQuery(document).on 'turbolinks:load', ->
     received: (data) ->
       @perform 'received'
       messages.prepend data['message']
+      @adjust_layout_own_message()
 
     speak: (message) ->
       @perform 'speak', message: message
@@ -36,6 +37,14 @@ jQuery(document).on 'turbolinks:load', ->
     uninstall: ->
       connect_room.hide()
       disconnect_room.show()
+
+    adjust_layout_own_message: ->
+      current_user_id = connect_room.data('current_user_id')
+      message = $('#messages .message').first()
+      user_id = message.data('user_id')
+      if current_user_id == user_id
+        message.css('text-align', 'right');
+        message.find('.avatar').addClass('order-2');
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
