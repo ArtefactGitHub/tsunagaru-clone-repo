@@ -1,16 +1,16 @@
 common:
   app:
     name: tsunagaru
-    page_description: 1ボタンで簡単にチャット！ 家族や友人など、あなたの大切な人へ想いを届けよう。
-    page_keywords: "つながる,ツナガル,繋がる,チャット,ちゃっと,1ボタン,療養"
+    page_description: 1ボタンで簡単にメッセージ！ 家族や友人など、あなたの大切な人へ想いを届けよう。
+    page_keywords: "つながる,ツナガル,繋がる,メッセージ,めっせーじ,チャット,ちゃっと,ボタン,療養"
     page_title: 1ボタンで想いを届けよう
     og:
-      title: 1ボタンで簡単にチャット！ 家族や友人など、あなたの大切な人へ想いを届けよう。
+      title: 1ボタンで簡単にメッセージ！ 家族や友人など、あなたの大切な人へ想いを届けよう。
       type: website
       url: https://tsunagaru.space
       image: site_image.jpg
       site_name: tsunagaru
-      description: 1ボタンで簡単にチャット！ 家族や友人など、あなたの大切な人へ想いを届けよう。
+      description: 1ボタンで簡単にメッセージ！ 家族や友人など、あなたの大切な人へ想いを届けよう。
     mail:
       from: '"tsunagaru" <noreply@tsunagaru.space>'
     contact: https://twitter.com/Artefacttw
