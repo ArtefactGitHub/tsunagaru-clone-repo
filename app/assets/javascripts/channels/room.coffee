@@ -39,10 +39,10 @@ jQuery(document).on 'turbolinks:load', ->
       disconnect_room.show()
 
     adjust_layout_own_message: ->
-      current_user_id = connect_room.data('current_user_id')
+      current_user_uuid = connect_room.data('current_user_uuid')
       message = $('#messages .message').first()
-      user_id = message.data('user_id')
-      if current_user_id == user_id
+      user_uuid = message.data('user_uuid')
+      if current_user_uuid == user_uuid
         message.css('text-align', 'right');
         message.find('.avatar').addClass('order-2');
 
