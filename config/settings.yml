@@ -38,3 +38,6 @@ room:
 setting:
   message_button:
     default_count: 6
+
+env:
+  can_login: CAN_LOGIN

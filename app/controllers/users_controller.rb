@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  include ApplicationHelper
   include RoomsControllerModule
   include UseTypeSettingsControllerModule
   include LoggerModule
@@ -16,9 +17,13 @@ class UsersController < ApplicationController
       create_owner_room @user
       create_use_type_setting @user
 
-      # 登録の流れでそのままログインする
-      auto_login(@user, params.dig(:remember))
-      redirect_back_or_to mypage_root_url, success: 'ログインしました'
+      if can_login?(@user)
+        # 登録の流れでそのままログインする
+        auto_login(@user, params.dig(:remember))
+        redirect_back_or_to mypage_root_url, success: 'ログインしました'
+      else
+        redirect_to login_url, danger: 'ログイン出来ません'
+      end
     else
       log_debug @user.errors.full_messages if @user&.errors.present?
 

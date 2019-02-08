@@ -11,6 +11,11 @@ module ApplicationHelper
     current_user.present?
   end
 
+  def can_login?(user)
+    user&.admin? || ENV.fetch(Settings.env.can_login, 'true') == 'true'
+    # true
+  end
+
   def default_meta_tags
     {
         site: Settings.common.app.name,
