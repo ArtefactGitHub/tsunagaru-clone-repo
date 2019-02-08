@@ -113,7 +113,7 @@ body {
 header {
   .common-header {
     position: relative;
-    height: 3rem;//8vh;
+    height: 3rem;
     box-shadow: 0 3px 6px gray;
     font-weight: bold;
     background: white;
@@ -128,7 +128,7 @@ footer {
   .common-footer {
     @include myfont-size-xs;
     position: relative;
-    height: 3rem;//8vh;
+    height: 3rem;
     padding: 0.5rem;
     z-index: 100;
     box-shadow: 0 3px 6px gray;
