@@ -56,10 +56,15 @@ jQuery(document).on 'turbolinks:load', ->
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
-      App.room.speak event.target.value
-      event.target.value = ''
-      event.preventDefault()
-      # $(window).scrollTop(0);
+      if event.target.value.length <= 0
+        alert 'メッセージを入力してください'
+      else if event.target.value.length > 100
+        alert 'メッセージの最大文字数を超えています'
+      else
+        App.room.speak event.target.value
+        event.target.value = ''
+        event.preventDefault()
+        # $(window).scrollTop(0);
 
   $ ->
     $('.js-command').click (e) ->
