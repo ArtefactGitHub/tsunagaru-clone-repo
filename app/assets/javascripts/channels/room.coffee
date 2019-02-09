@@ -85,10 +85,13 @@ jQuery(document).on 'turbolinks:load', ->
         event.preventDefault()
 
   isMobile = -> return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
+  # isMobile = -> return navigator.userAgent.match(/(Mac)/i)
 
-  scroll_window_top = -> body.animate({scrollTop: 0}, 200, 'swing');
+  scroll_window_top = -> body.animate({scrollTop: 0}, 300, 'swing');
+  scroll_window_top_and_resize = -> body.animate({scrollTop: 0}, 300, 'swing', () ->
+    body.height(default_body_height))
 
-  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 200, 'swing');
+  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing')
 
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile()
@@ -96,8 +99,7 @@ jQuery(document).on 'turbolinks:load', ->
       scroll_window_bottom()
 
   $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
-    body.height(default_body_height)
-    scroll_window_top()
+    scroll_window_top_and_resize()
 
   $ ->
     $('.js-command').click (e) ->
