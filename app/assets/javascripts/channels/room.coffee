@@ -81,6 +81,8 @@ jQuery(document).on 'turbolinks:load', ->
 
     checkOrientation()
 
+    message_section.scrollTop(message_section.get(0).scrollHeight)
+
   # 画面回転の検知
   $(document).on 'load orientationchange resize', () ->
     checkOrientation()
