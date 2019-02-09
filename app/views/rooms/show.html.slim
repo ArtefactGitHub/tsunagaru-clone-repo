@@ -13,7 +13,7 @@
         #message-section
           .card
             #messages data-room_id=@room.id
-              = render @messages
+              = render @messages.reverse
 
       - if current_user.use_type_normal?
         #pagenate-area
@@ -65,11 +65,20 @@
           p
             | 部屋と接続が切れました
           .row
-            .col-6
+            .col-3.offset-2
               = link_to room_path(@room), class: 'btn btn-primary btn-raised button-back' do
                 | 更新
                 end
-            .col-6
+            .col-3.offset-1
               = link_to mypage_root_path, class: 'btn btn-secondary btn-raised button-back' do
                 | 戻る
                 end
+
+    #js-alert-orientation
+      .col-12.text-center
+        .section
+          = image_tag Settings.room.alert_orientation_file_name, class: 'alert-image'
+          div
+            | スマホ（タブレット）を
+            br
+            | 縦にしてください

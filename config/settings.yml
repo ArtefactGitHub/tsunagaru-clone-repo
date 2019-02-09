@@ -34,6 +34,7 @@ user:
 
 room:
   limit_of_entry: 15
+  alert_orientation_file_name: alert_orientation.png
 
 setting:
   message_button:
