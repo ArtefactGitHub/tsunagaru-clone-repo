@@ -22,7 +22,7 @@ jQuery(document).on 'turbolinks:load', ->
       @perform 'received'
       messages.append data['message']
       @adjust_layout_own_message()
-      $(window).scrollTop(0);
+      # $(window).scrollTop(0);
       # $("#message-section").scrollTop(0);
 
     speak: (message) ->
@@ -59,7 +59,7 @@ jQuery(document).on 'turbolinks:load', ->
       App.room.speak event.target.value
       event.target.value = ''
       event.preventDefault()
-      $(window).scrollTop(0);
+      # $(window).scrollTop(0);
 
   $ ->
     $('.js-command').click (e) ->
