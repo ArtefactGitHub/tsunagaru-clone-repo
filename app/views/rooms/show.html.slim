@@ -13,7 +13,7 @@
         #message-section
           .card
             #messages data-room_id=@room.id
-              = render @messages
+              = render @messages.reverse
 
       - if current_user.use_type_normal?
         #pagenate-area

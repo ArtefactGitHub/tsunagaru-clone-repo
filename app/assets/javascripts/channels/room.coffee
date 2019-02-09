@@ -1,5 +1,6 @@
 jQuery(document).on 'turbolinks:load', ->
   messages = $('#messages')
+  message_section = $('#message-section')
   connect_room = $('#js-connect-room')
   disconnect_room = $('#js-disconnect-room')
 
@@ -7,6 +8,7 @@ jQuery(document).on 'turbolinks:load', ->
     connected: ->
       # Called when the subscription is ready for use on the server
       @install()
+      @scroll_message_section()
 
     disconnected: ->
       # Called when the subscription has been terminated by the server
@@ -18,10 +20,10 @@ jQuery(document).on 'turbolinks:load', ->
 
     received: (data) ->
       @perform 'received'
-      messages.prepend data['message']
+      messages.append data['message']
       @adjust_layout_own_message()
-      # $("#message-section").scrollTop(0);
       $(window).scrollTop(0);
+      # $("#message-section").scrollTop(0);
 
     speak: (message) ->
       @perform 'speak', message: message
@@ -42,12 +44,15 @@ jQuery(document).on 'turbolinks:load', ->
 
     adjust_layout_own_message: ->
       current_user_uuid = connect_room.data('current_user_uuid')
-      message = $('#messages .message').first()
+      message = $('#messages .message').last()
       user_uuid = message.data('user_uuid')
       if current_user_uuid == user_uuid
         message.css('text-align', 'right');
         message.find('.avatar').addClass('order-2');
-        $("#message-section").scrollTop(0);
+        @scroll_message_section()
+
+    scroll_message_section: ->
+      message_section.scrollTop(message_section.get(0).scrollHeight)
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
