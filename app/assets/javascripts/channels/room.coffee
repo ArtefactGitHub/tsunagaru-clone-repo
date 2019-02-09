@@ -7,6 +7,12 @@ jQuery(document).on 'turbolinks:load', ->
   input_area = $('#input-area')
   default_body_height = body.height();
 
+  checkOrientation = ->
+    if Math.abs(window.orientation) == 90
+      $('#js-alert-orientation').show()
+    else
+      $('#js-alert-orientation').hide()
+
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: messages.data('room_id') },
     connected: ->
       # Called when the subscription is ready for use on the server
@@ -73,12 +79,11 @@ jQuery(document).on 'turbolinks:load', ->
     # 画面の高さを取得しておく
     default_body_height = body.height();
 
+    checkOrientation()
+
   # 画面回転の検知
   $(document).on 'load orientationchange resize', () ->
-    if Math.abs(window.orientation) == 90
-      $('#js-alert-orientation').show()
-    else
-      $('#js-alert-orientation').hide()
+    checkOrientation()
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
