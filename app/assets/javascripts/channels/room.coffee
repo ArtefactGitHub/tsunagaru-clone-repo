@@ -90,13 +90,17 @@ jQuery(document).on 'turbolinks:load', ->
   isMobile = ->
     return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
 
-  $(document).on 'DOMFocusIn', (event) ->
+  $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile == true
       input_area.height(input_area_height_base + $(window).height() / 3)
+      $('#message-section-title .title').text('mobile')
+    else
+      $('#message-section-title .title').text('pc')
 
-  $(document).on 'DOMFocusOut', (event) ->
+  $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
     $(window).scrollTop(0)
     input_area.height(input_area_height_base)
+    $('#message-section-title .title').text('---')
 
   $ ->
     $('.js-command').click (e) ->
