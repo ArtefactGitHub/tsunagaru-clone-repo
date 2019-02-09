@@ -88,7 +88,8 @@ jQuery(document).on 'turbolinks:load', ->
         # $(window).scrollTop(0);
 
   isMobile = ->
-    return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
+    ua = navigator.userAgent;
+    return ua.indexOf('iPhone') > 0 || ua.indexOf('Android') > 0 || ua.indexOf('iPad') > 0
 
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile == true
