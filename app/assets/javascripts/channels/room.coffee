@@ -73,16 +73,12 @@ jQuery(document).on 'turbolinks:load', ->
     # 画面の高さを取得しておく
     default_body_height = body.height();
 
-  # $(window).on('load orientationchange resize', function(){
+  # 画面回転の検知
   $(document).on 'load orientationchange resize', () ->
-    $('#message-section-title').text('=======')
-
     if Math.abs(window.orientation) == 90
-      $('#message-section-title').text('横')
       $('#js-alert-orientation').show()
     else
       $('#js-alert-orientation').hide()
-      $('#message-section-title').text('縦')
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
@@ -104,11 +100,13 @@ jQuery(document).on 'turbolinks:load', ->
 
   scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing')
 
+  # テキスト入力欄のフォーカス
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile()
       body.height(default_body_height + (default_body_height / 5 * 1.5))
       scroll_window_bottom()
 
+  # テキスト入力欄のフォーカスが外れた
   $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
     scroll_window_top_and_resize()
 
