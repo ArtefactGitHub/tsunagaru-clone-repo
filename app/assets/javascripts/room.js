@@ -39,7 +39,7 @@ document.addEventListener("turbolinks:load", function() {
         add_height = add_height - adjustHeight;
         if (add_height > 0) {
           $('#message-section').height($('#message-section').outerHeight() + add_height);
-          $('#input-area').height($('#input-area').outerHeight() + adjustHeight);
+          $('#input-area').height((input_area_height * 2) + adjustHeight);
         }
     }
 
