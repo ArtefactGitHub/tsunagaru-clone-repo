@@ -5,7 +5,7 @@ jQuery(document).on 'turbolinks:load', ->
   connect_room = $('#js-connect-room')
   disconnect_room = $('#js-disconnect-room')
   input_area = $('#input-area')
-  input_area_height_base = input_area.height();
+  default_body_height = body.height();
 
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: messages.data('room_id') },
     connected: ->
@@ -25,8 +25,6 @@ jQuery(document).on 'turbolinks:load', ->
       @perform 'received'
       messages.append data['message']
       @adjust_layout_own_message()
-      # scroll_window_top()
-      # $("#message-section").scrollTop(0);
 
     speak: (message) ->
       @perform 'speak', message: message
@@ -71,17 +69,9 @@ jQuery(document).on 'turbolinks:load', ->
     add_height -= adjustHeight;
     if add_height > 0
       $('#message-section').height($('#message-section').outerHeight() + add_height);
-      # input_area.height((input_area.height * 2) + adjustHeight);
 
-      # room.height(room.height() * 2);
-      # console.log('---')
-      # console.log("room.get(0).scrollHeight: " + room.scrollHeight)
-      # # room.scrollTop(room.get(0).scrollHeight)
-      # room.animate({scrollTop: room.get(0).scrollHeight}, 500, 'swing');
-
-    # 入力欄のサイズを取得しておく
-    # input_area_height_base = input_area.height();
-    input_area_height_base = body.height();
+    # 画面の高さを取得しておく
+    default_body_height = body.height();
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
@@ -94,28 +84,20 @@ jQuery(document).on 'turbolinks:load', ->
         event.target.value = ''
         event.preventDefault()
 
-  isMobile = ->
-    return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
+  isMobile = -> return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
 
   scroll_window_top = -> body.animate({scrollTop: 0}, 200, 'swing');
+
   scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing');
 
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile()
-      $('#message-section-title .title').text('mobile: ' + navigator.userAgent)
-
-      console.log('body.height :' + body.height())
-      console.log('input_area_height_base :' + input_area_height_base)
-      body.height(input_area_height_base + input_area_height_base / 3)
-      console.log('body.height :' + body.height())
+      body.height(default_body_height + (default_body_height / 5 * 2))
       scroll_window_bottom()
-    else
-      $('#message-section-title .title').text('pc: ' + navigator.userAgent)
 
   $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
-    body.height(input_area_height_base)
+    body.height(default_body_height)
     scroll_window_top()
-    $('#message-section-title .title').text('---')
 
   $ ->
     $('.js-command').click (e) ->
