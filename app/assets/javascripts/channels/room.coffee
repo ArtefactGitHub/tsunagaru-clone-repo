@@ -88,11 +88,11 @@ jQuery(document).on 'turbolinks:load', ->
 
   scroll_window_top = -> body.animate({scrollTop: 0}, 200, 'swing');
 
-  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing');
+  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 200, 'swing');
 
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile()
-      body.height(default_body_height + (default_body_height / 5 * 2))
+      body.height(default_body_height + (default_body_height / 5))
       scroll_window_bottom()
 
   $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
