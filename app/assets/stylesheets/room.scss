@@ -31,6 +31,8 @@ header {
   --message-title-bg-color: #dcedfb;
   --message-bg-color: aliceblue;
 
+  overflow-x: hidden;
+  
   .myavatar-m {
     @include avatar;
     width: 4rem;
