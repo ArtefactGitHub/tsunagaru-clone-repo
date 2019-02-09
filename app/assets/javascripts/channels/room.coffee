@@ -76,12 +76,12 @@ jQuery(document).on 'turbolinks:load', ->
   # $(window).on('load orientationchange resize', function(){
   $(document).on 'load orientationchange resize', () ->
     $('#message-section-title').text('=======')
-    
+
     if Math.abs(window.orientation) == 90
-      # $(横向き時に表示させる画像).show();
       $('#message-section-title').text('横')
+      $('#js-alert-orientation').show()
     else
-      # $(横向き時に表示させる画像).hide();
+      $('#js-alert-orientation').hide()
       $('#message-section-title').text('縦')
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
