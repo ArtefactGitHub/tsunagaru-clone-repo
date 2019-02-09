@@ -65,11 +65,11 @@
           p
             | 部屋と接続が切れました
           .row
-            .col-6
+            .col-3.offset-2
               = link_to room_path(@room), class: 'btn btn-primary btn-raised button-back' do
                 | 更新
                 end
-            .col-6
+            .col-3.offset-1
               = link_to mypage_root_path, class: 'btn btn-secondary btn-raised button-back' do
                 | 戻る
                 end

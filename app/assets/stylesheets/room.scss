@@ -32,7 +32,7 @@ header {
   --message-bg-color: aliceblue;
 
   overflow-x: hidden;
-  
+
   .myavatar-m {
     @include avatar;
     width: 4rem;
@@ -185,7 +185,7 @@ header {
 
       .button-back {
         @extend .mybtn-m;
-        width: 10rem;
+        min-width: 100px;
       }
     }
   }
