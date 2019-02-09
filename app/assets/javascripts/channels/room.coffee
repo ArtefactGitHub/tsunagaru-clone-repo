@@ -3,6 +3,8 @@ jQuery(document).on 'turbolinks:load', ->
   message_section = $('#message-section')
   connect_room = $('#js-connect-room')
   disconnect_room = $('#js-disconnect-room')
+  input_area = $('#input-area')
+  input_area_height_base = input_area.height();
 
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: messages.data('room_id') },
     connected: ->
@@ -54,6 +56,25 @@ jQuery(document).on 'turbolinks:load', ->
     scroll_message_section: ->
       message_section.scrollTop(message_section.get(0).scrollHeight)
 
+  # adjust_message_section
+  do ->
+    # メッセージ欄の拡張可能な高さ
+    pagenate_area_height = if $('#pagenate-area').length == 0 then 0 else $('#pagenate-area').height()
+    add_height = $(window).height() - $('header').height() - $('#output-area').height() - pagenate_area_height - input_area.height();
+
+    # 現在のウィンドウの 1rem の高さ
+    # font_height = $('html').css('font-size');
+    font_height = $('#message-section-title').height();
+    # メッセージ欄の拡張（数rem分調整）
+    adjustHeight = (font_height * 2);
+    add_height -= adjustHeight;
+    if add_height > 0
+      $('#message-section').height($('#message-section').outerHeight() + add_height);
+      input_area.height((input_area.height * 2) + adjustHeight);
+
+    # 入力欄のサイズを取得しておく
+    input_area_height_base = input_area.height();
+
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
       if event.target.value.length <= 0
@@ -65,6 +86,17 @@ jQuery(document).on 'turbolinks:load', ->
         event.target.value = ''
         event.preventDefault()
         # $(window).scrollTop(0);
+
+  isMobile = ->
+    return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
+
+  $(document).on 'DOMFocusIn', (event) ->
+    if isMobile == true
+      input_area.height(input_area_height_base + $(window).height() / 3)
+
+  $(document).on 'DOMFocusOut', (event) ->
+    $(window).scrollTop(0)
+    input_area.height(input_area_height_base)
 
   $ ->
     $('.js-command').click (e) ->
