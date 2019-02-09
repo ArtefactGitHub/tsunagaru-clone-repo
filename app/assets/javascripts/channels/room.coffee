@@ -95,7 +95,7 @@ jQuery(document).on 'turbolinks:load', ->
 
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
     if isMobile()
-      body.height(default_body_height + (default_body_height / 5 * 2))
+      body.height(default_body_height + (default_body_height / 5 * 1.5))
       scroll_window_bottom()
 
   $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
