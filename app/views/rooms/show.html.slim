@@ -76,9 +76,9 @@
 
     #js-alert-orientation
       .col-12.text-center
-        .image
-          = image_tag Settings.room.alert_orientation_file_name
-        .info
-          | スマホ（タブレット）を
-          br
-          | 縦にしてください
+        .section
+          = image_tag Settings.room.alert_orientation_file_name, class: 'alert-image'
+          div
+            | スマホ（タブレット）を
+            br
+            | 縦にしてください
