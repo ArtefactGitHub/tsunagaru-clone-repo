@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_10_002618) do
+ActiveRecord::Schema.define(version: 2019_02_10_012010) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,16 +72,6 @@ ActiveRecord::Schema.define(version: 2019_02_10_002618) do
     t.bigint "room_id"
     t.index ["room_id"], name: "index_messages_on_room_id"
     t.index ["user_id"], name: "index_messages_on_user_id"
-  end
-
-  create_table "room_notifiers", force: :cascade do |t|
-    t.bigint "room_id"
-    t.bigint "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["room_id", "user_id"], name: "index_room_notifiers_on_room_id_and_user_id", unique: true
-    t.index ["room_id"], name: "index_room_notifiers_on_room_id"
-    t.index ["user_id"], name: "index_room_notifiers_on_user_id"
   end
 
   create_table "rooms", force: :cascade do |t|
