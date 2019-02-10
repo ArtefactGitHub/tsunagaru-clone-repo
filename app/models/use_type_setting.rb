@@ -5,6 +5,7 @@ class UseTypeSetting < ApplicationRecord
 
   validates :use_text_input, inclusion: {in: [true, false]}
   validates :use_button_input, inclusion: {in: [true, false]}
+  validates :use_mail_notification, inclusion: {in: [true, false]}
   validates :user_id, presence: true
 
   def setup_optional
@@ -26,5 +27,9 @@ class UseTypeSetting < ApplicationRecord
 
   def use_button_input?
     use_button_input
+  end
+
+  def use_mail_notification?
+    use_mail_notification
   end
 end

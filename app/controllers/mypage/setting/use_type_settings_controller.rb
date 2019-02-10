@@ -19,8 +19,9 @@ class Mypage::Setting::UseTypeSettingsController < Mypage::SettingController
   end
 
   def use_type_setting_params
+    params[:use_type_setting][:use_mail_notification] = false if params.dig(:use_type_setting, :use_mail_notification).blank?
     params[:use_type_setting][:use_text_input] = false if params.dig(:use_type_setting, :use_text_input).blank?
     params[:use_type_setting][:use_button_input] = false if params.dig(:use_type_setting, :use_button_input).blank?
-    params.require(:use_type_setting).permit(:use_type, :use_text_input, :use_button_input)
+    params.require(:use_type_setting).permit(:use_type, :use_mail_notification, :use_text_input, :use_button_input)
   end
 end

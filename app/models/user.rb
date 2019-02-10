@@ -32,6 +32,7 @@ class User < ApplicationRecord
   validates :uuid, presence: true
 
   scope :friends_of, ->(user){ where(id: user.send_requests.where(friend_request_status: :approval).pluck(:receiver_id)) }
+  scope :room_members_of, ->(room){ friends_of(room.owner).or(where(id: room.owner)) }
 
   class << self
     def system_user
