@@ -15,7 +15,7 @@ module RoomNotifierModule
       if room.updated_at_message.blank? || (room.updated_at_message + NOTIFY_INTERVAL) < Time.current + NOTIFY_INTERVAL
         User.friends_of(room.owner)
           .joins(:use_type_setting)
-            .where(use_type_settings: { use_type: :only_chat })
+            .where(use_type_settings: { use_mail_notification: true })
       else
         []
       end
