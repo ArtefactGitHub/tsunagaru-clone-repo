@@ -10,14 +10,11 @@ class RoomNotifierMailer < ApplicationMailer
     @url  = room_url(@room)
 
     users = need_message_notifiers(@room)
-    p '>>>>>>>>'
-    p users.count
     users.each do |u|
-      p "user_id: #{u.id}"
-      p "name: #{u.name}"
+      next if u == @sender
+
       mail(to: u.email,
-           subject: "新しいメッセージがあります") if u != @sender
+           subject: "新しいメッセージがあります")
     end
-    p '<<<<<<<<'
   end
 end

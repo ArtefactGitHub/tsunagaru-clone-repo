@@ -13,7 +13,7 @@ module RoomNotifierModule
     # ルームの「最終メッセージ日時」とユーザーの通知設定（全ルーム）だけで判定する
     def need_message_notifiers(room)
       if room.updated_at_message.blank? || (room.updated_at_message + NOTIFY_INTERVAL) < Time.current + NOTIFY_INTERVAL
-        User.friends_of(room.owner)
+        User.room_members_of(room)
           .joins(:use_type_setting)
             .where(use_type_settings: { use_mail_notification: true })
       else
