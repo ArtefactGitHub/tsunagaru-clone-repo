@@ -36,7 +36,7 @@ class RoomsController < ApplicationController
 
   def set_room_with_symbol(id_symbol)
     @room = Room.find_by(id: params[id_symbol])
-    return redirect_to mypage_root_path, danger: 'ルームが見つかりません' unless can_access_room
+    return redirect_to mypage_root_path, danger: '部屋が見つかりません' unless can_access_room
 
     @messages = @room.messages.page(params[:page])
   end

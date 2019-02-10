@@ -42,7 +42,7 @@ html {
 }
 
 .mybtn {
-  width: 80%;
+  width: 90%;
 }
 .mybtn-l {
   @extend .mybtn;
@@ -113,16 +113,13 @@ body {
 header {
   .common-header {
     position: relative;
-    height: 3rem;//8vh;
+    height: 3rem;
     box-shadow: 0 3px 6px gray;
     font-weight: bold;
     background: white;
 
     .logo {
-      // 500px * 22%
-      width: 100px;
-      // 300px * 22%
-      height: 60px;
+      height: 3rem;
     }
   }
 }
@@ -131,7 +128,7 @@ footer {
   .common-footer {
     @include myfont-size-xs;
     position: relative;
-    height: 3rem;//8vh;
+    height: 3rem;
     padding: 0.5rem;
     z-index: 100;
     box-shadow: 0 3px 6px gray;

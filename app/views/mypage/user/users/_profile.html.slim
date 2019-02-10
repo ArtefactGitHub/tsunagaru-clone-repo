@@ -17,6 +17,8 @@
           | #{current_user.name}
         .user-id
           | （ユーザーID: #{current_user.uuid}）
+        .form-group
+          = f.email_field :email, class: 'form-control'
     .row.text-left
       .col-12
         .card.profile-introduction-card

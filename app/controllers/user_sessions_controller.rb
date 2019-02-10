@@ -1,17 +1,14 @@
 class UserSessionsController < ApplicationController
+  include ApplicationHelper
   skip_before_action :require_login, except: %i[destroy]
 
   def new
-    return redirect_to mypage_root_url if current_user.present?
-
     @user = User.new
   end
 
   def create
-    return redirect_to login_url, danger: 'ログイン出来ません' if login_to_admin?
-
-    @user = login(params[:email], params[:password], params[:remember])
-    if @user
+    if can_login?
+      login(params[:email], params[:password], params[:remember])
       redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
       flash.now[:danger] = 'ログイン出来ません'
@@ -27,6 +24,12 @@ class UserSessionsController < ApplicationController
   end
 
   private
+
+  def can_login?
+    return true if login_to_admin?
+
+    env_can_login?
+  end
 
   def login_to_admin?
     user = User.find_by(email: params[:email])

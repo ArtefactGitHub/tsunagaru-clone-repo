@@ -1,2 +1,6 @@
-= link_to root_url
-  = image_tag 'logo.png', class: 'logo'
+- if logged_in?
+  = link_to mypage_root_path
+    = image_tag 'logo.png', class: 'logo'
+- else
+  = link_to root_path
+    = image_tag 'logo.png', class: 'logo'

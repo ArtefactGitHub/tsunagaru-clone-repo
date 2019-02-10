@@ -19,6 +19,11 @@
       h5
         | 《個別設定》
       .form-check_box
+        = f.check_box :use_mail_notification, { checked: use_type_setting.use_mail_notification }, true, false
+        = f.label 'トモダチの新着メッセージをメールで受け取る', class: 'optional_label', for: :use_type_setting_use_mail_notification
+        .info
+          | （直前のものから10分以上経過していた場合にお知らせします）
+      .form-check_box
         = f.check_box :use_button_input, { checked: use_type_setting.use_button_input }, true, false
         = f.label 'メッセージボタン入力を有効にする', class: 'optional_label', for: :use_type_setting_use_button_input
       .form-check_box

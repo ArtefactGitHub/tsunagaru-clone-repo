@@ -21,7 +21,7 @@
     top: 8vh;
     bottom: 0;
     left: 0;
-    z-index: 200; /* Behind the navbar */
+    z-index: 200;
     padding: 0;
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
 
@@ -40,18 +40,17 @@
       @include myfont-size-xl;
       position: -webkit-sticky;
       position: sticky;
-      top: 48px; /* Height of navbar */
+      top: 48px;
       height: calc(100vh - 48px);
       padding-top: .5rem;
       overflow-x: hidden;
-      overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+      overflow-y: auto;
 
       background-color: #2b2926;
     }
   }
 
   .xs-sm-sidebar {
-    // font-size: 4.5rem;
     @include myfont-size-l;
     position: fixed;
     bottom: 0;
