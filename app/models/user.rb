@@ -5,6 +5,7 @@ class User < ApplicationRecord
   include Rails.application.routes.url_helpers
   include AvatarInfo
   include LoggerModule
+  include RoomNotifierModule
 
   authenticates_with_sorcery!
 
