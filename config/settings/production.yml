@@ -1,0 +1,2 @@
+room:
+  notify_interval: <%= ENV.fetch('ROOM_NOTIFY_INTERVAL', 600) %>
