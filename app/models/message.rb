@@ -5,8 +5,11 @@ class Message < ApplicationRecord
   belongs_to :room
 
   after_create_commit {
+    # deliver_later の場合、update_at_message が先に処理されることがあるため、予め対象を抽出しておく
+    users = need_message_notifiers(self.room)
+    RoomNotifierMailer.notify_new_message(self, users.to_a).deliver_later
+
     update_at_message self.room
-    RoomNotifierMailer.notify_new_message(self).deliver_later
     MessageBroadcastJob.perform_later self
   }
 

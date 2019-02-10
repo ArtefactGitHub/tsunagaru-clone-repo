@@ -2,9 +2,6 @@ module RoomNotifierModule
   extend ActiveSupport::Concern
 
   included do
-    NOTIFY_INTERVAL = 5.seconds
-    # NOTIFY_INTERVAL = 10.minutes
-
     def update_at_message(room)
       room.update(updated_at_message: Time.current)
     end
@@ -12,7 +9,7 @@ module RoomNotifierModule
     # ルームの新着メッセージ通知が必要なユーザーの取得
     # ルームの「最終メッセージ日時」とユーザーの通知設定（全ルーム）だけで判定する
     def need_message_notifiers(room)
-      if room.updated_at_message.blank? || (room.updated_at_message + NOTIFY_INTERVAL) < Time.current + NOTIFY_INTERVAL
+      if room.updated_at_message.blank? || (room.updated_at_message + Settings.room.notify_interval) < Time.current
         User.room_members_of(room)
           .joins(:use_type_setting)
             .where(use_type_settings: { use_mail_notification: true })
