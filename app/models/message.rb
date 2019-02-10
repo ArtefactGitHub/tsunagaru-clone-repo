@@ -1,8 +1,14 @@
 class Message < ApplicationRecord
+  include RoomNotifierModule
+
   belongs_to :user
   belongs_to :room
 
-  after_create_commit { MessageBroadcastJob.perform_later self }
+  after_create_commit {
+    update_at_message self.room
+    RoomNotifierMailer.notify_new_message(self).deliver_later
+    MessageBroadcastJob.perform_later self
+  }
 
   default_scope -> { order(created_at: :desc) }
 
