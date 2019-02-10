@@ -1,14 +1,16 @@
 class UserSessionsController < ApplicationController
-  include ApplicationHelper
-  skip_before_action :require_login, except: %i[destroy]
+  before_action :require_login, only: %i[destroy]
+  skip_before_action :check_maintenance, only: %i[new create destroy]
 
   def new
     @user = User.new
   end
 
   def create
-    if can_login?
-      login(params[:email], params[:password], params[:remember])
+    return redirect_to about_url, danger: 'メンテナンス中のため、しばらくお待ちください' unless can_login?
+
+    @user = login(params[:email], params[:password], params[:remember])
+    if @user
       redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
       flash.now[:danger] = 'ログイン出来ません'
