@@ -179,4 +179,10 @@ footer {
     @include myfont-size-s;
     text-align: right;
   }
+
+  #term {
+    h1 { @include myfont-size-l; }
+    h2 { @include myfont-size-m; }
+    p { @include myfont-size-s; }
+  }
 }
