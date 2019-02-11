@@ -6,6 +6,7 @@ jQuery(document).on 'turbolinks:load', ->
   disconnect_room = $('#js-disconnect-room')
   input_area = $('#input-area')
   default_body_height = body.height();
+  margin_height = 0
 
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: messages.data('room_id') },
     connected: ->
@@ -61,14 +62,14 @@ jQuery(document).on 'turbolinks:load', ->
   do ->
     # メッセージ欄の拡張可能な高さ
     pagenate_area_height = if $('#pagenate-area').length == 0 then 0 else $('#pagenate-area').height()
-    add_height = $(window).height() - $('header').height() - $('#output-area').height() - pagenate_area_height - input_area.height();
+    margin_height = $(window).height() - $('header').height() - $('#output-area').height() - pagenate_area_height - input_area.height();
 
     # 現在のウィンドウの 1rem の高さ
     # font_height = $('html').css('font-size');
     font_height = $('#message-section-title').height();
     # メッセージ欄の拡張（数rem分調整）
     adjustHeight = (font_height * 2);
-    add_height -= adjustHeight;
+    add_height = margin_height - adjustHeight;
     if add_height > 0
       $('#message-section').height($('#message-section').outerHeight() + add_height);
 
@@ -95,13 +96,17 @@ jQuery(document).on 'turbolinks:load', ->
 
   scroll_window_top = -> body.animate({scrollTop: 0}, 300, 'swing');
   scroll_window_top_and_resize = -> body.animate({scrollTop: 0}, 300, 'swing', () ->
-    body.height(default_body_height))
+    if need_adjust_DOMFocus()
+      body.height(default_body_height))
 
   scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing')
 
+  need_adjust_DOMFocus = ->
+    return isMobile() && margin_height > 0
+
   # テキスト入力欄のフォーカス
   $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
-    if isMobile()
+    if need_adjust_DOMFocus()
       body.height(default_body_height + (default_body_height / 5 * 1.5))
       scroll_window_bottom()
 
