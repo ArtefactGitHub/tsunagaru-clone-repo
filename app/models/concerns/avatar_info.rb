@@ -1,3 +1,3 @@
 module AvatarInfo
-  LIMIT_FILE_SIZE = 1.megabytes
+  LIMIT_FILE_SIZE = 5.megabytes
 end
