@@ -18,6 +18,7 @@ class User < ApplicationRecord
   has_one :use_type_setting, dependent: :destroy
   has_one_attached :avatar
 
+  delegate :get_use_type, to: :use_type_setting, allow_nil: false
   delegate :use_type_normal?, to: :use_type_setting, allow_nil: false
   delegate :use_type_only_chat?, to: :use_type_setting, allow_nil: false
   delegate :use_text_input?, to: :use_type_setting, allow_nil: false

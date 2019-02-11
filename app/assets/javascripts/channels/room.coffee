@@ -31,6 +31,8 @@ jQuery(document).on 'turbolinks:load', ->
       @perform 'received'
       messages.append data['message']
       @adjust_layout_own_message()
+      if connect_room.data('use_type') == 'only_chat'
+        @scroll_message_section()
 
     speak: (message) ->
       @perform 'speak', message: message
