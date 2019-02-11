@@ -122,8 +122,8 @@ jQuery(document).on 'turbolinks:load', ->
         event.target.value = ''
         event.preventDefault()
 
-  # isMobile = -> return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
-  isMobile = -> return navigator.userAgent.match(/(Mac)/i)
+  isMobile = -> return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
+  # isMobile = -> return navigator.userAgent.match(/(Mac)/i)
 
   scroll_window_top = -> body.animate({scrollTop: 0}, 500, 'swing');
   scroll_window_top_and_resize = -> body.animate({scrollTop: 0}, 500, 'swing', () ->
