@@ -36,6 +36,11 @@ class FriendRequest < ApplicationRecord
     errors.add(:sender, 'これ以上トモダチを増やせません') if FriendRequest.approvals(user).size >= Settings.room.limit_of_entry
   end
 
+  def not_found_reciever?
+    return !User.find_by(uuid: uuid) if uuid.present?
+    false
+  end
+
   def setup_for_create(current_user)
     if uuid.present?
       self.receiver = User.find_by(uuid: uuid)
