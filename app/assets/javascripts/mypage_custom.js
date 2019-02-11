@@ -18,19 +18,7 @@ document.addEventListener("turbolinks:load", function(){
           elem.src = e.target.result;
         };
       })(file);
-      if(file != null) {
-        if(file.size > 1048576) {
-          if(confirm('画像のファイルサイズが1MBを超えています。\n（データ通信量に影響します）\nこちらの画像で宜しいですか？')) {
-            reader.readAsDataURL(file);
-          }
-          else {
-            return false;
-          }
-        }
-        else {
-          reader.readAsDataURL(file);
-        }
-      }
+      reader.readAsDataURL(file);
     }
   }
 
