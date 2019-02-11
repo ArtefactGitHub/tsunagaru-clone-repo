@@ -74,7 +74,7 @@ jQuery(document).on 'turbolinks:load', ->
     return $('#text-message-section').length >= 1
 
   get_adjust_height = ->
-    return (default_body_height / 5 * 1.5)
+    return (default_body_height / 3)
 
   need_adjust_DOMFocus = ->
     return window_adjust_height > 0
