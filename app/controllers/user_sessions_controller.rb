@@ -7,7 +7,7 @@ class UserSessionsController < ApplicationController
   end
 
   def create
-    return redirect_to about_url, danger: 'メンテナンス中のため、しばらくお待ちください' unless can_login?
+    return redirect_if_maintenance_on_login unless can_login_with_email? params[:email]
 
     @user = login(params[:email], params[:password], params[:remember])
     if @user
@@ -23,18 +23,5 @@ class UserSessionsController < ApplicationController
     forget_me!
     logout
     redirect_to login_url, success: 'ログアウトしました'
-  end
-
-  private
-
-  def can_login?
-    return true if login_to_admin?
-
-    env_can_login?
-  end
-
-  def login_to_admin?
-    user = User.find_by(email: params[:email])
-    user.present? && user.admin?
   end
 end
