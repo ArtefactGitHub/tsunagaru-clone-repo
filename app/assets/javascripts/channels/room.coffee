@@ -130,7 +130,7 @@ jQuery(document).on 'turbolinks:load', ->
     if need_adjust_DOMFocus()
       body.height(default_body_height))
 
-  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing')
+  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 1000, 'swing')
 
   # テキスト入力欄のフォーカス
   text_input_area.on 'DOMFocusIn', (event) ->
