@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'user_sessions#new'
+  root to: 'about#show'
 
   if Rails.env.development?
     get '/login_as/:user_id', to: 'development/sessions#login_as'
@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  get '/about', to: 'about#show_about'
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'

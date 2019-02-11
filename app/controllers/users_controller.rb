@@ -1,10 +1,13 @@
 class UsersController < ApplicationController
-  include ApplicationHelper
   include RoomsControllerModule
   include UseTypeSettingsControllerModule
   include LoggerModule
 
   skip_before_action :require_login, only: %i[new create]
+
+  def check_maintenance
+    redirect_if_maintenance unless env_can_create_user?
+  end
 
   def new
     @user = User.new
@@ -17,13 +20,12 @@ class UsersController < ApplicationController
       create_owner_room @user
       create_use_type_setting @user
 
-      if can_login_user?(@user)
-        # 登録の流れでそのままログインする
-        auto_login(@user, params.dig(:remember))
-        redirect_back_or_to mypage_root_url, success: 'ログインしました'
-      else
-        redirect_to login_url, danger: 'ログイン出来ません'
-      end
+      # メンテナンス時、ユーザー登録が行えてもログインは行えない
+      return redirect_if_maintenance unless env_can_login?
+
+      # 登録の流れでそのままログインする
+      auto_login(@user, params.dig(:remember))
+      redirect_back_or_to mypage_root_url, success: 'ログインしました'
     else
       log_debug @user.errors.full_messages if @user&.errors.present?
 

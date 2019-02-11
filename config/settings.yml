@@ -42,3 +42,4 @@ setting:
 
 env:
   can_login: CAN_LOGIN
+  can_create_user: CAN_CREATE_USER
