@@ -70,7 +70,7 @@ class User < ApplicationRecord
     # avatar.attached? ? rails_blob_url(avatar, only_path: true) : Settings.user.avatar.default_file_name
     # # avatar.attached? ? rails_representation_url(avatar.variant(resize: "500"), only_path: true) : Settings.user.avatar.default_file_name
 
-    image.present? ? image.to_s : Settings.user.avatar.default_file_name
+    image.present? ? image.thumb.url : Settings.user.avatar.default_file_name
   end
 
   def set_uuid
