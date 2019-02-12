@@ -33,3 +33,6 @@ config/environments/*.local.yml
 
 # Ignore .env
 .env*
+
+# Ignore upload image by carrierwave
+public/uploads

@@ -41,6 +41,11 @@ gem 'mini_magick', '~> 4.8'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# for image uploader with AWS S3
+gem 'carrierwave'
+gem 'fog-aws'
+gem 'rmagick'
+
 gem 'seed-fu'
 gem 'rails-i18n'
 gem 'meta-tags'

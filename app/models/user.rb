@@ -16,8 +16,9 @@ class User < ApplicationRecord
   has_many :receivers, through: :send_requests, source: :receiver
   has_many :senders, through: :receive_requests, source: :sender
   has_one :use_type_setting, dependent: :destroy
-  has_one_attached :avatar
+  mount_uploader :image, ImageUploader
 
+  delegate :get_use_type, to: :use_type_setting, allow_nil: false
   delegate :use_type_normal?, to: :use_type_setting, allow_nil: false
   delegate :use_type_only_chat?, to: :use_type_setting, allow_nil: false
   delegate :use_text_input?, to: :use_type_setting, allow_nil: false
@@ -45,19 +46,19 @@ class User < ApplicationRecord
   end
 
   def avatar_validation(params)
-    return true if params.dig(:avatar).blank?
+    return true if params.dig(:image).blank?
 
-    size = params.dig(:avatar).size
-    content_type = params.dig(:avatar).content_type
+    size = params.dig(:image).size
+    content_type = params.dig(:image).content_type
 
     if size > LIMIT_FILE_SIZE
       log_debug("size[#{size}] > LIMIT_FILE_SIZE[#{LIMIT_FILE_SIZE}]")
       # avatar.detach
-      errors[:avatar] << "は #{ActiveSupport::NumberHelper.number_to_human_size(LIMIT_FILE_SIZE)} 以下のサイズにしてください"
+      errors[:image] << "は #{ActiveSupport::NumberHelper.number_to_human_size(LIMIT_FILE_SIZE)} 以下のサイズにしてください"
     elsif content_type.blank? || !content_type.starts_with?('image/')
       log_debug("!avatar.blob.content_type.starts_with?('image/')")
       # avatar.detach
-      errors[:avatar] << 'のフォーマットが正しくありません'
+      errors[:image] << 'のフォーマットが正しくありません'
     else
       return true
     end
@@ -66,8 +67,10 @@ class User < ApplicationRecord
   end
 
   def avatar_or_default
-    avatar.attached? ? rails_blob_url(avatar, only_path: true) : Settings.user.avatar.default_file_name
-    # avatar.attached? ? rails_representation_url(avatar.variant(resize: "500"), only_path: true) : Settings.user.avatar.default_file_name
+    # avatar.attached? ? rails_blob_url(avatar, only_path: true) : Settings.user.avatar.default_file_name
+    # # avatar.attached? ? rails_representation_url(avatar.variant(resize: "500"), only_path: true) : Settings.user.avatar.default_file_name
+
+    image.present? ? image.thumb.url : Settings.user.avatar.default_file_name
   end
 
   def set_uuid

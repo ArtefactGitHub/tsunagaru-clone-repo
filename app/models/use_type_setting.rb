@@ -13,6 +13,10 @@ class UseTypeSetting < ApplicationRecord
     self.use_button_input = self.only_chat?
   end
 
+  def get_use_type
+    use_type
+  end
+
   def use_type_normal?
     use_normal?
   end

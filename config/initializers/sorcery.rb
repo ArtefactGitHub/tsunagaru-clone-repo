@@ -384,7 +384,7 @@ Rails.application.config.sorcery.configure do |config|
     # hammering protection, how long in seconds to wait before allowing another email to be sent.
     # Default: `5 * 60`
     #
-    user.reset_password_time_between_emails = 1
+    user.reset_password_time_between_emails = ENV.fetch('RESET_PASSWORD_TIME_INTERVAL', 300).to_i
 
     # access counter to a reset password page attribute name
     # Default: `:access_count_to_reset_password_page`

@@ -1,6 +1,6 @@
 .row
   .col-12
-    #js-connect-room data-current_user_uuid=current_user.uuid
+    #js-connect-room data-current_user_uuid=current_user.uuid data-use_type=current_user.get_use_type
 
       #modal-area
         = render 'edit_message_button_list_modal', message_button_list: @message_button_list
@@ -26,7 +26,6 @@
       #input-area
         .col-sm-10.offset-sm-1.col-12
           - if current_user.use_text_input?
-
             #text-message-section
               .title
                 | 文字を入力して気持ちを伝えよう！
@@ -73,12 +72,3 @@
               = link_to mypage_root_path, class: 'btn btn-secondary btn-raised button-back' do
                 | 戻る
                 end
-
-    #js-alert-orientation
-      .col-12.text-center
-        .section
-          = image_tag Settings.room.alert_orientation_file_name, class: 'alert-image'
-          div
-            | スマホ（タブレット）を
-            br
-            | 縦にしてください

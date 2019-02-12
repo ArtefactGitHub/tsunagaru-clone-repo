@@ -5,8 +5,15 @@ class Mypage::Friend::RequestsController < Mypage::FriendController
     set_new_request_params
   end
 
+  # Create の経路は2パターン
+  # 　申請を受けた状態で、それを承認する場合
+  # 　　→　uuid が送られてこない、receiver_id が送られてくる
+  # 　申請を受けた状態で、その相手に申請した場合
+  # 　　→　uuid が送られてくる、receiver_id が送られてこない
   def create
     @request = FriendRequest.new(request_params)
+    return show_failure('申請相手が見つかりません') if @request.not_found_reciever?
+
     @request.setup_for_create(current_user)
 
     if @request.save
@@ -19,11 +26,7 @@ class Mypage::Friend::RequestsController < Mypage::FriendController
         redirect_to mypage_friend_requests_path, success: 'トモダチ申請を行いました'
       end
     else
-      flash.now[:danger] = 'トモダチ申請が出来ませんでした'
-      log_debug @request.errors.full_messages if @request.present?
-
-      set_new_request_params
-      render :index
+      show_failure 'トモダチ申請が出来ませんでした'
     end
   end
 
@@ -44,8 +47,14 @@ class Mypage::Friend::RequestsController < Mypage::FriendController
     params.require(:friend_request).permit(:receiver_id, :uuid)
   end
 
+  def show_failure(message)
+    flash.now[:danger] = message
+    set_new_request_params
+    render :index
+  end
+
   def set_new_request_params
-    @request = FriendRequest.new
+    @request ||= FriendRequest.new
     @requests = FriendRequest.sending_receiving current_user
     @friends = User.friends_of current_user
   end

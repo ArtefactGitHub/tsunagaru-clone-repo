@@ -2,16 +2,16 @@ jQuery(document).on 'turbolinks:load', ->
   body = $("html,body")
   messages = $('#messages')
   message_section = $('#message-section')
+  input_area = $('#input-area')
+  text_message_section = $('#text-message-section')
+  text_input_area = $('#text-message-section .text-area-custom')
   connect_room = $('#js-connect-room')
   disconnect_room = $('#js-disconnect-room')
-  input_area = $('#input-area')
-  default_body_height = body.height();
-
-  checkOrientation = ->
-    if Math.abs(window.orientation) == 90
-      $('#js-alert-orientation').show()
-    else
-      $('#js-alert-orientation').hide()
+  default_body_height = 0;
+  window_height = 0
+  content_height = 0
+  margin_height = 0
+  window_adjust_height = 0
 
   App.room = App.cable.subscriptions.create { channel: "RoomChannel", room_id: messages.data('room_id') },
     connected: ->
@@ -31,6 +31,8 @@ jQuery(document).on 'turbolinks:load', ->
       @perform 'received'
       messages.append data['message']
       @adjust_layout_own_message()
+      if connect_room.data('use_type') == 'only_chat'
+        @scroll_message_section()
 
     speak: (message) ->
       @perform 'speak', message: message
@@ -61,37 +63,59 @@ jQuery(document).on 'turbolinks:load', ->
     scroll_message_section: ->
       message_section.scrollTop(message_section.get(0).scrollHeight)
 
-  # adjust_message_section
-  do ->
-    # メッセージ欄の拡張可能な高さ
+  calc_content_height = ->
     pagenate_area_height = if $('#pagenate-area').length == 0 then 0 else $('#pagenate-area').height()
-    add_height = $(window).height() - $('header').height() - $('#output-area').height() - pagenate_area_height - input_area.height();
+    return $('header').height() + $('#output-area').height() + pagenate_area_height + input_area.height();
+
+  is_use_type_only_chat = ->
+    return connect_room.data('use_type') == 'only_chat'
+
+  is_use_text_input = ->
+    return $('#text-message-section').length >= 1
+
+  get_adjust_height = ->
+    return (default_body_height / 3)
+
+  need_adjust_DOMFocus = ->
+    return window_adjust_height > 0
+
+  calc_window_adjust_height = ->
+    if is_use_text_input() && isMobile()
+      result = get_adjust_height() - (input_area.height() - text_message_section.height())
+      result = if result < 0 then 0 else result
+      return result
+    else
+      return 0
+
+  setupLayout = ->
+    window_height = $(window).height()
+    # 画面上の高さの余白（メッセージ欄の拡張可能な高さ）
+    margin_height = window_height - calc_content_height()
 
     # 現在のウィンドウの 1rem の高さ
     # font_height = $('html').css('font-size');
     font_height = $('#message-section-title').height();
     # メッセージ欄の拡張（数rem分調整）
-    adjustHeight = (font_height * 2);
-    add_height -= adjustHeight;
+    add_height = margin_height - (font_height * 2);
     if add_height > 0
       $('#message-section').height($('#message-section').outerHeight() + add_height);
 
-    # 画面の高さを取得しておく
+    # 画面の高さを取得
     default_body_height = body.height();
-
-    checkOrientation()
+    # 調整後のコンテンツ全体の高さを取得
+    content_height = calc_content_height()
+    # 画面の高さ調整値を取得
+    window_adjust_height = calc_window_adjust_height()
 
     message_section.scrollTop(message_section.get(0).scrollHeight)
-
-  # 画面回転の検知
-  $(document).on 'load orientationchange resize', () ->
-    checkOrientation()
 
   $(document).on 'keypress', '[data-behavior~=room_speaker]', (event) ->
     if event.keyCode is 13 # return = send
       if event.target.value.length <= 0
-        alert 'メッセージを入力してください'
+        event.preventDefault()
+        # alert 'メッセージを入力してください'
       else if event.target.value.length > 100
+        event.preventDefault()
         alert 'メッセージの最大文字数を超えています'
       else
         App.room.speak event.target.value
@@ -101,21 +125,25 @@ jQuery(document).on 'turbolinks:load', ->
   isMobile = -> return navigator.userAgent.match(/(iPhone|iPad|iPod|Android)/i)
   # isMobile = -> return navigator.userAgent.match(/(Mac)/i)
 
-  scroll_window_top = -> body.animate({scrollTop: 0}, 300, 'swing');
-  scroll_window_top_and_resize = -> body.animate({scrollTop: 0}, 300, 'swing', () ->
-    body.height(default_body_height))
+  scroll_window_top = -> body.animate({scrollTop: 0}, 500, 'swing');
+  scroll_window_top_and_resize = -> body.animate({scrollTop: 0}, 500, 'swing', () ->
+    if need_adjust_DOMFocus()
+      body.height(default_body_height))
 
-  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 500, 'swing')
+  scroll_window_bottom = -> body.animate({scrollTop: body.get(0).scrollHeight}, 1000, 'swing')
 
   # テキスト入力欄のフォーカス
-  $('#text-message-section .text-area-custom').on 'DOMFocusIn', (event) ->
-    if isMobile()
-      body.height(default_body_height + (default_body_height / 5 * 1.5))
+  text_input_area.on 'DOMFocusIn', (event) ->
+    if need_adjust_DOMFocus()
+      body.height(default_body_height + window_adjust_height)
       scroll_window_bottom()
 
   # テキスト入力欄のフォーカスが外れた
-  $('#text-message-section .text-area-custom').on 'DOMFocusOut', (event) ->
+  text_input_area.on 'DOMFocusOut', (event) ->
     scroll_window_top_and_resize()
+
+  do ->
+    setupLayout()
 
   $ ->
     $('.js-command').click (e) ->

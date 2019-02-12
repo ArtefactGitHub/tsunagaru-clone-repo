@@ -46,7 +46,7 @@ Rails.application.configure do
   # config.action_cable.url = 'wss://example.com/cable'
   # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
   # WebSocketの接続元の制限を緩める
-  config.action_cable.allowed_request_origins = [ /https?:\/\/.*/ ]
+  config.action_cable.allowed_request_origins = ENV.fetch('ALLOWED_REQUEST_ORIGINS', Settings.common.app.og.url)
 
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   config.force_ssl = true
