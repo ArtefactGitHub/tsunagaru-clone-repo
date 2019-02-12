@@ -150,13 +150,14 @@
 
     .mylabel-avatar {
       margin-top: 1rem;
+      margin-right: 1.5rem;
     }
     .filelabel:hover {
       opacity: 0.5;
       cursor: pointer;
     }
     // デフォルトのファイル選択ボタンを非表示にする
-    #user_avatar {
+    #user_image {
       display: none;
     }
     .profile-introduction-card {

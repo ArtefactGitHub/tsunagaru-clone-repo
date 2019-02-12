@@ -10,7 +10,11 @@
           span.filelabel title="ファイルを選択"
             = fa_icon 'edit', class: 'icon'
           .file
-            = f.file_field :avatar, accept: 'image/jpg,image/jpeg,image/png,image/gif'
+            = f.file_field :image
+        label
+          span.filelabel.my-checkbox title="ファイルを削除"
+            = f.check_box :remove_image
+            = fa_icon 'trash', class: 'icon'
 
       .col-md-9
         .name

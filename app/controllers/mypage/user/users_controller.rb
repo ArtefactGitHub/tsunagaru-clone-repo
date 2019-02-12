@@ -19,6 +19,6 @@ class Mypage::User::UsersController < Mypage::UserController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :introduction, :avatar)
+    params.require(:user).permit(:name, :email, :introduction, :image, :image_cache, :remove_image)
   end
 end
