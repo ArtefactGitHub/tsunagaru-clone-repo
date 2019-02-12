@@ -43,3 +43,6 @@ setting:
 env:
   can_login: CAN_LOGIN
   can_create_user: CAN_CREATE_USER
+  aws_s3_bucket_name: AWS_S3_BUCKET_NAME
+  aws_access_key_id: AWS_ACCESS_KEY_ID
+  aws_secret_access_key: AWS_SECRET_ACCESS_KEY
