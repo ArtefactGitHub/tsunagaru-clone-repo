@@ -101,7 +101,9 @@ body {
     color: #333;
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
     margin-top: 3rem;//8vh;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
+
+    min-height: 70vh;
   }
 }
 
@@ -114,7 +116,7 @@ header {
   .common-header {
     position: relative;
     height: 3rem;
-    box-shadow: 0 3px 6px gray;
+    box-shadow: 0 3px 8px #cccccc;
     font-weight: bold;
     background: white;
 
@@ -128,10 +130,14 @@ footer {
   .common-footer {
     @include myfont-size-xs;
     position: relative;
-    height: 3rem;
+    // position: fixed;
+    // bottom: 0;
+    // left: 0;
+    // width: 100%;
+
     padding: 0.5rem;
     z-index: 100;
-    box-shadow: 0 3px 6px gray;
+    box-shadow: 0 -3px 8px #cccccc;
     text-align: right;
 
     .element {
