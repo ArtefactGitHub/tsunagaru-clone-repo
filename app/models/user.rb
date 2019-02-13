@@ -85,4 +85,13 @@ class User < ApplicationRecord
   def has_request?
     self.receive_requests.where.not(friend_request_status: :approval).present?
   end
+
+  def can_post_to_operation?
+    return true if post_to_operation_sent_at.blank?
+    (post_to_operation_sent_at + Settings.user.post_to_operation_interval) < Time.current
+  end
+
+  def update_post_to_operation!
+    update!(post_to_operation_sent_at: Time.current)
+  end
 end
