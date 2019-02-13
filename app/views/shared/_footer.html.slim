@@ -6,18 +6,19 @@ footer
           - if logged_in?
             .col-sm-3.col-4
               = link_to 'tsunagaru とは', about_path
-          - else
-            .col-sm-3.col-4.offset-sm-3
-              = link_to 'tsunagaru とは', about_path
-          .col-sm-3.col-4
-            = link_to 'お問い合わせ', inquery_path
-          .col-sm-3.col-4
-            = link_to '利用規約', term_path
-          - if logged_in?
+            .col-sm-3.col-4
+              = link_to 'お問い合わせ', inquery_path
+            .col-sm-3.col-4
+              = link_to '利用規約', term_path
             .col-sm-3.col-12
               = link_to user_session_path(current_user), method: :delete do
                 | ログアウト
                 end
+          - else
+            .col-sm-3.offset-sm-6.col-4
+              = link_to 'tsunagaru とは', about_path
+            .col-sm-3.col-4
+              = link_to '利用規約', term_path
 
     .row
       .col-12
