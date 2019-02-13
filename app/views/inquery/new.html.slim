@@ -13,7 +13,7 @@
               .col-md-8.offset-md-2.col-10.offset-1
                 .form-group
                   = label :content, '本文'
-                  = text_area_tag :content, '', class: 'form-control', rows: 10
+                  = text_area_tag :content, @content, class: 'form-control', rows: 10
                 .col-8.offset-2
                   .text-center
                     = submit_tag '送信', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
