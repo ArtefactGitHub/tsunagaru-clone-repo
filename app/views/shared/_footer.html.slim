@@ -3,15 +3,19 @@ footer
     .row
       .col-lg-10.offset-lg-2
         .row
+          - if logged_in?
+            .col-sm-3.col-4
+              = link_to 'tsunagaru とは', about_path
+          - else
+            .col-sm-3.col-4.offset-sm-3
+              = link_to 'tsunagaru とは', about_path
           .col-sm-3.col-4
-            = link_to 'tsunagaru とは', about_path, class: 'element'
+            = link_to 'お問い合わせ', inquery_path
           .col-sm-3.col-4
-            = link_to 'お問い合わせ', inquery_path, class: 'element'
-          .col-sm-3.col-4
-            = link_to '利用規約', term_path, class: 'element'
+            = link_to '利用規約', term_path
           - if logged_in?
             .col-sm-3.col-12
-              = link_to user_session_path(current_user), method: :delete, class: 'element' do
+              = link_to user_session_path(current_user), method: :delete do
                 | ログアウト
                 end
 
