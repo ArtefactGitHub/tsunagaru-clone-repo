@@ -3,9 +3,10 @@ footer
     .row
       .col-12
         span
-          = link_to '利用規約', term_path
+          = link_to 'お問い合わせ', inquery_path, class: 'element'
+          = link_to '利用規約', term_path, class: 'element'
           - if logged_in?
-            = link_to user_session_path(current_user), method: :delete, class: 'link-logout' do
+            = link_to user_session_path(current_user), method: :delete, class: 'element' do
               | ログアウト
               end
 
@@ -14,7 +15,7 @@ footer
         p.copyright.mb-0
           | Copyright © 2019
           = link_to Settings.common.app.contact, target: '_blank' do
-            |  tsunagaru 
+            |  tsunagaru
             end
           | All rights reserved.
 
