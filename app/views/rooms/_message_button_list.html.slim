@@ -1,6 +1,6 @@
 .row
   .col-8.offset-2.text-center
-    = form_for [@room, message_button_list], url: room_update_message_button_list_path(@room) do |f|
+    = form_for [@room, message_button_list], url: room_update_message_button_list_path(@room.owner.uuid) do |f|
       = render 'mypage/setting/message_button_lists/message_buttons', f: f, message_buttons: message_button_list.message_buttons.map{ |m| m }
 
       .col-8.offset-2
