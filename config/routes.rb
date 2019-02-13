@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/about', to: 'about#show_about'
   get '/term', to: 'term#show'
+  get '/inquery', to: 'inquery#new'
+  post '/inquery', to: 'inquery#create'
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
