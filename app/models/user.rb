@@ -74,7 +74,24 @@ class User < ApplicationRecord
   end
 
   def set_uuid
-    self.uuid = SecureRandom.urlsafe_base64(6)
+    # self.uuid = SecureRandom.urlsafe_base64(6)
+    self.uuid = calc_urlsafe_base64
+  end
+
+  def calc_urlsafe_base64
+    length = Settings.user.uuid_urlsafe_base64_length
+    result = SecureRandom.urlsafe_base64(length)
+
+    # 1やlなどの似た文字を除いて生成する（最大10回）
+    10.times do
+      result = SecureRandom.urlsafe_base64(length)
+                           .delete(Settings.user.uuid_urlsafe_base64_except)[0,length]
+      if result.size == length
+        break
+      end
+    end
+
+    result
   end
 
   def can_access_room?(room)
