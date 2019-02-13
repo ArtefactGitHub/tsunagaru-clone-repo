@@ -65,7 +65,7 @@
             | 部屋と接続が切れました
           .row
             .col-3.offset-2
-              = link_to room_path(@room), class: 'btn btn-primary btn-raised button-back' do
+              = link_to room_path(@room.owner.uuid), class: 'btn btn-primary btn-raised button-back' do
                 | 更新
                 end
             .col-3.offset-1

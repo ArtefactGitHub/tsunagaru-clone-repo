@@ -5,8 +5,8 @@ header.fixed-top
       = link_to '', class: 'ml-auto icon', data: { toggle: "modal", target: "#myModal" } do
         = fa_icon 'cog'
         end
-      = link_to room_path, class: 'btn btn-primary btn-reload'
+      = link_to room_path(@room.owner.uuid), class: 'btn btn-primary btn-reload'
         |  　　更新　　
     - else
-      = link_to room_path, class: 'ml-auto btn btn-primary btn-reload'
+      = link_to room_path(@room.owner.uuid), class: 'ml-auto btn btn-primary btn-reload'
         |  　　更新　　

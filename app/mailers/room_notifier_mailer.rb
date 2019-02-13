@@ -7,7 +7,7 @@ class RoomNotifierMailer < ApplicationMailer
     @room = message.room
     @sender = message.user
     @content = message.content
-    @url  = room_url(@room)
+    @url  = room_url(@room.owner.uuid)
 
     users.each do |u|
       next if u == @sender
