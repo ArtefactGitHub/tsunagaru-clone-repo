@@ -3,6 +3,7 @@ footer
     .row
       .col-12
         span
+          = link_to 'tsunagaru とは', about_path, class: 'element'
           = link_to 'お問い合わせ', inquery_path, class: 'element'
           = link_to '利用規約', term_path, class: 'element'
           - if logged_in?
