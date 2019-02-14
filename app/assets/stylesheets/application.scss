@@ -207,7 +207,7 @@ footer {
         max-width: 300px;
       }
       .info {
-        margin: 3vw 0 0rem;
+        margin: 3vw 0 3vw;
       }
       .info-s {
         font-size: 0.8rem;
@@ -216,9 +216,14 @@ footer {
         @include myfont-size-ms;
       }
       .btn-login {
-        min-width: 20rem;
-        min-height: 5rem;
-        line-height: 5rem;
+        @include myfont-size-s;
+        min-width: 10rem;
+        background: #f5f7ff;
+      }
+      .btn-help {
+        @include myfont-size-s;
+        min-width: 10rem;
+        background: #faffe0;
       }
     }
     .page-1-between-2 {
