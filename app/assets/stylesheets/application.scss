@@ -244,4 +244,32 @@ footer {
       margin: 1rem 0 0;
     }
   }
+
+  .help {
+    @include myfont-size-s;
+
+    .card {
+      margin: 0 0 1rem;
+
+      p {
+        border-bottom: thin solid #c1c1c1;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .img-element {
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+    .img-element:last-child {
+      margin: 0 0 0;
+    }
+    .img-help {
+      max-width: 60%;
+      border-style: solid;
+      border-width: thin;
+      border-color: #cccccc;
+    }
+  }
 }
