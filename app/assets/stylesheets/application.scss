@@ -185,4 +185,55 @@ footer {
     h2 { @include myfont-size-m; }
     p { @include myfont-size-s; }
   }
+
+  .about {
+    margin-bottom: -40px;
+
+    .img-sub {
+      height: 8rem;
+      margin: 2rem;
+      border-radius: 0.5rem;
+    }
+    .img-bg {
+      width: 100%;
+    }
+    .img-between {
+      margin: 1rem 0;
+    }
+
+    .page-1 {
+      width: 100vw;
+      padding: 3rem 0 0;
+
+      .img-logo {
+        width: 30%;
+      }
+      .info {
+        @include myfont-size-ss;
+        margin: 1rem 0 0rem;
+      }
+      .btn-login {
+        min-width: 20rem;
+        min-height: 5rem;
+        line-height: 5rem;
+      }
+    }
+    .page-1-between-2 {
+    }
+    .page-2 {
+      .info {
+        @include myfont-size-m;
+        position: relative;
+        margin: 5rem;
+        color: white;
+      }
+      .img-ss {
+        height: 80%;
+        margin: 2rem;
+      }
+    }
+    .page-3.img-between {
+      margin: 1rem 0 0;
+    }
+  }
 }
