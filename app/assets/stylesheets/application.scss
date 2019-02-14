@@ -130,11 +130,6 @@ footer {
   .common-footer {
     @include myfont-size-xs;
     position: relative;
-    // position: fixed;
-    // bottom: 0;
-    // left: 0;
-    // width: 100%;
-
     padding: 0.5rem;
     z-index: 100;
     box-shadow: 0 -3px 8px #cccccc;
@@ -142,7 +137,7 @@ footer {
   }
 
   .common-footer-margin {
-    margin-bottom: 10vh;
+    margin-bottom: 0vh;
   }
 }
 
@@ -152,6 +147,7 @@ footer {
 
 .before-login {
   padding-top: 1rem;
+  background: rgba(255, 252, 252, 1);
 
   .headline {
     border-bottom-style: solid;
@@ -203,14 +199,21 @@ footer {
 
     .page-1 {
       width: 100vw;
-      padding: 3rem 0 0;
+      min-height: 60vh;
+      padding: 10vh 0;
 
       .img-logo {
         width: 30%;
+        max-width: 300px;
       }
       .info {
-        @include myfont-size-ss;
-        margin: 1rem 0 0rem;
+        margin: 3vw 0 0rem;
+      }
+      .info-s {
+        font-size: 0.8rem;
+      }
+      .info-l {
+        @include myfont-size-ms;
       }
       .btn-login {
         min-width: 20rem;

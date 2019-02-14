@@ -1,4 +1,4 @@
-.before-login
+.before-login.before-login-about
   .row
     .col-10.offset-1.headline
       = fa_icon 'heart', class: 'icon'
@@ -8,7 +8,13 @@
     .page-1.text-center
       .logo
         = image_tag 'logo.png', class: 'img-logo'
-      p.info
+      p.info.d-none.d-sm-block.info-l
+        | tsunagaru は ボタンを押すだけで
+          <br>
+          簡単にメッセージを送ることができるアプリです。
+          <br>
+          家族や友人など あなたの大切な人へ想いを届けましょう。
+      p.info.d-block.d-sm-none.info-s
         | tsunagaru は ボタンを押すだけで
           <br>
           簡単にメッセージを送ることができるアプリです。
