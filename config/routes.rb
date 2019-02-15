@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get '/about', to: 'about#show_about'
+  get '/help', to: 'help#show'
   get '/term', to: 'term#show'
   get '/inquery', to: 'inquery#new'
   post '/inquery', to: 'inquery#create'

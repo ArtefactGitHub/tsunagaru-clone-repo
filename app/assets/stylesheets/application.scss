@@ -207,7 +207,7 @@ footer {
         max-width: 300px;
       }
       .info {
-        margin: 3vw 0 0rem;
+        margin: 3vw 0 3vw;
       }
       .info-s {
         font-size: 0.8rem;
@@ -216,9 +216,14 @@ footer {
         @include myfont-size-ms;
       }
       .btn-login {
-        min-width: 20rem;
-        min-height: 5rem;
-        line-height: 5rem;
+        @include myfont-size-s;
+        min-width: 10rem;
+        background: #f5f7ff;
+      }
+      .btn-help {
+        @include myfont-size-s;
+        min-width: 10rem;
+        background: #faffe0;
       }
     }
     .page-1-between-2 {
@@ -237,6 +242,34 @@ footer {
     }
     .page-3.img-between {
       margin: 1rem 0 0;
+    }
+  }
+
+  .help {
+    @include myfont-size-s;
+
+    .card {
+      margin: 0 0 1rem;
+
+      p {
+        border-bottom: thin solid #c1c1c1;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .img-element {
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+    .img-element:last-child {
+      margin: 0 0 0;
+    }
+    .img-help {
+      max-width: 60%;
+      border-style: solid;
+      border-width: thin;
+      border-color: #cccccc;
     }
   }
 }
