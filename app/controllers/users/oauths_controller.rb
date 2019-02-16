@@ -51,7 +51,7 @@ class Users::OauthsController < ApplicationController
       return redirect_if_maintenance unless env_can_login?
 
       # reset_session # protect from session fixation attack
-      auto_login(@user)
+      auto_login(@user, params.dig(:remember))
       redirect_to mypage_root_url, success: 'ユーザーを作成しました'
     else
       # エラーオブジェクトを消さないとチェックボックスのチェックができなくなる
@@ -64,7 +64,7 @@ class Users::OauthsController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:name, :screen_name, :email, :introduction, :remember_me, :profile_image_url)
+    params.require(:user).permit(:name, :screen_name, :email, :introduction, :remember, :profile_image_url)
   end
 
   # アプリ連携を拒否
