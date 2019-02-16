@@ -1,2 +1,9 @@
+user:
+  post_to_operation_interval: <%= ENV.fetch('USER_POST_TO_OPERATION_INTERVAL', 15) %>
+
 room:
   notify_interval: <%= ENV.fetch('ROOM_NOTIFY_INTERVAL', 15) %>
+
+common:
+  twitter:
+    callback_url: http://localhost:3000/users/auth/twitter/callback

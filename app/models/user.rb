@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   require 'securerandom'
+  require 'open-uri'
 
   include Role
   include Rails.application.routes.url_helpers
@@ -8,6 +9,9 @@ class User < ApplicationRecord
 
   authenticates_with_sorcery!
 
+  attr_accessor :profile_image_url
+
+  has_many :authentications, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :my_room, class_name: 'Room', foreign_key: 'owner_id', dependent: :destroy
   has_many :rooms, through: :messages
@@ -17,6 +21,8 @@ class User < ApplicationRecord
   has_many :senders, through: :receive_requests, source: :sender
   has_one :use_type_setting, dependent: :destroy
   mount_uploader :image, ImageUploader
+
+  accepts_nested_attributes_for :authentications
 
   delegate :get_use_type, to: :use_type_setting, allow_nil: false
   delegate :use_type_normal?, to: :use_type_setting, allow_nil: false
@@ -74,7 +80,24 @@ class User < ApplicationRecord
   end
 
   def set_uuid
-    self.uuid = SecureRandom.urlsafe_base64(6)
+    # self.uuid = SecureRandom.urlsafe_base64(6)
+    self.uuid = calc_urlsafe_base64
+  end
+
+  def calc_urlsafe_base64
+    length = Settings.user.uuid_urlsafe_base64_length
+    result = SecureRandom.urlsafe_base64(length)
+
+    # 1やlなどの似た文字を除いて生成する（最大10回）
+    10.times do
+      result = SecureRandom.urlsafe_base64(length)
+                           .delete(Settings.user.uuid_urlsafe_base64_except)[0,length]
+      if result.size == length
+        break
+      end
+    end
+
+    result
   end
 
   def can_access_room?(room)
@@ -84,5 +107,43 @@ class User < ApplicationRecord
 
   def has_request?
     self.receive_requests.where.not(friend_request_status: :approval).present?
+  end
+
+  def can_post_to_operation?
+    return true if post_to_operation_sent_at.blank?
+    (post_to_operation_sent_at + Settings.user.post_to_operation_interval) < Time.current
+  end
+
+  def update_post_to_operation!
+    update!(post_to_operation_sent_at: Time.current)
+  end
+
+  def assign_password
+    pass = SecureRandom.base64(Settings.twitter.auto_fill_password_count)
+    assign_attributes(password: pass, password_confirmation: pass)
+  end
+
+  # ActiveStorage を使う場合のアバター画像のアタッチ
+  # save の後に実行する（AvtiveStorage で非同期でアタッチするため）
+  def download_and_attach_avatar
+    return unless sns_avatar_image_url
+
+    file = open(sns_avatar_image_url)
+    avatar.attach(io: file,
+                  filename: "#{Settings.common.avatar.by_sns_file_name}.#{file.content_type_parse.first.split("/").last}",
+                  content_type: file.content_type_parse.first)
+  end
+
+  # carrierwave を使う場合のアバター画像のアタッチ
+  # save の前に実行する（save 時に carrierwave の方で実行されるため）
+  # remote_{アップローダーのプロパティ名}_url
+  def setup_attach_avatar
+    return unless sns_avatar_image_url
+    self.remote_image_url = sns_avatar_image_url
+  end
+
+  # Twitter 用のアバター画像URL整形処理（アバター用のものを取得する）
+  def sns_avatar_image_url
+    profile_image_url&.gsub(/_normal/, '')
   end
 end

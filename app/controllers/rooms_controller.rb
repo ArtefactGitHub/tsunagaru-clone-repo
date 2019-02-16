@@ -14,9 +14,9 @@ class RoomsController < ApplicationController
       # ユーザーが在室していた場合、ボタンが更新されたことを通知するため
       Message.system_to_room(t('rooms.notify_update_message_button_list'), @room)
 
-      redirect_to room_url(@room), success: 'メッセージボタンを更新しました'
+      redirect_to room_url(@room.owner.uuid), success: 'メッセージボタンを更新しました'
     else
-      redirect_to room_url(@room), danger: 'メッセージボタンが更新出来ませんでした'
+      redirect_to room_url(@room.owner.uuid), danger: 'メッセージボタンが更新出来ませんでした'
     end
   end
 
@@ -35,7 +35,8 @@ class RoomsController < ApplicationController
   end
 
   def set_room_with_symbol(id_symbol)
-    @room = Room.find_by(id: params[id_symbol])
+    user = User.find_by(uuid: params[id_symbol])
+    @room = Room.find_by(id: user&.my_room)
     return redirect_to mypage_root_path, danger: '部屋が見つかりません' unless can_access_room
 
     @messages = @room.messages.page(params[:page])

@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   end
 
   get '/about', to: 'about#show_about'
+  get '/help', to: 'help#show'
   get '/term', to: 'term#show'
+  get '/inquery', to: 'inquery#new'
+  post '/inquery', to: 'inquery#create'
   get '/login', to: 'user_sessions#new'
   post '/login', to: 'user_sessions#create'
   delete '/logout', to: 'user_sessions#destroy'
@@ -16,6 +19,12 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
+
+  namespace :users do
+    get 'auth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+    get 'auth/twitter/callback', to: 'oauths#callback'
+    resources :oauths, only: %i[new create]
+  end
 
   namespace :mypage do
     root to: 'dashboard#show'

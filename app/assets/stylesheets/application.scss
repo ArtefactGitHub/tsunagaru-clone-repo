@@ -65,12 +65,34 @@ html {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mybtn-m-2line {
+  @extend .mybtn;
+  @include myfont-size-s;
+  line-height: 1.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
 .mybtn-s {
   @extend .mybtn;
   @include myfont-size-xs;
   line-height: 3rem;
   margin-top: 1rem;
   margin-bottom: 1rem;
+}
+.myavatar-xl {
+  @include avatar;
+  width: 8rem;
+  height: 8rem;
+}
+.myavatar-l {
+  @include avatar;
+  width: 6.5rem;
+  height: 6.5rem;
+}
+.myavatar-m {
+  @include avatar;
+  width: 5rem;
+  height: 5rem;
 }
 
 /*
@@ -102,6 +124,8 @@ body {
     font-family:"ヒラギノ丸ゴ Pro W4","ヒラギノ丸ゴ Pro","Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro","HG丸ｺﾞｼｯｸM-PRO","HGMaruGothicMPRO";
     margin-top: 3rem;//8vh;
     margin-bottom: 40px;
+
+    min-height: 70vh;
   }
 }
 
@@ -114,9 +138,9 @@ header {
   .common-header {
     position: relative;
     height: 3rem;
-    box-shadow: 0 3px 6px gray;
+    box-shadow: 0 3px 8px #cccccc;
     font-weight: bold;
-    background: white;
+    background: #fffcfc;
 
     .logo {
       height: 3rem;
@@ -128,21 +152,15 @@ footer {
   .common-footer {
     @include myfont-size-xs;
     position: relative;
-    height: 3rem;
     padding: 0.5rem;
     z-index: 100;
-    box-shadow: 0 3px 6px gray;
+    box-shadow: 0 -3px 8px #cccccc;
     text-align: right;
-
-    .link-logout {
-      margin-left: 2rem;
-    }
-    .copyright {
-    }
+    background: #fffcfc;
   }
 
   .common-footer-margin {
-    margin-bottom: 10vh;
+    margin-bottom: 0vh;
   }
 }
 
@@ -152,6 +170,7 @@ footer {
 
 .before-login {
   padding-top: 1rem;
+  background: rgba(255, 252, 252, 1);
 
   .headline {
     border-bottom-style: solid;
@@ -179,10 +198,104 @@ footer {
     @include myfont-size-s;
     text-align: right;
   }
+  .twitter-button {
+    margin: 1rem 0;
+  }
 
   #term {
     h1 { @include myfont-size-l; }
     h2 { @include myfont-size-m; }
     p { @include myfont-size-s; }
+  }
+
+  .about {
+    margin-bottom: -40px;
+
+    .img-sub {
+      height: 8rem;
+      margin: 2rem;
+      border-radius: 0.5rem;
+    }
+    .img-bg {
+      width: 100%;
+    }
+    .img-between {
+      margin: 1rem 0;
+    }
+
+    .page-1 {
+      width: 100vw;
+      min-height: 60vh;
+      padding: 10vh 0;
+
+      .img-logo {
+        width: 30%;
+        max-width: 300px;
+      }
+      .info {
+        margin: 3vw 0 3vw;
+      }
+      .info-s {
+        font-size: 0.8rem;
+      }
+      .info-l {
+        @include myfont-size-ms;
+      }
+      .btn-login {
+        @include myfont-size-s;
+        min-width: 10rem;
+        background: #f5f7ff;
+      }
+      .btn-help {
+        @include myfont-size-s;
+        min-width: 10rem;
+        background: #faffe0;
+      }
+    }
+    .page-1-between-2 {
+    }
+    .page-2 {
+      .info {
+        @include myfont-size-m;
+        position: relative;
+        margin: 5rem;
+        color: white;
+      }
+      .img-ss {
+        height: 80%;
+        margin: 2rem;
+      }
+    }
+    .page-3.img-between {
+      margin: 1rem 0 0;
+    }
+  }
+
+  .help {
+    @include myfont-size-s;
+
+    .card {
+      margin: 0 0 1rem;
+
+      p {
+        border-bottom: thin solid #c1c1c1;
+      }
+      p:last-child {
+        margin-bottom: 0;
+      }
+    }
+    .img-element {
+      text-align: center;
+      margin: 0 0 1rem;
+    }
+    .img-element:last-child {
+      margin: 0 0 0;
+    }
+    .img-help {
+      max-width: 60%;
+      border-style: solid;
+      border-width: thin;
+      border-color: #cccccc;
+    }
   }
 }

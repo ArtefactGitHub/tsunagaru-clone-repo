@@ -8,21 +8,30 @@
     .card
       .card-body
         = form_tag login_path, class: 'myform' do
-          .col-sm-8.offset-sm-2.col-12
-            .form-group
-              = label :email, 'メールアドレス'
-              = email_field '', :email, class: 'form-control'
-            .form-group
-              = label :password, 'パスワード'
-              = password_field '', :password, class: 'form-control'
-            .form-group
-              label for='remember'
-                = check_box_tag :remember, params[:remember], true
-                | ログインを記憶する
-              br
-              p.info ※ブラウザを閉じた後もすぐログイン出来るようになります（2週間）
-            .text-center
-              = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
+          .row
+            .col-sm-8.offset-sm-2.col-12
+              .form-group
+                = label :email, 'メールアドレス'
+                = email_field '', :email, class: 'form-control'
+              .form-group
+                = label :password, 'パスワード'
+                = password_field '', :password, class: 'form-control'
+              .form-group
+                label for='remember'
+                  = check_box_tag :remember, params[:remember], true
+                  | ログインを記憶する
+                br
+                p.info ※ブラウザを閉じた後もすぐログイン出来るようになります（2週間）
+
+          .row
+            .col-sm-6.offset-sm-3.col-8.offset-2
+              .text-center
+                = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
+                = link_to users_auth_at_provider_path(provider: :twitter), class: 'twitter-button btn btn-raised btn-info mybtn-m-2line' do
+                  i.fa.fa-twitter.fa-lg
+                  | Twitter から
+                  br
+                  | ログイン
 
         .for-register
           p = link_to '登録はこちら', new_user_path

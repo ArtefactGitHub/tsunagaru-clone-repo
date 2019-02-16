@@ -8,7 +8,7 @@
           = f.label 'いろいろ', class: 'use_type_label', for: :use_type_setting_use_type_use_normal
           .info 各種機能をご利用出来ます。
           .info 「チャットのみ」へ移行前に「プロフィール編集」や「トモダチの追加」をお済ませください。
-          .info 「テキスト入力」のチェックを有効にします。
+          .info 「文字入力」のチェックを有効にします。
         label.form-radio_button for='use_type_setting_use_type_only_chat'
           = f.radio_button :use_type, :only_chat
           = f.label 'チャットのみ', class: 'use_type_label', for: :use_type_setting_use_type_only_chat
@@ -28,7 +28,7 @@
         = f.label 'メッセージボタン入力を有効にする', class: 'optional_label', for: :use_type_setting_use_button_input
       .form-check_box
         = f.check_box :use_text_input, { checked: use_type_setting.use_text_input }, true, false
-        = f.label 'テキスト入力を有効にする', class: 'optional_label', for: :use_type_setting_use_text_input
+        = f.label '文字入力を有効にする', class: 'optional_label', for: :use_type_setting_use_text_input
 
   .row.text-center
     .col-sm-4.offset-sm-2

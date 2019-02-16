@@ -1,10 +1,68 @@
-.before-login
-  .row.
+.before-login.before-login-about
+  .row
     .col-10.offset-1.headline
       = fa_icon 'heart', class: 'icon'
       | tsunagaru とは
 
-  .container
-    .card
-      .card-body
-        | about
+  .about
+    .page-1.text-center
+      .logo
+        = image_tag 'logo.jpg', class: 'img-logo'
+      p.info.d-none.d-sm-block.info-l
+        | tsunagaru は ボタンを押すだけで
+          <br>
+          簡単にメッセージを送ることができるアプリです。
+          <br>
+          家族や友人など あなたの大切な人へ想いを届けましょう。
+      p.info.d-block.d-sm-none.info-s
+        | tsunagaru は ボタンを押すだけで
+          <br>
+          簡単にメッセージを送ることができるアプリです。
+          <br>
+          家族や友人など あなたの大切な人へ想いを届けましょう。
+
+      .login
+        = link_to login_path, class: 'btn btn-default btn-raised btn-login' do
+          = fa_icon 'sign-in', class: 'icon'
+          | ログイン
+          end
+      .login
+        = link_to help_path, class: 'btn btn-default btn-raised btn-help' do
+          = fa_icon 'info-circle', class: 'icon'
+          | ヘルプ　
+          end
+
+          / .page-1-between-2.row
+    .img-between
+      .bg
+        = image_tag 'about/001_1_2.jpg', class: 'img-bg'
+      / .col-6
+      /   .row
+      /     .col-6.offset-3
+      /       = image_tag 'about/001_1.jpg', class: 'img-sub'
+      / .col-6
+      /   .row
+      /     .col-6.offset-3
+      /       = image_tag 'about/001_2.jpg', class: 'img-sub'
+
+    .page-2
+      .bg
+        = image_tag 'about/002_bg2.jpg', class: 'img-bg'
+        / p.info.text-center
+        /   | スマホに慣れていないあなたも
+        /     <br>
+        /     体が思うように動かないあなたも
+        /     <br>
+        /     ボタンを押せば 想いが届きます。
+
+    .img-between
+      .bg
+        = image_tag 'about/002_1_2.jpg', class: 'img-bg'
+
+    .page-3
+      .bg
+        = image_tag 'about/003_bg2.jpg', class: 'img-bg'
+
+    .page-3.img-between
+      .bg
+        = image_tag 'about/003_1_2.jpg', class: 'img-bg'

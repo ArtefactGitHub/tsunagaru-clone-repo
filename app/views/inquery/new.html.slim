@@ -1,0 +1,19 @@
+.before-login
+  .row.
+    .col-10.offset-1.headline
+      = fa_icon 'envelope', class: 'icon'
+      | お問い合わせ
+
+  .container
+    .card
+      .card-body
+        .myform
+          = form_tag inquery_path, method: :post do
+            .row
+              .col-md-8.offset-md-2.col-10.offset-1
+                .form-group
+                  = label :content, '本文'
+                  = text_area_tag :content, @content, class: 'form-control', rows: 10
+                .col-8.offset-2
+                  .text-center
+                    = submit_tag '送信', class: 'btn btn-primary btn-lg btn-raised mybtn-m'

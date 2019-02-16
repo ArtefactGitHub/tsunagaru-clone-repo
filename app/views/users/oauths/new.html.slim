@@ -1,0 +1,35 @@
+.before-login
+  .row.
+    .col-10.offset-1.headline
+      = fa_icon 'user-plus', class: 'icon'
+      | ユーザー登録
+
+  .container
+    = render 'shared/error_message', object: @user
+    .card
+      .card-body
+
+        = form_for @user, url: users_oauths_url, method: :post do |f|
+          = f.hidden_field :screen_name
+          = f.hidden_field :introduction
+          = f.hidden_field :profile_image_url
+          .row
+            .col-12
+              .avatar.text-center
+                = image_tag @user.sns_avatar_image_url.present? ? @user.sns_avatar_image_url : Settings.user.avatar.default_file_name, class: "rounded-circle #{Settings.user.avatar.default_size_class}"
+              .form-group
+                = label :name, '名前'
+                = f.text_field :name, class: 'form-control', readonly: ""
+              .form-group
+                = label :name, 'メールアドレス'
+                = f.email_field :email, class: 'form-control'
+              .form-group
+                label for='remember'
+                  = check_box_tag :remember, params[:remember], true
+                  | ログインを記憶する
+                br
+                p.info ※ブラウザを閉じた後もすぐログイン出来るようになります（2週間）
+          .row
+            .col-6.offset-3
+              .text-center
+                = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
