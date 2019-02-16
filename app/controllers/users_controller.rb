@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       after_save
 
-      # メンテナンス時、ユーザー登録が行えてもログインは行えない
+      # メンテナンス時、ユーザー登録が行える状況でもログインは行えない
       return redirect_if_maintenance unless env_can_login?
 
       # 登録の流れでそのままログインする

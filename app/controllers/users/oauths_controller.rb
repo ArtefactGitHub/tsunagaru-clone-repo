@@ -3,6 +3,7 @@ class Users::OauthsController < ApplicationController
 
   before_action :require_login, only: %i[destroy]
   before_action :set_provider_name, only: %i[callback new]
+  skip_before_action :check_maintenance
 
   # sends the user on a trip to the provider,
   # and after authorizing there back to the callback url.
@@ -15,11 +16,20 @@ class Users::OauthsController < ApplicationController
 
     begin
       @user = login_from(@provider_name)
-      return redirect_to root_path if @user.present?
+
+      # ログイン時のメンテナンス判定
+      if @user.present?
+        return redirect_if_maintenance_on_login unless can_login_with_email? @user.email
+
+        return redirect_to root_path
+      end
     rescue OAuth::Unauthorized => e
       logger.error(e)
       redirect_to root_path and return
     end
+
+    # ユーザー登録時のメンテナンス判定
+    return redirect_if_maintenance unless env_can_create_user?
 
     setup_user_instance @provider_name
     render :new
@@ -36,6 +46,9 @@ class Users::OauthsController < ApplicationController
 
     if @user.save
       after_save_for_oauth
+
+      # メンテナンス時、ユーザー登録が行える状況でもログインは行えない
+      return redirect_if_maintenance unless env_can_login?
 
       # reset_session # protect from session fixation attack
       auto_login(@user)
