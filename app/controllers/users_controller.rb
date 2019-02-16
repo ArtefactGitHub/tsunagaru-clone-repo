@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  include RoomsControllerModule
-  include UseTypeSettingsControllerModule
+  include CreateUserModule
   include LoggerModule
 
   skip_before_action :require_login, only: %i[new create]
@@ -15,10 +14,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.set_uuid
+    before_save
+
     if @user.save
-      create_owner_room @user
-      create_use_type_setting @user
+      after_save
 
       # メンテナンス時、ユーザー登録が行えてもログインは行えない
       return redirect_if_maintenance unless env_can_login?
