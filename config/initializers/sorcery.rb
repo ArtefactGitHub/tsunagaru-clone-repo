@@ -117,7 +117,7 @@ Rails.application.config.sorcery.configure do |config|
     name: 'name',
     screen_name: 'screen_name',
     # email: 'email',
-    profile: 'description',
+    introduction: 'description',
     profile_image_url: 'profile_image_url_https'
   }
   # see https://developer.twitter.com/en/docs/accounts-and-users/manage-account-settings/api-reference/get-account-verify_credentials.html
