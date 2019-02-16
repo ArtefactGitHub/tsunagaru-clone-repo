@@ -65,6 +65,13 @@ html {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.mybtn-m-2line {
+  @extend .mybtn;
+  @include myfont-size-s;
+  line-height: 1.8rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
+}
 .mybtn-s {
   @extend .mybtn;
   @include myfont-size-xs;

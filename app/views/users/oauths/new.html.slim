@@ -15,7 +15,6 @@
           = f.hidden_field :profile_image_url
           .row
             .col-12
-
               .avatar.text-center
                 = image_tag @user.sns_avatar_image_url.present? ? @user.sns_avatar_image_url : Settings.user.avatar.default_file_name, class: "rounded-circle #{Settings.user.avatar.default_size_class}"
               .form-group
@@ -30,6 +29,7 @@
                   | ログインを記憶する
                 br
                 p.info ※ブラウザを閉じた後もすぐログイン出来るようになります（2週間）
-
+          .row
+            .col-6.offset-3
               .text-center
                 = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
