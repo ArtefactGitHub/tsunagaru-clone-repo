@@ -1,5 +1,5 @@
 header.fixed-top
-  .nav.navbar.navbar-expand.navbar-light.bg-white.common-header
+  .nav.navbar.navbar-expand.navbar-light.common-header
     = render 'shared/logo'
     - if current_user.use_type_normal?
       = link_to '', class: 'ml-auto icon', data: { toggle: "modal", target: "#myModal" } do

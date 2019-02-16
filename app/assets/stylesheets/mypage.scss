@@ -86,21 +86,6 @@ footer {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
-  .myavatar-xl {
-    @include avatar;
-    width: 8rem;
-    height: 8rem;
-  }
-  .myavatar-l {
-    @include avatar;
-    width: 6.5rem;
-    height: 6.5rem;
-  }
-  .myavatar-m {
-    @include avatar;
-    width: 5rem;
-    height: 5rem;
-  }
   .mycard-default {
     max-height: 20vh;
   }

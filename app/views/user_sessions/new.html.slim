@@ -24,6 +24,10 @@
             .text-center
               = submit_tag 'ログイン', class: 'btn btn-primary btn-lg btn-raised mybtn-m'
 
+              = link_to users_auth_at_provider_path(provider: :twitter), class: 'twitter-button btn btn-raised btn-info' do
+                i.fa.fa-twitter.fa-lg
+                | Twitter からログイン
+
         .for-register
           p = link_to '登録はこちら', new_user_path
           p = link_to 'パスワードを忘れた方はこちら', new_password_reset_path

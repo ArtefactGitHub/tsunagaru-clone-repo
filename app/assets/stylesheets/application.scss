@@ -72,6 +72,21 @@ html {
   margin-top: 1rem;
   margin-bottom: 1rem;
 }
+.myavatar-xl {
+  @include avatar;
+  width: 8rem;
+  height: 8rem;
+}
+.myavatar-l {
+  @include avatar;
+  width: 6.5rem;
+  height: 6.5rem;
+}
+.myavatar-m {
+  @include avatar;
+  width: 5rem;
+  height: 5rem;
+}
 
 /*
  * レスポンシブフォントサイズ
@@ -118,7 +133,7 @@ header {
     height: 3rem;
     box-shadow: 0 3px 8px #cccccc;
     font-weight: bold;
-    background: white;
+    background: #fffcfc;
 
     .logo {
       height: 3rem;
@@ -134,6 +149,7 @@ footer {
     z-index: 100;
     box-shadow: 0 -3px 8px #cccccc;
     text-align: right;
+    background: #fffcfc;
   }
 
   .common-footer-margin {
@@ -174,6 +190,9 @@ footer {
   .for-register {
     @include myfont-size-s;
     text-align: right;
+  }
+  .twitter-button {
+    margin: 1rem 0;
   }
 
   #term {
