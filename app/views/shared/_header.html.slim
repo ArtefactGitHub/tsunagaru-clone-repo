@@ -1,5 +1,5 @@
 header.fixed-top
-  .nav.navbar.navbar-expand.navbar-light.bg-white.common-header
+  .nav.navbar.navbar-expand.navbar-light.common-header
     = render 'shared/logo'
     - unless logged_in?
       = link_to login_path, class: 'btn btn-default btn-raised ml-auto' do
