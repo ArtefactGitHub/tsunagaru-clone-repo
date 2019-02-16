@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   require 'securerandom'
+  require 'open-uri'
 
   include Role
   include Rails.application.routes.url_helpers
@@ -8,6 +9,9 @@ class User < ApplicationRecord
 
   authenticates_with_sorcery!
 
+  attr_accessor :profile_image_url
+
+  has_many :authentications, dependent: :destroy
   has_many :messages, dependent: :destroy
   has_one :my_room, class_name: 'Room', foreign_key: 'owner_id', dependent: :destroy
   has_many :rooms, through: :messages
@@ -17,6 +21,8 @@ class User < ApplicationRecord
   has_many :senders, through: :receive_requests, source: :sender
   has_one :use_type_setting, dependent: :destroy
   mount_uploader :image, ImageUploader
+
+  accepts_nested_attributes_for :authentications
 
   delegate :get_use_type, to: :use_type_setting, allow_nil: false
   delegate :use_type_normal?, to: :use_type_setting, allow_nil: false
@@ -110,5 +116,31 @@ class User < ApplicationRecord
 
   def update_post_to_operation!
     update!(post_to_operation_sent_at: Time.current)
+  end
+
+  def assign_password
+    pass = SecureRandom.base64(Settings.twitter.auto_fill_password_count)
+    assign_attributes(password: pass, password_confirmation: pass)
+  end
+
+  def download_and_attach_avatar
+    p '==============='
+    p "profile_image_url: #{profile_image_url}"
+    return unless sns_avatar_image_url
+
+    # ActiveStorage を使う場合
+    # file = open(sns_avatar_image_url)
+    # avatar.attach(io: file,
+    #               filename: "#{Settings.common.avatar.by_sns_file_name}.#{file.content_type_parse.first.split("/").last}",
+    #               content_type: file.content_type_parse.first)
+
+    # carrierwave を使う場合
+    # remote_profile_image_url = "https://graph.facebook.com/#{facebook_id}/picture?type=large"
+    p "sns_avatar_image_url: #{sns_avatar_image_url}"
+    self.remote_profile_image_url = sns_avatar_image_url
+  end
+
+  def sns_avatar_image_url
+    profile_image_url&.gsub(/_normal/, '')
   end
 end

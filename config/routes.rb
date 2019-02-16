@@ -20,6 +20,12 @@ Rails.application.routes.draw do
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
 
+  namespace :users do
+    get 'auth/:provider', to: 'oauths#oauth', as: :auth_at_provider
+    get 'auth/twitter/callback', to: 'oauths#callback'
+    resources :oauths, only: %i[new create]
+  end
+
   namespace :mypage do
     root to: 'dashboard#show'
 

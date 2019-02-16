@@ -1,0 +1,20 @@
+.container
+  .row
+    .col-md-8.offset-md-2.card
+      .card-body
+        h2.text-center
+          | ユーザ登録
+
+        = form_for @user, url: users_oauths_url, method: :post do |f|
+          = f.hidden_field :name
+          = f.hidden_field :screen_name
+          = f.hidden_field :profile
+          = f.hidden_field :profile_image_url
+          .row
+            .col-12
+              .form-group
+                = label :name, 'メールアドレス'
+                = f.email_field :email, class: 'form-control'
+
+              .text-center
+                = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised'

@@ -3,3 +3,7 @@ user:
 
 room:
   notify_interval: <%= ENV.fetch('ROOM_NOTIFY_INTERVAL', 600) %>
+
+common:
+  twitter:
+    callback_url: https://tsunagaru.space/users/auth/twitter/callback

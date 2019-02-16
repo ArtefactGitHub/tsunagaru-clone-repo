@@ -175,6 +175,9 @@ footer {
     @include myfont-size-s;
     text-align: right;
   }
+  .twitter-button {
+    margin: 1rem 0;
+  }
 
   #term {
     h1 { @include myfont-size-l; }
