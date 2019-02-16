@@ -6,4 +6,4 @@ room:
 
 common:
   twitter:
-    callback_url: https://tsunagaru.space/users/auth/twitter/callback
+    callback_url: <%= ENV.fetch('TWITTER_CALLBACK_URL', "https://tsunagaru.space/users/auth/twitter/callback") %>
