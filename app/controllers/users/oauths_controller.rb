@@ -1,4 +1,6 @@
 class Users::OauthsController < ApplicationController
+  include CreateUserModule
+
   before_action :require_login, only: %i[destroy]
   before_action :set_provider_name, only: %i[callback new]
 
@@ -29,21 +31,18 @@ class Users::OauthsController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    # SNS認証の場合はパスワードを自動で入力してバリデーションを通す
-    @user.assign_password
-    @user.download_and_attach_avatar
 
-    # new アクションで実行した create_and_validate_from() の中でセッションに保存したパラメータを取得し、認証クラスの生成に用いる
-    # （add_provider_to_user() で生成する方法は「401 Authorization Required」が解決出来なかった）
-    @user.authentications.build(session[:incomplete_user]['provider'])
+    before_save_for_oauth session[:incomplete_user]['provider']
 
     if @user.save
-      reset_session # protect from session fixation attack
+      after_save_for_oauth
+
+      # reset_session # protect from session fixation attack
       auto_login(@user)
-      redirect_to about_url, success: 'ユーザーを作成しました'
+      redirect_to mypage_root_url, success: 'ユーザーを作成しました'
     else
       # エラーオブジェクトを消さないとチェックボックスのチェックができなくなる
-      @user.errors.clear
+      # @user.errors.clear
       flash.now[:danger] = 'ユーザーが作成出来ませんでした'
       render :new
     end
@@ -52,8 +51,7 @@ class Users::OauthsController < ApplicationController
   private
 
   def user_params
-    # params.require(:user).permit(:name, :screen_name, :email, :profile, :profile_image_url, :avatar, like_area_ids: [])
-    params.require(:user).permit(:name, :screen_name, :email, :profile, :profile_image_url)
+    params.require(:user).permit(:name, :screen_name, :email, :introduction, :remember_me, :profile_image_url)
   end
 
   # アプリ連携を拒否

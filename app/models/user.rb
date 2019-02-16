@@ -123,23 +123,26 @@ class User < ApplicationRecord
     assign_attributes(password: pass, password_confirmation: pass)
   end
 
+  # ActiveStorage を使う場合のアバター画像のアタッチ
+  # save の後に実行する（AvtiveStorage で非同期でアタッチするため）
   def download_and_attach_avatar
-    p '==============='
-    p "profile_image_url: #{profile_image_url}"
     return unless sns_avatar_image_url
 
-    # ActiveStorage を使う場合
-    # file = open(sns_avatar_image_url)
-    # avatar.attach(io: file,
-    #               filename: "#{Settings.common.avatar.by_sns_file_name}.#{file.content_type_parse.first.split("/").last}",
-    #               content_type: file.content_type_parse.first)
-
-    # carrierwave を使う場合
-    # remote_profile_image_url = "https://graph.facebook.com/#{facebook_id}/picture?type=large"
-    p "sns_avatar_image_url: #{sns_avatar_image_url}"
-    self.remote_profile_image_url = sns_avatar_image_url
+    file = open(sns_avatar_image_url)
+    avatar.attach(io: file,
+                  filename: "#{Settings.common.avatar.by_sns_file_name}.#{file.content_type_parse.first.split("/").last}",
+                  content_type: file.content_type_parse.first)
   end
 
+  # carrierwave を使う場合のアバター画像のアタッチ
+  # save の前に実行する（save 時に carrierwave の方で実行されるため）
+  # remote_{アップローダーのプロパティ名}_url
+  def setup_attach_avatar
+    return unless sns_avatar_image_url
+    self.remote_image_url = sns_avatar_image_url
+  end
+
+  # Twitter 用のアバター画像URL整形処理（アバター用のものを取得する）
   def sns_avatar_image_url
     profile_image_url&.gsub(/_normal/, '')
   end
