@@ -3,17 +3,13 @@ class RoomNotifierMailer < ApplicationMailer
 
   default from: Settings.common.app.mail.from
 
-  def notify_new_message(message, users)
+  def notify_new_message(message, user)
     @room = message.room
     @sender = message.user
     @content = message.content
     @url  = room_url(@room.owner.uuid)
 
-    users.each do |u|
-      next if u == @sender
-
-      mail(to: u.email,
-           subject: "新しいメッセージがあります")
-    end
+    mail(to: user.email,
+         subject: "新しいメッセージがあります")
   end
 end
