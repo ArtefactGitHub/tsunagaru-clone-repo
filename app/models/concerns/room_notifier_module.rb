@@ -2,6 +2,15 @@ module RoomNotifierModule
   extend ActiveSupport::Concern
 
   included do
+    def send_room_notify(message)
+      users = need_message_notifiers(message.room).to_a
+      users.each do |user|
+        next if user == message.user
+
+        RoomNotifierMailer.notify_new_message(message, user).deliver_later
+      end
+    end
+
     def update_at_message(room)
       room.update(updated_at_message: Time.current)
     end
