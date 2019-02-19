@@ -56,6 +56,8 @@ gem 'kaminari-bootstrap', '~> 3.0.1'
 # 定数
 gem 'config'
 gem 'dotenv-rails', require: 'dotenv/rails-now'
+# QRコード
+gem 'rqrcode'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
