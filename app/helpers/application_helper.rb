@@ -22,4 +22,9 @@ module ApplicationHelper
         separator: '|'
     }
   end
+
+  def qrcode_tag(text, options = {})
+    # see: https://qiita.com/shwld/items/eae96518530b39e692ec
+    RQRCode::QRCode.new(text).as_svg(options).html_safe
+  end
 end
