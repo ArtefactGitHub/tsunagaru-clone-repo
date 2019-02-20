@@ -116,6 +116,15 @@ footer {
     }
     .profile-text {
       @include myfont-size-s;
+
+      .qrcode-md-section {
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      .qrcode-section {
+        margin: 0 0 0 1rem;
+      }
     }
     .profile-introduction-card {
       @include myfont-size-s;
