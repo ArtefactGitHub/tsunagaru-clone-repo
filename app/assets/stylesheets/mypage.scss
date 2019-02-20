@@ -237,6 +237,18 @@ footer {
     .friend_request_list {
       margin-top: 1rem;
     }
+    .link_to_help {
+      @include myfont-size-s;
+    }
+    .modal-body {
+      @include myfont-size-s;
+      .modal-section {
+        margin-bottom: 1rem;
+      }
+    }
+    .image_help {
+      width: 80%;
+    }
   }
 
   .setting {
