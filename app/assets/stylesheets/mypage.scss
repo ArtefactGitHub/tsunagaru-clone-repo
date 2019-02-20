@@ -193,9 +193,13 @@ footer {
       .friend-text {
         @include myfont-size-s;
 
-        .name {
+        .name-section {
           @include under-bar;
-          margin-bottom: 20px;
+          margin-bottom: 1rem;
+
+          .name {
+            padding: 1rem 1rem 0;
+          }
         }
         .introduction {
           @include myfont-size-s;

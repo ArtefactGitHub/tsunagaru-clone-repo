@@ -6,7 +6,7 @@
           .text-center
             = render 'shared/users/avatar', user: friend
         .col-sm-9.offset-sm-0.col-10.offset-1.friend-text
-          .row.name
+          .row.name-section
             | #{friend.name}
           .row.introduction
             = escape_with_linefeed friend.introduction
