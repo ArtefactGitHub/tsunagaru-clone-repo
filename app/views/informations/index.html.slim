@@ -1,0 +1,13 @@
+.before-login
+  .row
+    .col-10.offset-1.headline
+      = fa_icon 'sign-in', class: 'icon'
+      | お知らせ
+
+  .container.information
+    .card
+      .card-body
+        - if @infos.size == 0
+          | お知らせがありません
+        - else
+          = render partial: 'information', collection: @infos, as: :information

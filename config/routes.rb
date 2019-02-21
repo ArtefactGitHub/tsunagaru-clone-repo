@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
+  resources :informations, only: %i[index]
 
   namespace :users do
     get 'auth/:provider', to: 'oauths#oauth', as: :auth_at_provider

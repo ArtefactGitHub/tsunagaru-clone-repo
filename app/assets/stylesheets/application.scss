@@ -298,4 +298,9 @@ footer {
       border-color: #cccccc;
     }
   }
+
+  .information {
+    @include myfont-size-s;
+    
+  }
 }
