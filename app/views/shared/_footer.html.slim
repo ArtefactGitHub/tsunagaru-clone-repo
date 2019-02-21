@@ -7,16 +7,20 @@ footer
             .col-sm-3.col-4
               = link_to 'tsunagaru とは', about_path
             .col-sm-3.col-4
-              = link_to 'お問い合わせ', inquery_path
+              = link_to 'お知らせ', informations_path
             .col-sm-3.col-4
+              = link_to 'お問い合わせ', inquery_path
+            .col-sm-3.offset-sm-0.col-4.offset-4
               = link_to '利用規約', term_path
-            .col-sm-3.col-12
+            .col-sm-12.col-4
               = link_to user_session_path(current_user), method: :delete do
                 | ログアウト
                 end
           - else
-            .col-sm-3.offset-sm-6.col-4
+            .col-sm-3.offset-sm-3.col-4
               = link_to 'tsunagaru とは', about_path
+            .col-sm-3.col-4
+              = link_to 'お知らせ', informations_path
             .col-sm-3.col-4
               = link_to '利用規約', term_path
 
