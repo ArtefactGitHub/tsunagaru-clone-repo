@@ -7,6 +7,16 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  namespace :admin do
+    root to: 'dashboard#show'
+
+    get '/login', to: 'user_sessions#new'
+    post '/login', to: 'user_sessions#create'
+    delete '/logout', to: 'user_sessions#destroy'
+
+    resources :informations, only: %i[new create]
+  end
+
   get '/about', to: 'about#show_about'
   get '/help', to: 'help#show'
   get '/term', to: 'term#show'
