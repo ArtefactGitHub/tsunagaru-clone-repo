@@ -301,6 +301,18 @@ footer {
 
   .information {
     @include myfont-size-s;
-    
+
+    .card-information {
+      margin: 0.5rem 0;
+
+      .display-time {
+        text-align: right;
+      }
+      .content {
+        border-top: solid;
+        border-width: thin;
+        border-color: #cccccc;
+      }
+    }
   }
 }

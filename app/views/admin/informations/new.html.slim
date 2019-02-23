@@ -13,11 +13,14 @@
               = render 'shared/error_message', object: @info
 
               .form-group
+                = label :display_time, '表示日付'
+                = f.date_field :display_time, class: 'form-control'
+              .form-group
                 = label :title, 'タイトル'
                 = f.text_field :title, class: 'form-control'
               .form-group
                 = label :content, '内容'
-                = f.text_field :content, class: 'form-control'
+                = f.text_area :content, class: 'form-control'
               .form-group
                 = label :order, '順番'
                 = f.number_field :order, class: 'form-control'
