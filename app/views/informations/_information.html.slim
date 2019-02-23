@@ -1,0 +1,12 @@
+.card.card-information
+  .card-body
+    .row
+      .col-md-2.col-3.display-time
+        | #{simple_time(information.display_time, "%m/%d")}
+      .col-md-9.col-9
+        .title
+          | #{information.title}
+          br
+        - if information.content.present?
+          .content
+            | #{information.content}

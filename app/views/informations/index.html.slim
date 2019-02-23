@@ -1,0 +1,13 @@
+.before-login
+  .row
+    .col-10.offset-1.headline
+      = fa_icon 'info-circle', class: 'icon'
+      | お知らせ
+
+  .container.information
+    - if @infos.size == 0
+      .card
+        .card-body
+          | お知らせがありません
+    - else
+      = render partial: 'information', collection: @infos, as: :information

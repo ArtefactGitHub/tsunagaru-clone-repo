@@ -7,6 +7,16 @@ Rails.application.routes.draw do
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
 
+  namespace :admin do
+    root to: 'dashboard#show'
+
+    get '/login', to: 'user_sessions#new'
+    post '/login', to: 'user_sessions#create'
+    delete '/logout', to: 'user_sessions#destroy'
+
+    resources :informations, only: %i[index new create destroy]
+  end
+
   get '/about', to: 'about#show_about'
   get '/help', to: 'help#show'
   get '/term', to: 'term#show'
@@ -19,6 +29,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: %i[new create destroy]
   resources :users, only: %i[new create]
   resources :password_resets, only: %i[new create edit update]
+  resources :informations, only: %i[index]
 
   namespace :users do
     get 'auth/:provider', to: 'oauths#oauth', as: :auth_at_provider

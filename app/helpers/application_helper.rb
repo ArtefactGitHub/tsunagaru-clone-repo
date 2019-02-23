@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def simple_time(time)
-    time.strftime("%m/%d %H:%M")
+  def simple_time(time, format = "%m/%d %H:%M")
+    time.strftime(format)
   end
 
   def escape_with_linefeed(text)

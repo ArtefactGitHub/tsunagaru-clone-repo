@@ -1,0 +1,11 @@
+.before-login
+  .row
+    .col-10.offset-1.headline
+      = fa_icon 'user-secret', class: 'icon'
+      | ダッシュボード
+
+  .container.information
+    .card
+      .card-body
+        div = link_to 'お知らせ一覧', admin_informations_path
+        div = link_to 'お知らせの作成', new_admin_information_path
