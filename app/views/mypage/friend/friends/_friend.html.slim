@@ -2,15 +2,22 @@
   .card.friend-card
     .card-body.friend-card-body
       .row
-        .col-sm-3
-          .text-center
-            = render 'shared/users/avatar', user: friend.receiver, assign_class: 'myavatar-l'
-        .col-sm-9.offset-sm-0.col-10.offset-1.friend-text
-          .name
-            div
-              | #{friend.receiver.name}
-            div
-              | （ユーザーID：#{friend.receiver.uuid}）
+        .col-md-3
+          .row
+            .col-md-12.col-6.text-right
+              = render 'shared/users/avatar', user: friend.receiver, assign_class: 'myavatar-l'
+            .d-md-none.col-4
+              = render 'shared/qrcode', to_url: mypage_friend_requests_url(uuid: friend.receiver.uuid), module_size: 2
+
+        .col-md-9.offset-md-0.col-10.offset-1.friend-text
+          .name-section
+            .row
+              .col-md-8.name
+                | #{friend.receiver.name}
+                br
+                | （ユーザーID：#{friend.receiver.uuid}）
+              .col-md-4.d-none.d-md-block.text-right
+                = render 'shared/qrcode', to_url: mypage_friend_requests_url(uuid: friend.receiver.uuid), module_size: 2
           .introduction-overflow
             = escape_with_linefeed friend.receiver.introduction
 

@@ -3,13 +3,20 @@
     = fa_icon 'user-circle', class: 'icon'
     | プロフィール
   .row.profile-text
-    .col-md-3.text-center
-      = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar', assign_class: 'myavatar-xl'
-    .col-md-9
+    .col-md-3
+      .row
+        .col-md-12.col-6.text-right
+          = render 'shared/users/avatar', user: current_user, assign_id: 'js-user-avatar', assign_class: 'myavatar-xl'
+        .d-md-none.col-4.qrcode-md-section
+          = render 'shared/qrcode', to_url: mypage_friend_requests_url(uuid: current_user.uuid), module_size: 2
+    .col-md-8.offset-md-1.col-8.offset-2
       div
         | #{current_user.name}
       div
         | （ユーザーID：#{current_user.uuid}）
+      .d-none.d-md-block.qrcode-section
+        = render 'shared/qrcode', to_url: mypage_friend_requests_url(uuid: current_user.uuid), module_size: 2
+
   .row.text-left
     .col-12
       .card.profile-introduction-card

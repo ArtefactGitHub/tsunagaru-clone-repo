@@ -1,0 +1,18 @@
+.card.card-information
+  .card-body
+    .row
+      .col-md-2.col-3.display-time
+        | #{simple_time(information.display_time, "%m/%d")}
+      .col-md-9.col-9
+        .title
+          | #{information.title}
+          br
+        - if information.content.present?
+          .content
+            | #{information.content}
+
+.col-12.text-right
+  .break-friendship-button
+    = link_to admin_information_path(information), method: :delete, data: { confirm: '本当にお知らせを削除しますか？' }, class: 'btn btn-warning btn-raised' do
+      = fa_icon 'times', class: 'icon'
+      end

@@ -3,6 +3,8 @@ class Mypage::Friend::RequestsController < Mypage::FriendController
 
   def index
     set_new_request_params
+
+    @request.uuid = params[:uuid] if params[:uuid].present?
   end
 
   # Create の経路は2パターン

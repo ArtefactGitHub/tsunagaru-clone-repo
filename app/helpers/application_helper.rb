@@ -1,6 +1,6 @@
 module ApplicationHelper
-  def simple_time(time)
-    time.strftime("%m/%d %H:%M")
+  def simple_time(time, format = "%m/%d %H:%M")
+    time.strftime(format)
   end
 
   def escape_with_linefeed(text)
@@ -21,5 +21,10 @@ module ApplicationHelper
         canonical: request.original_url,
         separator: '|'
     }
+  end
+
+  def qrcode_tag(text, options = {})
+    # see: https://qiita.com/shwld/items/eae96518530b39e692ec
+    RQRCode::QRCode.new(text).as_svg(options).html_safe
   end
 end

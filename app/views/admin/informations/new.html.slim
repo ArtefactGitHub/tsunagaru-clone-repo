@@ -1,0 +1,37 @@
+.before-login
+  .row
+    .col-10.offset-1.headline
+      = fa_icon 'info-circle', class: 'icon'
+      | お知らせ
+
+  .row
+    .col-4.offset-4
+      = link_to '戻る', admin_root_path, class: 'btn btn-secondary btn-raised mybtn-m'
+
+  .container.information
+    .card
+      .card-body
+        = form_for @info, url: admin_informations_url, method: :post do |f|
+          .row
+            .col-12
+              = render 'shared/error_message', object: @info
+
+              .form-group
+                = label :display_time, '表示日付'
+                = f.date_field :display_time, class: 'form-control'
+              .form-group
+                = label :title, 'タイトル'
+                = f.text_field :title, class: 'form-control'
+              .form-group
+                = label :content, '内容'
+                = f.text_area :content, class: 'form-control'
+              .form-group
+                = label :order, '順番'
+                = f.number_field :order, class: 'form-control'
+              .form-group
+                = label :information_type, '種類'
+                = f.number_field :information_type, class: 'form-control'
+          .row
+            .col-6.offset-3
+              .text-center
+                = f.submit '登録', class: 'btn btn-primary btn-lg btn-raised mybtn-m'

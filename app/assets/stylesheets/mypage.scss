@@ -86,6 +86,9 @@ footer {
     margin-left: 0.5rem;
     margin-right: 0.5rem;
   }
+  .qrcode {
+    margin: 0.5rem;
+  }
   .mycard-default {
     max-height: 20vh;
   }
@@ -113,6 +116,15 @@ footer {
     }
     .profile-text {
       @include myfont-size-s;
+
+      .qrcode-md-section {
+        display: flex;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      .qrcode-section {
+        margin: 0 0 0 1rem;
+      }
     }
     .profile-introduction-card {
       @include myfont-size-s;
@@ -190,9 +202,13 @@ footer {
       .friend-text {
         @include myfont-size-s;
 
-        .name {
+        .name-section {
           @include under-bar;
-          margin-bottom: 20px;
+          margin-bottom: 1rem;
+
+          .name {
+            padding: 1rem 1rem 0;
+          }
         }
         .introduction {
           @include myfont-size-s;
@@ -233,6 +249,22 @@ footer {
     }
     .friend_request_list {
       margin-top: 1rem;
+    }
+    .link_to_help {
+      @include myfont-size-s;
+    }
+    .modal-body {
+      @include myfont-size-s;
+      .modal-section {
+        margin-bottom: 1rem;
+      }
+      .image-help {
+        width: 80%;
+        margin: 0.5rem 0;
+        border-style: solid;
+        border-width: 2px;
+        border-color: #cccccc;
+      }
     }
   }
 
