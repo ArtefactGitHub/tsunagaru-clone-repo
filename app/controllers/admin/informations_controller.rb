@@ -1,6 +1,10 @@
 class Admin::InformationsController < AdminController
   include LoggerModule
 
+  def index
+    @infos = Information.all
+  end
+
   def new
     @info = Information.new
   end
@@ -15,6 +19,12 @@ class Admin::InformationsController < AdminController
       flash.now[:danger] = 'お知らせを作成出来ませんでした'
       render :new
     end
+  end
+
+  def destroy
+    @info = Information.find(params[:id])
+    @info.destroy
+    redirect_to admin_informations_url, success: 'お知らせを削除しました'
   end
 
   private
