@@ -58,7 +58,8 @@ ActiveRecord::Schema.define(version: 2019_02_21_000514) do
 
   create_table "information", force: :cascade do |t|
     t.text "title", null: false
-    t.text "content", null: false
+    t.text "content"
+    t.datetime "display_time", null: false
     t.integer "order", default: 0
     t.integer "information_type", default: 0
     t.datetime "created_at", null: false
