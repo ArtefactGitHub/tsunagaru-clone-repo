@@ -20,7 +20,7 @@ require 'rspec/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec', 'support', '**', '*.rb')].each { |f| require f }
 
 # Checks for pending migrations and applies them before tests are run.
 # If you are not using ActiveRecord, you can remove these lines.
@@ -58,4 +58,11 @@ RSpec.configure do |config|
   config.filter_rails_from_backtrace!
   # arbitrary gems may also be filtered via:
   # config.filter_gems_from_backtrace("gem name")
+
+  # Capybara 用に自前のテスト用モジュールを読み込む
+  # see: https://github.com/NoamB/sorcery/wiki/Integration-Testing-with-Rspec,-Capybara-and-Fabricator
+  config.include TestHelpers::Systems, type: :system
+  # Capybara に対応していないため、以下のモジュールは使えない
+  # config.include Sorcery::TestHelpers::Rails::Controller, type: :controller
+  # config.include Sorcery::TestHelpers::Rails::Integration, type: :system
 end
