@@ -10,5 +10,10 @@ FactoryBot.define do
     after(:build) do |user|
       user.use_type_setting = FactoryBot.build(:use_type_setting)
     end
+
+    trait :admin do
+      role                { :admin }
+      uuid                {'uuid-admin'}
+    end
   end
 end
