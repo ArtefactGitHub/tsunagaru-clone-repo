@@ -24,4 +24,20 @@ describe 'ログインやログアウト', type: :system do
       end
     end
   end
+
+  describe 'ログアウト' do
+    let(:user_a) { create(:user, name: 'ユーザーA', email: 'a@g.com') }
+
+    context 'ユーザーAがログインしている時' do
+      before do
+        login_user(user_a.email, 'password')
+      end
+
+      it 'ログアウトするとログイン画面に遷移する' do
+        click_link 'ログアウト'
+        expect(current_path).to eq login_path
+        expect(page).to have_content 'ログイン'
+      end
+    end
+  end
 end
