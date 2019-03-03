@@ -5,7 +5,7 @@ class Mypage::User::UsersController < Mypage::UserController
 
   def update
     if @user.avatar_validation(user_params) && @user.update(user_params)
-      redirect_to edit_mypage_user_user_path(current_user), success: 'プロフィールを更新しました'
+      redirect_to mypage_user_path, success: 'プロフィールを更新しました'
     else
       flash.now[:danger] = 'プロフィールを更新出来ませんでした'
       render :edit
