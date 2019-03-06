@@ -12,7 +12,6 @@ describe 'メンテナンス中の挙動の確認', type: :system do
       end
 
       it 'マイページに遷移しない' do
-        # take_full_page_screenshot 'login_spec/メンテ中に非管理者ユーザーがログインした時、マイページに遷移しない.png'
         expect(page).to have_content 'メンテナンス中のため'
         expect(page).not_to have_content 'ホーム画面'
       end
@@ -27,7 +26,6 @@ describe 'メンテナンス中の挙動の確認', type: :system do
       end
 
       it 'マイページに遷移している' do
-        # take_full_page_screenshot 'login_spec/メンテ中に非管理者ユーザーがログインした時、マイページに遷移しない.png'
         expect(page).to have_content 'ホーム画面'
       end
     end

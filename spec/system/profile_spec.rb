@@ -72,8 +72,6 @@ describe 'プロフィール画面', type: :system do
     describe 'アバター画像の更新' do
       before do
         visit mypage_user_path
-        # attach_file '#user_image', "#{Rails.root}/spec/images/logo.png", {display: 'block'}
-        # attach_file('user[image]', "#{Rails.root}/spec/images/logo.png", make_visible: true)
         user_a.image = Rack::Test::UploadedFile.new(Rails.root.join('app/assets/images/logo.png'), 'image/jpeg')
         click_button '更新'
       end
