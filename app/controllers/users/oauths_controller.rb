@@ -54,6 +54,8 @@ class Users::OauthsController < ApplicationController
       auto_login(@user, params.dig(:remember))
       redirect_to mypage_root_url, success: 'ユーザーを作成しました'
     else
+      # エラーオブジェクトを消さないとチェックボックスのチェックができなくなる
+      # @user.errors.clear
       flash.now[:danger] = 'ユーザーが作成出来ませんでした'
       render :new
     end
@@ -74,6 +76,8 @@ class Users::OauthsController < ApplicationController
   def setup_user_instance(provider_name)
     # see https://github.com/NoamB/sorcery/blob/master/lib/sorcery/controller/submodules/external.rb
     @user = create_and_validate_from provider_name
+    # エラーオブジェクトを消さないとチェックボックスのチェックができなくなる
+    @user.errors.clear
   end
 
   # TODO: Twitter で決め打ち指定
