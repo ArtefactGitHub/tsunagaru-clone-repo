@@ -1,5 +1,5 @@
 .myprofile
-  = form_for [:mypage, :user, current_user] do |f|
+  = form_for [:mypage, current_user] do |f|
     .row.headline
       = fa_icon 'user-circle', class: 'icon'
       | プロフィール画面

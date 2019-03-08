@@ -41,8 +41,8 @@ Rails.application.routes.draw do
     root to: 'dashboard#show'
 
     namespace :user do
-      root to: 'users#edit'
-      resources :users, only: %i[edit update]
+      get '/', to: 'users#edit'
+      patch '/', to: 'users#update'
     end
 
     namespace :friend do
